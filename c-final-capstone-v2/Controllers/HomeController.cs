@@ -13,6 +13,11 @@ namespace c_final_capstone_v2.Controllers
             return View("Index");
         }
 
+        public ActionResult AddCat()
+        {
+            return View();
+        }
+
         public ActionResult About()//about our establishment. photo description
         {
             ViewBag.Message = "Your application description page.";
@@ -35,6 +40,11 @@ namespace c_final_capstone_v2.Controllers
         public ActionResult CareTips()//Dinah can work on this wednesday
         {
             return View("CareTips");
+        }
+
+        public ActionResult CatList()
+        {
+            return View();
         }
     }
 }
