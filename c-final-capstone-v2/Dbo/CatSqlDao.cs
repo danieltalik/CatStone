@@ -11,13 +11,16 @@ namespace c_final_capstone_v2.Dbo
     {
         private const string SQL_All_Cats = "";
         private const string SQL_AddCats = "";
+        private const string SQL_GetCatSkills = "";
         private const string SQL_ViewCat = "";
+        private ISkillDao dao;
 
         private string connectionString;
 
-        public CatSqlDao(string conectionString)
+        public CatSqlDao(string conectionString, ISkillDao dao)
         {
             this.connectionString = connectionString;
+            this.dao = dao;
         }
 
         public List<Cat> GetAllCats()
@@ -57,7 +60,7 @@ namespace c_final_capstone_v2.Dbo
                     SqlCommand cmd = new SqlCommand(SQL_AddCats);
                     cmd.Connection = conn;
                     cmd.Parameters.AddWithValue("", cat.Age);
-                    cmd.Parameters.AddWithValue("", cat.Color);
+                    cmd.Parameters.AddWithValue("", cat.Colors);
                     cmd.Parameters.AddWithValue("", cat.Featured);
                     cmd.Parameters.AddWithValue("", cat.HairLenth);
                     cmd.Parameters.AddWithValue("", cat.Name);
@@ -78,23 +81,20 @@ namespace c_final_capstone_v2.Dbo
 
         private Cat MapRowToCats(SqlDataReader sdr)
         {
-            ////Creates a list of skills from the reader
-            //List<string> skills = new List<string>();
-            //skills.Add(Convert.ToString(sdr[""]));
+            Cat cat = new Cat();
 
-            return new Cat
-            {
-                ID = Convert.ToInt32(sdr[""]),
-                Age = Convert.ToInt32(sdr[""]),
-                Name = Convert.ToString(sdr[""]),
-                Colors = Convert.ToString(sdr[""]),
-                //Sets the cat skills property to the created skills list
-                //Skills = skills,
-                Featured = Convert.ToBoolean(sdr[""]),
-                HairLenth = Convert.ToString(sdr[""]),
-                PictureId = Convert.ToString(sdr[""]),
-                PriorExperience = Convert.ToString(sdr[""])
-            };
+            cat.ID = Convert.ToInt32(sdr[""]);
+            cat.Age = Convert.ToInt32(sdr[""]);
+            cat.Name = Convert.ToString(sdr[""]);
+            cat.Colors = Convert.ToString(sdr[""]);
+            cat.Featured = Convert.ToBoolean(sdr[""]);
+            cat.HairLenth = Convert.ToString(sdr[""]);
+            cat.PictureId = Convert.ToString(sdr[""]);
+            cat.PriorExperience = Convert.ToString(sdr[""]);
+
+            cat.Skills = dao.GetCatSkills(cat.ID);
+
+            return cat;
         }
     }
 }

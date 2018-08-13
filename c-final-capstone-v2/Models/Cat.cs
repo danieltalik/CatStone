@@ -8,6 +8,7 @@ namespace c_final_capstone_v2.Models
 {
     public class Cat
     {
+
         public int ID { get; set; }
         public string Name { get; set; }
         public int? Age { get; set; }
@@ -15,7 +16,7 @@ namespace c_final_capstone_v2.Models
         public string HairLenth { get; set; }
         public string PriorExperience { get; set; }
         public string PictureId { get; set; }
-        public List<string> Skills { get; set; }
         public bool Featured { get; set; }
+        public List<Skills> Skills { get; set; }
     }
 }

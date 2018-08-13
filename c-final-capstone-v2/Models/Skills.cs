@@ -5,7 +5,9 @@ using System.Web;
 
 namespace c_final_capstone_v2.Models
 {
-    public class Class1
+    public class Skills
     {
+        public int CatID { get; set; }
+        public string Skill { get; set; }
     }
 }
