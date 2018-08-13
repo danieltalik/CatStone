@@ -151,7 +151,6 @@
     </Compile>
     <Compile Include="Models\Cat.cs" />
     <Compile Include="Models\Skills.cs" />
-
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +159,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\CareTips.jpg" />
     <Content Include="Content\img\Contact.png" />
+    <Content Include="Content\img\Fern.jpg" />
+    <Content Include="Content\img\Luna.jpg" />
+    <Content Include="Content\img\Percy.jpg" />
+    <Content Include="Content\img\Percy2.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
