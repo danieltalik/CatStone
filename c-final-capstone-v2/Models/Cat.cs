@@ -10,7 +10,7 @@ namespace c_final_capstone_v2.Models
         public string Name { get; set; }
         public int? Age { get; set; }
         public List<string> Color { get; set; }
-        public string HairLenth { get; set; }
+        public string HairLength { get; set; }
         public string PriorExperience { get; set; }
         public string PictureId { get; set; }
         public List<string> Skills { get; set; }

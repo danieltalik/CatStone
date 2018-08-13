@@ -10,21 +10,31 @@ namespace c_final_capstone_v2.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
-        public ActionResult About()
+        public ActionResult About()//about our establishment. photo description
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Contact()//Grumpy Cat Photo on Djs computer
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
+            return View();//returns view w/ only on epic
+        }
+
+        public ActionResult CatDetails()
+        {
+            return View("CatDetails");//not creaed view yet. for sepceific cat
+        }
+
+        public ActionResult CareTips()//Dinah can work on this wednesday
+        {
+            return View("CareTips");
         }
     }
 }
