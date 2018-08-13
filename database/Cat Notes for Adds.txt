@@ -1,0 +1,54 @@
+
+
+  public string Name { get; set; }
+        public int? Age { get; set; }
+        public List<string> Color { get; set; }
+        public string HairLength { get; set; }
+        public string PriorExperience { get; set; }
+        public string PictureId { get; set; }
+        public List<string> Skills { get; set; }
+		
+		Name: Picard
+		Color: Orange
+		HairLength: Short
+		PictureId: ?
+		PriorExperience: Licking, Stealing food, Commanding USS Enterprise
+		
+		Name: Memesiku
+		Color: Calico
+		HairLength: Long
+		PictureId: ?
+		PriorExperience: Flooping, Drooling, Hunting gnats
+		
+		Name: Wulfgang
+		Color:  Black
+		HairLength: Long
+		PictureId: ?
+		PriorExperience: Always looking for new ways to assinate that dog
+		
+		Name: Brahm
+		Color: Brown
+		HairLength: short
+		PictureId: ?
+		PriorExperience: 100% good boy 0% cat 
+		
+		Name: Fern
+		Color: Tabby
+		HairLength: Long
+		PictureId: ?
+		PriorExperience: Will do anything for bread.
+		
+		Name: Percy
+		Color: Orange & white
+		HairLength: Long
+		PictureId: ?
+		PriorExperience: Purficient at wakeup calls
+		
+		Name: Luna
+		Color: Black & Orange
+		HairLength: Short
+		PictureId: ?
+		PriorExperience: Flexible for the right opportunity
+		
+		
+		
