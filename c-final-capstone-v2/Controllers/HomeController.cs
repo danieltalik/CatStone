@@ -20,7 +20,7 @@ namespace c_final_capstone_v2.Controllers
             return View();
         }
 
-        public ActionResult Contact()//Grumpy Cat Photo
+        public ActionResult Contact()//Grumpy Cat Photo on Djs computer
         {
             ViewBag.Message = "Your contact page.";
 
