@@ -7,7 +7,7 @@ namespace c_final_capstone_v2.Models
 {
     public class Cat
     {
-        public string? Name { get; set; }
+        public string Name { get; set; }
         public int? Age { get; set; }
         public List<string> Color { get; set; }
         public string HairLenth { get; set; }
