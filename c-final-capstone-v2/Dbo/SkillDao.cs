@@ -13,7 +13,7 @@ namespace c_final_capstone_v2.Dbo
 
         private string connectionString;
 
-        public SkillDao(string conectionString)
+        public SkillDao(string connectionString)
         {
             this.connectionString = connectionString;
         }
