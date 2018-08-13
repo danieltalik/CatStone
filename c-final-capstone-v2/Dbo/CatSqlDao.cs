@@ -17,7 +17,7 @@ namespace c_final_capstone_v2.Dbo
 
         private string connectionString;
 
-        public CatSqlDao(string conectionString, ISkillDao dao)
+        public CatSqlDao(string connectionString, ISkillDao dao)
         {
             this.connectionString = connectionString;
             this.dao = dao;
