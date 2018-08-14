@@ -21,3 +21,14 @@ INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured )
 INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured ) VALUES ('Wulfgang', 'black', 'long', 7, 'Always looking for new ways to assinate dogs', 'wulfgang.jpg', 0 )
 INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured ) VALUES ('Brahm', 'brown', 'short', 5, '100% good boy 0% cat', 'brahm.jpg', 0)
 --INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured ) VALUES ('', '',, '', '', 0)
+
+
+INSERT INTO cat_skill (cat_id, skill_id) VALUES(1, 1)
+INSERT INTO cat_skill (cat_id, skill_id) VALUES(1, 7)
+INSERT INTO cat_skill (cat_id, skill_id) VALUES(2, 6)
+INSERT INTO cat_skill (cat_id, skill_id) VALUES(2, 10)
+INSERT INTO cat_skill (cat_id, skill_id) VALUES(3, 2)
+INSERT INTO cat_skill (cat_id, skill_id) VALUES(3, 5)
+INSERT INTO cat_skill (cat_id, skill_id) VALUES(3, 9)
+
+--INSERT INTO cat_skill (cat_id, skill_id) VALUES(, )
