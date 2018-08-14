@@ -1,8 +1,10 @@
-﻿using System;
+﻿using c_final_capstone_v2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace c_final_capstone_v2.Controllers
 {
@@ -44,7 +46,8 @@ namespace c_final_capstone_v2.Controllers
 
         public ActionResult CatList()
         {
-            return View();
+            List<Cat> cats = new List<Cat>();
+            return View(cats);
         }
     }
 }

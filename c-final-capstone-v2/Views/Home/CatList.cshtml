@@ -1,0 +1,58 @@
+﻿@model IEnumerable<c_final_capstone_v2.Models.Cat>
+
+@{
+    ViewBag.Title = "CatList";
+}
+
+<h2>CatList</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HairLenth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriorExperience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PictureId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HairLenth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriorExperience)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PictureId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
