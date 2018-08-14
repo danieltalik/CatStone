@@ -175,7 +175,7 @@
     <Content Include="Content\img\CareTips2.jpg" />
     <Content Include="Content\img\Contact.png" />
     <Content Include="Content\img\HeroImage.png" />
-    <Content Include="Content\StyleSheet.css" />
+    <Content Include="Content\img\layout_banner.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -233,6 +233,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
