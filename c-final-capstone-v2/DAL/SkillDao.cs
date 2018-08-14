@@ -9,6 +9,8 @@ namespace c_final_capstone_v2.DAL
 {
     public class SkillDao : ISkillDao
     {
+        private const string SQL_AssignCatSkills = "INSERT INTO cat_skills (cat_id, skill_id) VALUES (@catId, @skillId) ";
+        private const string SQL_AddSkill = "";
         private const string SQL_GetSkills = "SELECT s.skill FROM skills s JOIN cat_skill cs ON s.id = cs.skill_id JOIN Cats c ON cs.cat_id = c.Id WHERE c.Id = @Id";
 
         private string connectionString;
@@ -17,9 +19,10 @@ namespace c_final_capstone_v2.DAL
         {
             this.connectionString = connectionString;
         }
-        public List<Skills> GetCatSkills(int id)
+
+        public List<string> GetCatSkills(int id)
         {
-            List<Skills> catSkills = new List<Skills>();
+            List<string> catSkills = new List<string>();
 
             try
             {
@@ -28,13 +31,12 @@ namespace c_final_capstone_v2.DAL
                     conn.Open();
                     SqlCommand command = new SqlCommand(SQL_GetSkills);
                     command.Connection = conn;
-                    command.Parameters.AddWithValue("@Id", id);
-
                     SqlDataReader reader = command.ExecuteReader();
+                    command.Parameters.AddWithValue("@Id", id);
 
                     while (reader.Read())
                     {
-                        catSkills.Add(MapRowToSkills(reader));
+                        catSkills.Add(Convert.ToString(reader["skill"]));
                     }
                 }
             }
@@ -44,14 +46,32 @@ namespace c_final_capstone_v2.DAL
             }
             return catSkills;
         }
+
+        public void AddCatSkillsToTable(int catId, List<int> skillId)
         
-        private Skills MapRowToSkills(SqlDataReader sdr)//TODO: convert to a string instead of an object so that Cat skills property is a list of string and not a list of objects
         {
-            return new Skills
+            try
             {
-                CatID = Convert.ToInt32(sdr["id"]),
-                Skill = Convert.ToString(sdr["skill"])
-            };
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(SQL_GetSkills);
+                    cmd.Connection = conn;
+
+                    foreach (int id in skillId)
+                    {
+
+                        cmd.Parameters.AddWithValue("@catId", catId);
+                        cmd.Parameters.AddWithValue("@skillId", id);
+
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+
+                throw;
+            }
         }
     }
 }

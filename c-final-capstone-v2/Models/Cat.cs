@@ -17,6 +17,7 @@ namespace c_final_capstone_v2.Models
         public string PriorExperience { get; set; }
         public string PictureId { get; set; }
         public bool Featured { get; set; }
-        public List<Skills> Skills { get; set; }
+        public List<string> Skills { get; set; }
+        public string Description { get; set; }
     }
 }
