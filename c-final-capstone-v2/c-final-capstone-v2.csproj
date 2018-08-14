@@ -220,6 +220,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\AddCat.cshtml" />
+    <Content Include="Views\Home\ViewCat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />
