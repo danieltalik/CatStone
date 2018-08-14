@@ -4,12 +4,25 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using c_final_capstone_v2.Models;
+using System.Configuration;
 
 namespace c_final_capstone_v2.DAL
 {
     public class CatSqlDao : ICatSqlDao
     {
         private const string SQL_All_Cats = "SELECT * FROM Cats";
+<<<<<<< HEAD
+        private const string SQL_AddCats = "INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, description ) VALUES (@name, @color, @hair_length, @age, @prior_exp, @description )";
+        private const string SQL_ViewCat = "SELECT * FROM cats WHERE cat.Id = @Id";
+        private const string SQL_RemoveCat = "";//UNDONE
+
+        private ISkillDao dao;
+        string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
+
+        public CatSqlDao()
+        {
+            this.dao = new SkillDao(connectionString);
+=======
         private const string SQL_AddCats = "INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, description ) VALUES (@name, @color, @hair_length, @age, @prior_exp, @photo, @description )";
         private const string SQL_ViewCat = "SELECT * FROM cats WHERE cat.name = @name";
         private const string SQL_RemoveCat = "";//UNDONE
@@ -21,6 +34,7 @@ namespace c_final_capstone_v2.DAL
         {
             this.connectionString = connectionString;
             dao = new SkillDao(connectionString);
+>>>>>>> f6c5addb2a466d98b69c35404542b3c0d4b3dd65
         }
 
         
@@ -50,6 +64,32 @@ namespace c_final_capstone_v2.DAL
                 throw;
             }
             return cats;
+        }
+
+        public Cat ViewCat(int id)
+        {
+            Cat cat = new Cat();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(SQL_ViewCat);
+                    command.Connection = conn;
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                         cat = (MapRowToCats(reader));
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return cat;
         }
 
         public bool AddCat(Cat cat)

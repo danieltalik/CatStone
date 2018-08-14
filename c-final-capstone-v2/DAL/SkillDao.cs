@@ -31,7 +31,7 @@ namespace c_final_capstone_v2.DAL
                     conn.Open();
                     SqlCommand command = new SqlCommand(SQL_GetSkills);
                     command.Connection = conn;
-                    
+
                     command.Parameters.AddWithValue("@Id", id);
                     SqlDataReader reader = command.ExecuteReader();
 
