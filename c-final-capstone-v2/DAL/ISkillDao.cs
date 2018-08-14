@@ -9,6 +9,6 @@ namespace c_final_capstone_v2.DAL
 {
     public interface ISkillDao
     {
-        List<Skills> GetCatSkills(int id);
+        List<string> GetCatSkills(int id);
     }
 }
