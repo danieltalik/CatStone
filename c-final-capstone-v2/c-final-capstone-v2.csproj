@@ -143,9 +143,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Dbo\CatSqlDao.cs" />
-    <Compile Include="Dbo\ISkillDao.cs" />
-    <Compile Include="Dbo\SkillDao.cs" />
+    <Compile Include="DAL\CatSqlDao.cs" />
+    <Compile Include="DAL\ISkillDao.cs" />
+    <Compile Include="DAL\SkillDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -206,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

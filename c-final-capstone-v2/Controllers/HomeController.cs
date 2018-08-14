@@ -20,6 +20,13 @@ namespace c_final_capstone_v2.Controllers
             return View();
         }
 
+        public ActionResult SubmitCat(Cat newCat)
+        {
+            // dao.addcat
+
+            return RedirectToAction("CatList");
+        }
+
         public ActionResult About()//about our establishment. photo description
         {
             ViewBag.Message = "Your application description page.";
