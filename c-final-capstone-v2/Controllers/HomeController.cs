@@ -16,7 +16,7 @@ namespace c_final_capstone_v2.Controllers
 
         public HomeController()
         {
-            this.dao = new CatSqlDao();
+            this.dao = new CatSqlDao(connectionString);
         }
 
         public ActionResult Index()

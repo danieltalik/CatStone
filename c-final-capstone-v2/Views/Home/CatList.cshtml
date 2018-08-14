@@ -19,7 +19,7 @@
             @Html.DisplayNameFor(model => model.Age)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HairLenth)
+            @Html.DisplayNameFor(model => model.HairLength)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Skills)
@@ -42,14 +42,10 @@
             @Html.DisplayFor(modelItem => item.Age)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HairLenth)
+            @Html.DisplayFor(modelItem => item.HairLength)
         </td>
         <td>
-            @foreach (var skill in item.Skills)
-            {
-                @Html.DisplayFor(modelItem => skill)
-            }
-
+            @Html.DisplayFor(modelItem => item.Skills)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PriorExperience)

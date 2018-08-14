@@ -11,6 +11,7 @@ namespace c_final_capstone_v2.DAL
     public class CatSqlDao : ICatSqlDao
     {
         private const string SQL_All_Cats = "SELECT * FROM Cats";
+<<<<<<< HEAD
         private const string SQL_AddCats = "INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, description ) VALUES (@name, @color, @hair_length, @age, @prior_exp, @description )";
         private const string SQL_ViewCat = "SELECT * FROM cats WHERE cat.Id = @Id";
         private const string SQL_RemoveCat = "";//UNDONE
@@ -21,7 +22,22 @@ namespace c_final_capstone_v2.DAL
         public CatSqlDao()
         {
             this.dao = new SkillDao(connectionString);
+=======
+        private const string SQL_AddCats = "INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, description ) VALUES (@name, @color, @hair_length, @age, @prior_exp, @photo, @description )";
+        private const string SQL_ViewCat = "SELECT * FROM cats WHERE cat.name = @name";
+        private const string SQL_RemoveCat = "";//UNDONE
+
+        private ISkillDao dao;
+        private string connectionString;
+
+        public CatSqlDao(string connectionString)
+        {
+            this.connectionString = connectionString;
+            dao = new SkillDao(connectionString);
+>>>>>>> f6c5addb2a466d98b69c35404542b3c0d4b3dd65
         }
+
+        
 
         public List<Cat> GetAllCats()
         {
