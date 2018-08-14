@@ -55,7 +55,7 @@ namespace c_final_capstone_v2.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(SQL_GetSkills);
+                    SqlCommand cmd = new SqlCommand(SQL_AssignCatSkills);
                     cmd.Connection = conn;
 
                     foreach (int id in skillId)
