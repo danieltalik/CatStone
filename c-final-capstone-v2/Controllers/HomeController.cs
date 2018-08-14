@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using c_final_capstone_v2.Dbo;
+using c_final_capstone_v2.DAL;
 using System.Configuration;
 
 namespace c_final_capstone_v2.Controllers
@@ -27,6 +27,13 @@ namespace c_final_capstone_v2.Controllers
         public ActionResult AddCat()
         {
             return View();
+        }
+
+        public ActionResult SubmitCat(Cat newCat)
+        {
+            // dao.addcat
+
+            return RedirectToAction("CatList");
         }
 
         public ActionResult About()//about our establishment. photo description

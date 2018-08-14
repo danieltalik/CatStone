@@ -11,7 +11,7 @@ namespace c_final_capstone_v2.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using System.Configuration;
-    using Dbo;
+    using DAL;
     using Ninject.Web.Common.WebHost;
 
     public static class NinjectWebCommon

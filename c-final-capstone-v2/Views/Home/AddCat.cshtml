@@ -1,4 +1,6 @@
 ﻿@model c_final_capstone_v2.Models.Cat
+@using c_final_capstone_v2.Models;
+@using c_final_capstone_v2.DAL;
 @{
     ViewBag.Title = "Home Page";
 }
@@ -7,7 +9,7 @@
     <h1>CATS! CATS! CATS!</h1>
 </div>
 
-<form action="/action_page.php">
+<form action="SubmitCat" method="post">
     Image*:<br />
     <input type="file" name="pic" accept="image/*" />
     <br />
@@ -30,9 +32,9 @@
     Prior Experience*:<br />
     <input type="text" name="priorExperience" />
     <br />
-    Skills*:<br/>
+    Skills*:<br />
     <input type="text" name="skills" />
     <br />
     <br><br>
     <input type="submit" value="Submit">
-</form> 
+</form>
