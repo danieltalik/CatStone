@@ -168,6 +168,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\gif\banner.gif" />
+    <Content Include="Content\gif\dizzy.gif" />
+    <Content Include="Content\gif\glasses.gif" />
+    <Content Include="Content\gif\newBanner.gif" />
+    <Content Include="Content\gif\nyan.gif" />
+    <Content Include="Content\gif\nyanCat.gif" />
     <Content Include="Content\img\About.jpeg" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\CareTips.jpg" />

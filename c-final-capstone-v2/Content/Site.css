@@ -49,3 +49,27 @@ body, html {
     transform: translate(-50%, -50%);
     color: white;
 }
+
+.img-circle {
+    border-radius: 50%;
+    height: 200px;
+    width: auto;
+    float: left;
+}
+.img-circle-right {
+    border-radius: 50%;
+    height: 200px;
+    width: auto;
+    float:right;
+}
+.footer-gif {
+    background-position: center;
+    background-size: cover;
+    float:right;
+
+    /*height: 200px;
+    width: 100%;*/
+}
+.footer-text{
+
+}
