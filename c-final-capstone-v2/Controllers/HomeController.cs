@@ -24,6 +24,13 @@ namespace c_final_capstone_v2.Controllers
             return View("Index");
         }
 
+        public ActionResult ViewCat(int id)
+        {
+            Cat theCat = dao.ViewCat(id);
+
+            return View("ViewCat", theCat);
+        }
+
         public ActionResult AddCat()
         {
             return View();

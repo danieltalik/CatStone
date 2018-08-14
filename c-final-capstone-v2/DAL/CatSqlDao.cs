@@ -22,7 +22,6 @@ namespace c_final_capstone_v2.DAL
         {
             this.connectionString = connectionString;
             dao = new SkillDao(connectionString);
-
         }
         
         public List<Cat> GetAllCats()
@@ -141,5 +140,3 @@ namespace c_final_capstone_v2.DAL
         }
     }
 }
-
-

@@ -1,0 +1,27 @@
+﻿@model c_final_capstone_v2.Models.Cat
+@{
+    ViewBag.Title = "ViewCat";
+}
+
+<h2>View Cat!</h2>
+
+<div>
+    @Html.DisplayNameFor(model => model.Name):
+    @Html.DisplayFor(model => Model.Name)
+    <br />
+    @Html.DisplayNameFor(model => model.Age):
+    @Html.DisplayFor(model => Model.Age)
+    <br />
+    @Html.DisplayNameFor(model => model.HairLength):
+    @Html.DisplayFor(model => Model.HairLength)
+    <br />
+    @Html.DisplayNameFor(model => model.Skills):
+    @Html.DisplayFor(model => Model.Skills)
+    <br />
+    @Html.DisplayNameFor(model => model.PriorExperience):
+    @Html.DisplayFor(model => Model.PriorExperience)
+    <br />
+    @Html.DisplayNameFor(model => model.PictureId):
+    @Html.DisplayFor(model => Model.PictureId)
+</div>
+
