@@ -9,7 +9,7 @@ namespace c_final_capstone_v2.Dbo
 {
     public class SkillDao : ISkillDao
     {
-        private const string SQL_GetSkills = "";
+        private const string SQL_GetSkills = "SELECT s.skill FROM skills s JOIN cat_skill cs ON s.id = cs.skill_id JOIN Cats c ON cs.cat_id = c.Id WHERE c.Id = @Id";
 
         private string connectionString;
 
@@ -28,6 +28,7 @@ namespace c_final_capstone_v2.Dbo
                     conn.Open();
                     SqlCommand command = new SqlCommand(SQL_GetSkills);
                     command.Connection = conn;
+                    command.Parameters.AddWithValue("@Id", id);
 
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -43,13 +44,13 @@ namespace c_final_capstone_v2.Dbo
             }
             return catSkills;
         }
-
-        private Skills MapRowToSkills(SqlDataReader sdr)
+        
+        private Skills MapRowToSkills(SqlDataReader sdr)//TODO: convert to a string instead of an object so that Cat skills property is a list of string and not a list of objects
         {
             return new Skills
             {
-                CatID = Convert.ToInt32(sdr[""]),
-                Skill = Convert.ToString(sdr[""])
+                CatID = Convert.ToInt32(sdr["id"]),
+                Skill = Convert.ToString(sdr["skill"])
             };
         }
     }
