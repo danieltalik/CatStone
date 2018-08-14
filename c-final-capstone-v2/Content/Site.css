@@ -55,12 +55,14 @@ body, html {
     height: 200px;
     width: auto;
     float: left;
+    margin-right: 20px;
+    
 }
 .img-circle-right {
     border-radius: 50%;
     height: 200px;
     width: auto;
-    float:right;
+    float: right;
 }
 .footer-gif {
     background-position: center;
