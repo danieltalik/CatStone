@@ -16,7 +16,7 @@ namespace c_final_capstone_v2.Controllers
 
         public HomeController()
         {
-            this.dao = new CatSqlDao(connectionString);
+            this.dao = new CatSqlDao();
         }
 
         public ActionResult Index()
@@ -31,7 +31,7 @@ namespace c_final_capstone_v2.Controllers
 
         public ActionResult SubmitCat(Cat newCat)
         {
-            // dao.addcat
+            dao.AddCat(newCat);
 
             return RedirectToAction("CatList");
         }

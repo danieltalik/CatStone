@@ -178,7 +178,6 @@
     <Content Include="Content\img\HeroImage.png" />
     <Content Include="Content\img\layout_banner.png" />
     <Content Include="Content\img\layout_banner.png" />
-
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
