@@ -4390,6 +4390,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-default .navbar-brand {
   color: #777777;
+  color: hotpink;
 }
 
 .navbar-default .navbar-brand:hover,
