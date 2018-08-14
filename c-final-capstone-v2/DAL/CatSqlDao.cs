@@ -7,7 +7,7 @@ using c_final_capstone_v2.Models;
 
 namespace c_final_capstone_v2.DAL
 {
-    public class CatSqlDao
+    public class CatSqlDao : ICatSqlDao
     {
         private const string SQL_All_Cats = "SELECT * FROM Cats";
         private const string SQL_AddCats = "";
@@ -16,10 +16,9 @@ namespace c_final_capstone_v2.DAL
 
         private string connectionString;
 
-        public CatSqlDao(string connectionString, ISkillDao dao)
+        public CatSqlDao(string connectionString)
         {
             this.connectionString = connectionString;
-            this.dao = dao;
         }
 
         public List<Cat> GetAllCats()
@@ -65,7 +64,7 @@ namespace c_final_capstone_v2.DAL
                     cmd.Parameters.AddWithValue("@name", cat.Name);
                     cmd.Parameters.AddWithValue("@photo", cat.PictureId);
                     cmd.Parameters.AddWithValue("@prior_exp", cat.PriorExperience);
-                    //cmd.Parameters.AddWithValue("@skills", cat.Skills);
+                    cmd.Parameters.AddWithValue("@skills", cat.Skills);
 
                     int num = cmd.ExecuteNonQuery();
 
@@ -91,7 +90,7 @@ namespace c_final_capstone_v2.DAL
             cat.PictureId = Convert.ToString(sdr["photo"]);
             cat.PriorExperience = Convert.ToString(sdr["prior_exp"]);
 
-            cat.Skills = dao.GetCatSkills(cat.ID);
+            //cat.Skills = dao.GetCatSkills(cat.ID);
 
             return cat;
         }
