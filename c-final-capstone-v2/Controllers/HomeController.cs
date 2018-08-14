@@ -4,12 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using c_final_capstone_v2.Dbo;
+using System.Configuration;
 
 namespace c_final_capstone_v2.Controllers
 {
     public class HomeController : Controller
     {
+        ICatSqlDao dao;
+        string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
+
+        public HomeController()
+        {
+            this.dao = new CatSqlDao(connectionString);
+        }
+
         public ActionResult Index()
         {
             return View("Index");
@@ -46,7 +55,7 @@ namespace c_final_capstone_v2.Controllers
 
         public ActionResult CatList()
         {
-            List<Cat> cats = new List<Cat>();
+            List<Cat> cats = dao.GetAllCats();
             return View(cats);
         }
     }
