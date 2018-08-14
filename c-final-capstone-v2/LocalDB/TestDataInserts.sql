@@ -47,3 +47,4 @@ INSERT INTO Users (name, password, is_admin) VALUES ('Slenderman',		'password', 
 INSERT INTO Users (name, password, is_admin) VALUES ('NightMan',		'password', 0)
 INSERT INTO Users (name, password, is_admin) VALUES ('DayMan',			'password', 0)
 --INSERT INTO Users (name, password, is_admin) VALUES ('', '', 0)
+
