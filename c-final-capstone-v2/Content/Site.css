@@ -75,3 +75,20 @@ body, html {
 .footer-text{
 
 }
+.us-gif {
+    border-radius: 50%;
+    height: 200px;
+    width: auto;
+}
+.us-gif-right {
+    border-radius: 50%;
+    height: 200px;
+    width: auto;
+    right: 0;
+}
+.table-right{
+    right: 0;
+}
+.table-left{
+    left:0;
+}
