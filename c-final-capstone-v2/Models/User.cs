@@ -20,6 +20,7 @@ namespace c_final_capstone_v2.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         
+        [Required]
         [Compare("Password", ErrorMessage = "Passwords must match")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }

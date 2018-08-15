@@ -10,7 +10,7 @@ namespace c_final_capstone_v2.DAL
     public class SkillDao : ISkillDao
     {
         private const string SQL_AssignCatSkills = "INSERT INTO cat_skills (cat_id, skill_id) VALUES (@catId, @skillId) ";
-        private const string SQL_AddSkill = "";
+        private const string SQL_AddSkill = "";//UNDONE
         private const string SQL_GetSkills = "SELECT s.skill FROM skills s JOIN cat_skill cs ON s.id = cs.skill_id JOIN Cats c ON cs.cat_id = c.Id WHERE c.Id = @Id";
 
         private string connectionString;
@@ -73,6 +73,11 @@ namespace c_final_capstone_v2.DAL
 
                 throw;
             }
+        }
+
+        public void AddSkillToTable()//UNDONE
+        {
+
         }
     }
 }

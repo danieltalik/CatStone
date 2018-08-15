@@ -14,6 +14,9 @@ namespace c_final_capstone_v2.DAL
         private const string SQL_AddCats = "INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, description ) VALUES (@name, @color, @hair_length, @age, @prior_exp, @photo, @description )";
         private const string SQL_ViewCat = "SELECT * FROM cats WHERE Id = @ID";
         private const string SQL_RemoveCat = "";//UNDONE
+        private const string SQL_AlterCat = "";//UNDONE
+        private const string SQL_FeatureCat = "";//UNDONE
+        private const string SQL_EmployCat = "";//UNDONE
 
         private ISkillDao dao;
         private string connectionString;
@@ -96,14 +99,14 @@ namespace c_final_capstone_v2.DAL
                     cmd.Parameters.AddWithValue("@is_featured", cat.Featured);
                     cmd.Parameters.AddWithValue("@description", cat.Description);
 
-                    int num = cmd.ExecuteNonQuery();
+                    int num = cmd.ExecuteNonQuery();//FIX - not a fix, does this variable do anything?
 
                     return (num > 0);
                 }
             }
             catch (SqlException ex)
             {
-                throw;
+                throw ex;
             }
         }
 
@@ -134,9 +137,28 @@ namespace c_final_capstone_v2.DAL
             return cat;
         }
 
-        private void RemoveCat()//UNDONE
+        public void RemoveCat()//UNDONE
         {
 
+        }
+
+        public void AlterCat(int id)//UNDONE
+        {
+
+        }
+
+        public bool IsFeaturedCat()//UNDONE admin privilege - per Johns Trello Comment, is this going to be most reviewed cat, highest ranked cat or set by admin
+        {
+            bool result = false;
+
+            return result;
+        }
+
+        public bool isEmployed()//UNDONE admin privilege 
+        {
+            bool result = false;
+
+            return result;
         }
     }
 }

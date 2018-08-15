@@ -157,9 +157,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\CatSqlDao.cs" />
-    <Compile Include="DAL\ICatSqlDao.cs" />
-    <Compile Include="DAL\ISkillDao.cs" />
-    <Compile Include="DAL\IUser.cs" />
+    <Compile Include="DAL\Interface\ICatSqlDao.cs" />
+    <Compile Include="DAL\Interface\ISkillDao.cs" />
+    <Compile Include="DAL\Interface\IUser.cs" />
     <Compile Include="DAL\SkillDao.cs" />
     <Compile Include="DAL\UserDao.cs" />
     <Compile Include="Global.asax.cs">

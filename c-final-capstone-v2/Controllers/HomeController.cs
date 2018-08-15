@@ -59,7 +59,7 @@ namespace c_final_capstone_v2.Controllers
             return View();//returns view w/ only on epic
         }
 
-        public ActionResult CatDetails()
+        public ActionResult CatDetails()//FIX what is different about this versus Action Result ViewCat(int id) Above?
         {
             return View("CatDetails");//not creaed view yet. for sepceific cat
         }
@@ -79,6 +79,7 @@ namespace c_final_capstone_v2.Controllers
         {
             return View("Login");
         }
+
         public ActionResult Us()
         {
             return View("Us");
