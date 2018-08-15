@@ -79,5 +79,9 @@ namespace c_final_capstone_v2.Controllers
         {
             return View("Login");
         }
+        public ActionResult Us()
+        {
+            return View("Us");
+        }
     }
 }

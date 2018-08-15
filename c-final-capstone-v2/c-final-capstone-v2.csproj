@@ -229,6 +229,7 @@
     <Content Include="Views\Home\AddCat.cshtml" />
     <Content Include="Views\Home\ViewCat.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Us.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />
