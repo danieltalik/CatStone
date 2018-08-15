@@ -11,12 +11,14 @@ namespace c_final_capstone_v2.Controllers
 {
     public class HomeController : Controller
     {
-        ICatSqlDao dao;
+        ICatSqlDao catDao;
+        ISkillDao skillDao;
         string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
 
         public HomeController()
         {
-            this.dao = new CatSqlDao(connectionString);
+            this.catDao = new CatSqlDao(connectionString);
+            this.skillDao = new SkillDao(connectionString);
         }
 
         public ActionResult Index()
@@ -26,7 +28,7 @@ namespace c_final_capstone_v2.Controllers
 
         public ActionResult ViewCat(int id)
         {
-            Cat theCat = dao.ViewCat(id);
+            Cat theCat = catDao.ViewCat(id);
 
             return View("ViewCat", theCat);
         }
@@ -38,7 +40,7 @@ namespace c_final_capstone_v2.Controllers
 
         public ActionResult SubmitCat(Cat newCat)
         {
-            dao.AddCat(newCat);
+            catDao.AddCat(newCat);
 
             return RedirectToAction("CatList");
         }
@@ -69,7 +71,7 @@ namespace c_final_capstone_v2.Controllers
 
         public ActionResult CatList()
         {
-            List<Cat> cats = dao.GetAllCats();
+            List<Cat> cats = catDao.GetAllCats();
             return View(cats);
         }
     }

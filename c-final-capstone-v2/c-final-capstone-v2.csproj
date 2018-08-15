@@ -159,11 +159,14 @@
     <Compile Include="DAL\CatSqlDao.cs" />
     <Compile Include="DAL\ICatSqlDao.cs" />
     <Compile Include="DAL\ISkillDao.cs" />
+    <Compile Include="DAL\IUser.cs" />
     <Compile Include="DAL\SkillDao.cs" />
+    <Compile Include="DAL\UserDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cat.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
