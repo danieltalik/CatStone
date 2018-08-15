@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = null;
+    ViewBag.Title = "Login";
 }
 
 <!DOCTYPE html>
@@ -7,12 +7,23 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <title>Staff Login</title>
 </head>
 <body>
     <div>
-        <button>Username</button>
-        <button>Password</button>
+        <img src="~/Content/img/login2.png" alt="Banner" width="100%" height="auto">
+        <br />
+
+        <br><br>
+        Username*:<br />
+        <input type="text" name="username" />
+        <br />
+        Password*:<br />
+        <input type="text" name="password" />
+        <br />
+
+        <br><br>
+        <input type="submit" value="Submit">
     </div>
 </body>
 </html>

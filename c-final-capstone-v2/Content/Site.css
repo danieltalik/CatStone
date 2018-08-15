@@ -65,10 +65,10 @@ body, html {
     float: right;
 }
 .footer-gif {
-    background-position: center;
-    background-size: cover;
-    float:right;
 
+    position: fixed;
+    bottom: 0;
+    right: 0;
     height: 40px;
     width: auto;
 }

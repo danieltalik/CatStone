@@ -11,7 +11,6 @@ namespace c_final_capstone_v2.DAL
     public class CatSqlDao : ICatSqlDao
     {
         private const string SQL_All_Cats = "SELECT * FROM Cats";
-
         private const string SQL_AddCats = "INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, description ) VALUES (@name, @color, @hair_length, @age, @prior_exp, @photo, @description )";
         private const string SQL_ViewCat = "SELECT * FROM cats WHERE Id = @ID";
         private const string SQL_RemoveCat = "";//UNDONE
@@ -24,9 +23,7 @@ namespace c_final_capstone_v2.DAL
             this.connectionString = connectionString;
             dao = new SkillDao(connectionString);
         }
-
         
-
         public List<Cat> GetAllCats()
         {
             List<Cat> cats = new List<Cat>();
@@ -65,7 +62,6 @@ namespace c_final_capstone_v2.DAL
                     SqlCommand command = new SqlCommand(SQL_ViewCat);
                     command.Connection = conn;
                     command.Parameters.AddWithValue("@ID", id);
-
                     SqlDataReader reader = command.ExecuteReader();
 
                     while (reader.Read())
