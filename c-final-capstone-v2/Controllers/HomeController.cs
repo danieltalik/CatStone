@@ -74,5 +74,10 @@ namespace c_final_capstone_v2.Controllers
             List<Cat> cats = catDao.GetAllCats();
             return View(cats);
         }
+
+        public ActionResult Login()
+        {
+            return View("Login");
+        }
     }
 }

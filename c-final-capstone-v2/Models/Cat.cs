@@ -31,13 +31,5 @@ namespace c_final_capstone_v2.Models
         public List<string> Skills { get; set; }
         public string Description { get; set; }
 
-        public string CatNoise()
-        {
-            string meow = "Meow";
-            if (Age <= 2) { meow = "mew"; return meow; }
-            else if (Age >= 9) { meow = "Merr!"; return meow; }
-            else return meow;
-
-        }
     }
 }
