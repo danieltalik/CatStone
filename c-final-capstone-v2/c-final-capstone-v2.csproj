@@ -175,6 +175,7 @@
     <Content Include="Content\gif\newBanner.gif" />
     <Content Include="Content\gif\nyan.gif" />
     <Content Include="Content\gif\nyanCat.gif" />
+    <Content Include="Content\gif\ToothBrush.GIF" />
     <Content Include="Content\img\About.jpeg" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\CareTips.jpg" />
@@ -185,6 +186,9 @@
     <Content Include="Content\img\HeroImage.png" />
     <Content Include="Content\img\layout_banner.png" />
     <Content Include="Content\img\layout_banner.png" />
+    <Content Include="Content\img\login.jpg" />
+    <Content Include="Content\img\login1.jpg" />
+    <Content Include="Content\img\login2.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
