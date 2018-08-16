@@ -23,7 +23,9 @@ namespace c_final_capstone_v2.Controllers
 
         public ActionResult Index()
         {
-            return View("Index");
+            Cat featuredCat = catDao.GetFeaturedCat();
+
+            return View("Index", featuredCat);
         }
 
         public ActionResult ViewCat(int id)

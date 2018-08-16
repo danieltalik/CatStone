@@ -26,48 +26,10 @@
 
     function KeepCount()
     {
-        console.log("Checked");
-
         var NewCount = 0
 
-        if (document.SubmitCatForm.DroolSkill.checked)
+        document.getElementsByName("skills").forEach(function (element) { if (element.checked) { NewCount += 1;}});
         {
-            NewCount = NewCount + 1
-        }
-
-        if (document.SubmitCatForm.DrivingSkill.checked)
-        {
-            NewCount = NewCount + 1
-        }
-
-        if (document.SubmitCatForm.EESkill.checked)
-        {
-            NewCount = NewCount + 1
-        }
-
-        if (document.SubmitCatForm.PiratingSkill.checked)
-        {
-            NewCount = NewCount + 1
-        }
-
-        if (document.SubmitCatForm.DJSkill.checked) {
-            NewCount = NewCount + 1
-        }
-
-        if (document.SubmitCatForm.CuddlingSkill.checked) {
-            NewCount = NewCount + 1
-        }
-
-        if (document.SubmitCatForm.GTSkill.checked) {
-            NewCount = NewCount + 1
-        }
-
-        if (document.SubmitCatForm.FBSkill.checked) {
-            NewCount = NewCount + 1
-        }
-
-        if (document.SubmitCatForm.HateSkill.checked) {
-            NewCount = NewCount + 1
         }
 
         if (NewCount > 3)
@@ -89,6 +51,9 @@
     Name:<br>
     <input type="text" name="name">
     <br>
+    @*Featured:<br />*@
+    <input type="checkbox" name="featured" value="true"> Feature?<br>
+    <br />
     Color*:<br>
     <input type="text" name="colors">
     <br>
@@ -103,18 +68,18 @@
     </select>
     <br />
     Skills*:<br />
-            <div>
-                <input type="checkbox" name="skills" value="Drooling" onclick="return KeepCount()"> Drooling<br>
-                <input type="checkbox" name="skills" value="Driving" onclick="return KeepCount()"> Driving<br>
-                <input type="checkbox" name="skills" value="Efficiency Expert" onclick="return KeepCount()"> Efficiency Expert<br>
-                @*<input type="checkbox" name="skills" value="Commandeering" onclick="return KeepCount()"> Commandeering<br>*@
-                <input type="checkbox" name="skills" value="Pirating" onclick="return KeepCount()"> Pirating<br>
-                <input type="checkbox" name="skills" value="Dependency Injection" onclick="return KeepCount()"> Dependency Injection<br>
-                <input type="checkbox" name="skills" value="Cuddling" onclick="return KeepCount()"> Cuddling<br>
-                <input type="checkbox" name="skills" value="Gravity Testing" onclick="return KeepCount()"> Gravity Testing<br>
-                <input type="checkbox" name="skills" value="Filling Boxes" onclick="return KeepCount()"> Filling Boxes<br>
-                <input type="checkbox" name="skills" value="Hate" onclick="return KeepCount()"> Hate<br>
-            </div>
+    <div>
+        <input type="checkbox" name="skills" value="Drooling" onclick="return KeepCount()"> Drooling<br>
+        <input type="checkbox" name="skills" value="Driving" onclick="return KeepCount()"> Driving<br>
+        <input type="checkbox" name="skills" value="Efficiency Expert" onclick="return KeepCount()"> Efficiency Expert<br>
+        @*<input type="checkbox" name="skills" value="Commandeering" onclick="return KeepCount()"> Commandeering<br>*@
+        <input type="checkbox" name="skills" value="Pirating" onclick="return KeepCount()"> Pirating<br>
+        <input type="checkbox" name="skills" value="Dependency Injection" onclick="return KeepCount()"> Dependency Injection<br>
+        <input type="checkbox" name="skills" value="Cuddling" onclick="return KeepCount()"> Cuddling<br>
+        <input type="checkbox" name="skills" value="Gravity Testing" onclick="return KeepCount()"> Gravity Testing<br>
+        <input type="checkbox" name="skills" value="Filling Boxes" onclick="return KeepCount()"> Filling Boxes<br>
+        <input type="checkbox" name="skills" value="Hate" onclick="return KeepCount()"> Hate<br>
+    </div>
     <br />
     Prior Experience*:<br />
     <input type="text" name="priorExperience" />
