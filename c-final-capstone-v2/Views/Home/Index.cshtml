@@ -1,11 +1,17 @@
-﻿@{
+﻿@model c_final_capstone_v2.Models.Cat
+@{
     ViewBag.Title = "Index";
 }
 
 <html>
 <body>
     <div>
+@*<<<<<<< HEAD*@
         <img class="hero-image img-responsive" src="~/Content/img/HeroImage.png" />
+@*=======
+        <br />
+        <img class="hero-image" src="~/Content/img/HeroImage.png" />
+>>>>>>> 42deb32cd1cad2614bd44be82934a0ce13368071*@
         <div class="hero-text">
             <h1>Day 4</h1>
             <p>The cats have accepted me as one of their own...</p>
@@ -15,5 +21,27 @@
     <br />
 
     <br><br>
+        <div>
+            <h2>Featured Cat!</h2>
+            <div>
+                @Html.DisplayNameFor(model => model.Name):
+                @Html.DisplayFor(model => Model.Name)
+                <br />
+                @Html.DisplayNameFor(model => model.Age):
+                @Html.DisplayFor(model => Model.Age)
+                <br />
+                @Html.DisplayNameFor(model => model.HairLength):
+                @Html.DisplayFor(model => Model.HairLength)
+                <br />
+                @Html.DisplayNameFor(model => model.Skills):
+                @Html.DisplayFor(model => Model.Skills)
+                <br />
+                @Html.DisplayNameFor(model => model.PriorExperience):
+                @Html.DisplayFor(model => Model.PriorExperience)
+                <br />
+                @Html.DisplayNameFor(model => model.PictureId):
+                @Html.DisplayFor(model => Model.PictureId)
+            </div>
+        </div>
 </body>
 </html>
