@@ -10,5 +10,6 @@ namespace c_final_capstone_v2.DAL
     public interface ISkillDao
     {
         List<string> GetCatSkills(int id);
+        void AddCatSkillsToTable(int id, List<string> skills);
     }
 }

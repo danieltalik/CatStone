@@ -17,6 +17,7 @@ namespace c_final_capstone_v2.DAL
         private const string SQL_AlterCat = "";//UNDONE
         private const string SQL_FeatureCat = "";//UNDONE
         private const string SQL_EmployCat = "";//UNDONE
+        private const string SQL_GetCatId = "SELECT id FROM Cats WHERE photo = @photo";
 
         private ISkillDao dao;
         private string connectionString;
@@ -82,6 +83,7 @@ namespace c_final_capstone_v2.DAL
 
         public bool AddCat(Cat cat)
         {
+            int resultNum;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -99,15 +101,20 @@ namespace c_final_capstone_v2.DAL
                     cmd.Parameters.AddWithValue("@is_featured", cat.Featured);
                     cmd.Parameters.AddWithValue("@description", cat.Description);
 
-                    int num = cmd.ExecuteNonQuery();//FIX - not a fix, does this variable do anything?
+                    
 
-                    return (num > 0);
+                    resultNum = cmd.ExecuteNonQuery();//FIX - not a fix, does this variable do anything?
+
+                    
                 }
             }
             catch (SqlException ex)
             {
                 throw ex;
             }
+
+            dao.AddCatSkillsToTable(GetCatId(cat.PictureId), cat.Skills);//TODO This is janky af, fix later 
+            return (resultNum > 0);
         }
 
         private Cat MapRowToCats(SqlDataReader sdr)
@@ -135,6 +142,33 @@ namespace c_final_capstone_v2.DAL
                 throw;
             }
             return cat;
+        }
+
+        public int GetCatId(string picId)
+        {
+            int catId = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(SQL_GetCatId);
+                    command.Connection = conn;
+                    command.Parameters.AddWithValue("@photo", picId);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        catId = Convert.ToInt32(reader["Id"]);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            
+            return catId;
         }
 
         public void RemoveCat()//UNDONE

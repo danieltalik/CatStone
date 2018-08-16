@@ -242,6 +242,7 @@
     <Content Include="Views\User\AdminView.cshtml" />
     <Content Include="Views\User\StaffView.cshtml" />
     <Content Include="Views\User\NewStaffView.cshtml" />
+    <Content Include="Views\Home\TempImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />
