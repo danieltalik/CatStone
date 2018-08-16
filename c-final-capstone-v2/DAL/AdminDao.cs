@@ -12,6 +12,7 @@ namespace c_final_capstone_v2.DAL
         //build
         private string connectionString;
         private const string sql_AddStaff = "Insert Into Users(name, email, password, is_admin) VALUES(@name, @email, @password, @is_admin)";
+        private const string sql_ReturnStaffInfo = "SELECT * FROM Users WHERE @name = name AND @password = password";
 
         public AdminDao(string connectionString)
         {

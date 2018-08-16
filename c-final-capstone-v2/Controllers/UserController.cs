@@ -14,9 +14,9 @@ namespace c_final_capstone_v2.Controllers
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
         IUserDao userDao;
 
-        public UserController(IUserDao userDao)
+        public UserController()
         {
-            this.userDao = userDao;
+            this.userDao = new StaffDao(connectionString);
         }
 
         public ActionResult Login()
