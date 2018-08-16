@@ -3,6 +3,23 @@
 @using c_final_capstone_v2.DAL;
 @{
     ViewBag.Title = "Home Page";
+
+    WebImage photo = null;
+    var newFileName = "";
+    var imagePath = "";
+
+    if (IsPost)
+    {
+        photo = WebImage.GetImageFromRequest();
+        if (photo != null)
+        {
+            newFileName = Guid.NewGuid().ToString() + "_" +
+                Path.GetFileName(photo.FileName);
+            imagePath = @"images\" + newFileName;
+
+            photo.Save(@"~\" + imagePath);
+        }
+    }
 }
 
 <div class="jumbotron">
