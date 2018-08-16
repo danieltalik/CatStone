@@ -33,38 +33,38 @@ namespace c_final_capstone_v2.Controllers
             return View("ViewCat", theCat);
         }
 
-        public ActionResult AddCat()
+        public ActionResult AddCat()//TODO move to admin controller
         {
             return View();
         }
 
-        public ActionResult SubmitCat(Cat newCat)
+        public ActionResult SubmitCat(Cat newCat)//TODO tmove to admin controller
         {
             catDao.AddCat(newCat);
 
             return RedirectToAction("CatList");
         }
 
-        public ActionResult About()//about our establishment. photo description
+        public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()//Grumpy Cat Photo on Djs computer
+        public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();//returns view w/ only on epic
+            return View();
         }
 
         public ActionResult CatDetails()//FIX what is different about this versus Action Result ViewCat(int id) Above?
         {
-            return View("CatDetails");//not creaed view yet. for sepceific cat
+            return View("ViewCat");//not created view yet. for sepceific cat. is viewcat now
         }
 
-        public ActionResult CareTips()//Dinah can work on this wednesday
+        public ActionResult CareTips()
         {
             return View("CareTips");
         }
@@ -75,14 +75,17 @@ namespace c_final_capstone_v2.Controllers
             return View(cats);
         }
 
-        public ActionResult Login()
-        {
-            return View("Login");
-        }
-
         public ActionResult Us()
         {
             return View("Us");
+        }
+
+        //TODO change skill 'Comendeering' to 'Commandeering'
+
+
+        public ActionResult TempImage()
+        {
+            return View("TempImage");
         }
     }
 }
