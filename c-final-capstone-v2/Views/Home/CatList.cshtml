@@ -36,6 +36,7 @@
                     <th></th>
                 </tr>
 
+
                 @foreach (var item in Model)
                 {
                     <tr>
@@ -58,12 +59,13 @@
                             @Html.DisplayFor(modelItem => item.PictureId)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                            @Html.ActionLink("Details", "ViewCat", new { id = item.ID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                        </td>
-                    </tr>
-                }
+                            @*TODO make these options available to administrators only*@
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "ViewCat", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
 
             </table>
         </div>

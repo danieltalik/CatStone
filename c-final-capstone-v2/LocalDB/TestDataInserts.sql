@@ -71,3 +71,4 @@ INSERT INTO Success_Stories (cat_id, user_id, date, comment) VALUES(7, 2, GETDAT
 INSERT INTO Success_Stories (cat_id, user_id, date, comment) VALUES(1, 3, GETDATE(), 'Percy - Very successful morning wakeups')
 INSERT INTO Success_Stories (cat_id, user_id, date, comment) VALUES(2, 3, GETDATE(), 'Fern will find your bread at any costs')
 INSERT INTO Success_Stories (cat_id, user_id, date, comment) VALUES(4, 3, GETDATE(), 'Luna always finds a way')
+--INSERT INTO Success_Stories (cat_id, user_id, date, comment) VALUES(, , GETDATE(), '')
