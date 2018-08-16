@@ -15,7 +15,7 @@ namespace c_final_capstone_v2.DAL
         private const string SQL_ViewCat = "SELECT * FROM cats WHERE Id = @ID";
         private const string SQL_RemoveCat = "";//UNDONE
         private const string SQL_AlterCat = "";//UNDONE
-        private const string SQL_FeatureCat = "";//UNDONE
+        private const string SQL_GetFeaturedCat = "SELECT * FROM Cats WHERE is_featured = 1";
         private const string SQL_EmployCat = "";//UNDONE
         private const string SQL_GetCatId = "SELECT id FROM Cats WHERE photo = @photo";
 
@@ -73,6 +73,7 @@ namespace c_final_capstone_v2.DAL
                          cat = (MapRowToCats(reader));
                     }
                 }
+                
             }
             catch (SqlException ex)
             {
@@ -133,12 +134,9 @@ namespace c_final_capstone_v2.DAL
                 cat.Description = Convert.ToString(sdr["description"]);
 
                 cat.Skills = dao.GetCatSkills(cat.ID);
-
             }
             catch (Exception)
             {
-
-
                 throw;
             }
             return cat;
@@ -169,6 +167,32 @@ namespace c_final_capstone_v2.DAL
             }
             
             return catId;
+        }
+
+        public Cat GetFeaturedCat()
+        {
+            Cat cat = new Cat();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(SQL_GetFeaturedCat);
+                    command.Connection = conn;
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        cat = (MapRowToCats(reader));
+                    }
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return cat;
         }
 
         public void RemoveCat()//UNDONE
