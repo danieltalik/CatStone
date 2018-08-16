@@ -24,7 +24,8 @@
         <br />
 
         <br><br>
-        <input type="submit" value="Submit">
+        @*@Html.ActionLink("Index", "Index", "User")<input type="submit" value="Submit">*@
+        <input type="button" class="btn btn-info" value="Login" onclick="location.href='@Url.Action("Index", "User")'" />
     </div>
 </body>
 </html>

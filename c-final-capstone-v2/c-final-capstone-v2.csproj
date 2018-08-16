@@ -156,6 +156,7 @@
     <Compile Include="App_Start\NInjectWebCommons.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\CatSqlDao.cs" />
     <Compile Include="DAL\Interface\ICatSqlDao.cs" />
     <Compile Include="DAL\Interface\ISkillDao.cs" />
@@ -235,6 +236,7 @@
     <Content Include="Views\Home\ViewCat.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Us.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />
