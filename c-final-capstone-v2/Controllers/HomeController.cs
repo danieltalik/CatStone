@@ -42,7 +42,7 @@ namespace c_final_capstone_v2.Controllers
         {
             catDao.AddCat(newCat);
 
-            return RedirectToAction("CatList");
+            return RedirectToAction("TempImage");//don't want to redirect. on tempimage fo now
         }
 
         public ActionResult About()
@@ -80,14 +80,21 @@ namespace c_final_capstone_v2.Controllers
             return View("Login");
         }
 
-        public ActionResult Us()
+        public ActionResult Us()// cause we're adorable
         {
             return View("Us");
         }
 
-        public ActionResult TempImage()
+        public ActionResult TempImage()//delete when complete
         {
             return View("TempImage");
         }
+
+        //public ActionResult SubmitCat(Cat newCat) OG method
+        //{
+        //    catDao.AddCat(newCat);
+
+        //    return RedirectToAction("TempImage");//don't want to redirect. on tempimage fo now
+        //}
     }
 }
