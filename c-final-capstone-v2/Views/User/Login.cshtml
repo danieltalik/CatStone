@@ -1,0 +1,48 @@
+﻿@model c_final_capstone_v2.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Staff Login</title>
+</head>
+
+@using (Html.BeginForm("UserHome", "User", FormMethod.Post))
+{
+    <body>
+        <div>
+            <img src="~/Content/img/login2.png" alt="Banner" width="100%" height="auto">
+            <br />
+            <form>
+
+                <br><br>
+                @Html.LabelFor(m => m.Username)
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "User Name" })
+                @Html.ValidationMessageFor(m => m.Username)
+                @Html.ValidationMessage("Invalid User")
+                <br />
+                @Html.LabelFor(m => m.Password)
+                @Html.TextBoxFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password)
+                @Html.ValidationMessage("Invalid Password")
+                <br />
+
+                <br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+
+}
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+    </body>*@
+</html>
+
+
+
