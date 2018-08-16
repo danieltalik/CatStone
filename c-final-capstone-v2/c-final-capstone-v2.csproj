@@ -156,17 +156,21 @@
     <Compile Include="App_Start\NInjectWebCommons.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\CatSqlDao.cs" />
+    <Compile Include="DAL\StaffDao.cs" />
     <Compile Include="DAL\Interface\ICatSqlDao.cs" />
     <Compile Include="DAL\Interface\ISkillDao.cs" />
-    <Compile Include="DAL\Interface\IUser.cs" />
+    <Compile Include="DAL\Interface\IUserDao.cs" />
     <Compile Include="DAL\SkillDao.cs" />
-    <Compile Include="DAL\UserDao.cs" />
+    <Compile Include="DAL\AdminDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cat.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\NewStaffModel.cs" />
+    <Compile Include="Models\Staff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -227,14 +231,17 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\AddCat.cshtml" />
     <Content Include="Views\Home\ViewCat.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Us.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\AdminView.cshtml" />
+    <Content Include="Views\User\StaffView.cshtml" />
+    <Content Include="Views\User\NewStaffView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />

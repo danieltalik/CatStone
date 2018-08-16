@@ -33,12 +33,12 @@ namespace c_final_capstone_v2.Controllers
             return View("ViewCat", theCat);
         }
 
-        public ActionResult AddCat()
+        public ActionResult AddCat()//TODO move to admin controller
         {
             return View();
         }
 
-        public ActionResult SubmitCat(Cat newCat)
+        public ActionResult SubmitCat(Cat newCat)//TODO tmove to admin controller
         {
             catDao.AddCat(newCat);
 
@@ -73,11 +73,6 @@ namespace c_final_capstone_v2.Controllers
         {
             List<Cat> cats = catDao.GetAllCats();
             return View(cats);
-        }
-
-        public ActionResult Login()
-        {
-            return View("Login");
         }
 
         public ActionResult Us()

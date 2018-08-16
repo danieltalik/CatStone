@@ -66,6 +66,8 @@ namespace c_final_capstone_v2.App_Start
         {
             kernel.Bind<ICatSqlDao>().To<CatSqlDao>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString);
             kernel.Bind<ISkillDao>().To<SkillDao>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString);
+            kernel.Bind<IUserDao>().To<AdminDao>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString);
+            kernel.Bind<IUserDao>().To<StaffDao>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString);
         }
     }
 }
