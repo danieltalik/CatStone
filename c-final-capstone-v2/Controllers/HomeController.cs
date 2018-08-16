@@ -45,26 +45,26 @@ namespace c_final_capstone_v2.Controllers
             return RedirectToAction("CatList");
         }
 
-        public ActionResult About()//about our establishment. photo description
+        public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()//Grumpy Cat Photo on Djs computer
+        public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();//returns view w/ only on epic
+            return View();
         }
 
         public ActionResult CatDetails()//FIX what is different about this versus Action Result ViewCat(int id) Above?
         {
-            return View("CatDetails");//not creaed view yet. for sepceific cat
+            return View("ViewCat");//not created view yet. for sepceific cat. is viewcat now
         }
 
-        public ActionResult CareTips()//Dinah can work on this wednesday
+        public ActionResult CareTips()
         {
             return View("CareTips");
         }
@@ -84,5 +84,13 @@ namespace c_final_capstone_v2.Controllers
         {
             return View("Us");
         }
-    }//TODO change skill 'Comendeering' to 'Commandeering'
+
+        //TODO change skill 'Comendeering' to 'Commandeering'
+
+
+        public ActionResult TempImage()
+        {
+            return View("TempImage");
+        }
+    }
 }
