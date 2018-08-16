@@ -12,5 +12,6 @@ namespace c_final_capstone_v2.DAL
         List<Cat> GetAllCats();
         bool AddCat(Cat cat);
         Cat ViewCat(int id);
+        int GetCatId(string picId);
     }
 }

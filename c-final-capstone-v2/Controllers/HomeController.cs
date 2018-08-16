@@ -84,5 +84,5 @@ namespace c_final_capstone_v2.Controllers
         {
             return View("Us");
         }
-    }
+    }//TODO change skill 'Comendeering' to 'Commandeering'
 }
