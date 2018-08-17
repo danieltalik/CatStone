@@ -5,8 +5,7 @@ using System.Web;
 
 namespace c_final_capstone_v2.DAL
 {
-    public class UserDao
+    public class StaffDao : IUserDao
     {
-
     }
 }

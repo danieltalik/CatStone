@@ -6,7 +6,7 @@ using System.Web;
 
 namespace c_final_capstone_v2.Models
 {
-    public class User
+    public class NewStaffModel
     {
         public int UserId { get; set; }
         public string Username { get; set; }

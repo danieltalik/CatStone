@@ -13,5 +13,7 @@ namespace c_final_capstone_v2.DAL
         bool AddCat(Cat cat);
         bool AddPhoto(Cat pictureId);//???
         Cat ViewCat(int id);
+        int GetCatId(string picId);
+        Cat GetFeaturedCat();
     }
 }

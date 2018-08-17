@@ -23,7 +23,9 @@ namespace c_final_capstone_v2.Controllers
 
         public ActionResult Index()
         {
-            return View("Index");
+            Cat featuredCat = catDao.GetFeaturedCat();
+
+            return View("Index", featuredCat);
         }
 
         public ActionResult ViewCat(int id)
@@ -33,12 +35,12 @@ namespace c_final_capstone_v2.Controllers
             return View("ViewCat", theCat);
         }
 
-        public ActionResult AddCat()
+        public ActionResult AddCat()//TODO move to admin controller
         {
             return View();
         }
 
-        public ActionResult SubmitCat(Cat newCat)
+        public ActionResult SubmitCat(Cat newCat)//TODO tmove to admin controller
         {
             catDao.AddCat(newCat);
 
@@ -92,7 +94,10 @@ namespace c_final_capstone_v2.Controllers
             return View("Us");
         }
 
-        public ActionResult TempImage()//delete when complete
+        //TODO change skill 'Comendeering' to 'Commandeering'
+
+
+        public ActionResult TempImage()
         {
             return View("TempImage");
         }

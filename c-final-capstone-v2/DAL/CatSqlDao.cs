@@ -16,8 +16,9 @@ namespace c_final_capstone_v2.DAL
         private const string SQL_ViewCat = "SELECT * FROM cats WHERE Id = @ID";
         private const string SQL_RemoveCat = "";//UNDONE
         private const string SQL_AlterCat = "";//UNDONE
-        private const string SQL_FeatureCat = "";//UNDONE
+        private const string SQL_GetFeaturedCat = "SELECT * FROM Cats WHERE is_featured = 1";
         private const string SQL_EmployCat = "";//UNDONE
+        private const string SQL_GetCatId = "SELECT id FROM Cats WHERE photo = @photo";
 
         private ISkillDao dao;
         private string connectionString;
@@ -73,6 +74,7 @@ namespace c_final_capstone_v2.DAL
                          cat = (MapRowToCats(reader));
                     }
                 }
+                
             }
             catch (SqlException ex)
             {
@@ -83,6 +85,7 @@ namespace c_final_capstone_v2.DAL
 
         public bool AddCat(Cat cat)
         {
+            int resultNum;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -100,15 +103,20 @@ namespace c_final_capstone_v2.DAL
                     cmd.Parameters.AddWithValue("@is_featured", cat.Featured);
                     cmd.Parameters.AddWithValue("@description", cat.Description);
 
-                    int num = cmd.ExecuteNonQuery();//FIX - not a fix, does this variable do anything?
+                    
 
-                    return (num > 0);
+                    resultNum = cmd.ExecuteNonQuery();//FIX - not a fix, does this variable do anything?
+
+                    
                 }
             }
             catch (SqlException ex)
             {
                 throw ex;
             }
+
+            dao.AddCatSkillsToTable(GetCatId(cat.PictureId), cat.Skills);//TODO This is janky af, fix later 
+            return (resultNum > 0);
         }
 
         public bool AddPhoto(Cat cat)//need to reference catId?
@@ -154,12 +162,62 @@ namespace c_final_capstone_v2.DAL
                 cat.Description = Convert.ToString(sdr["description"]);
 
                 cat.Skills = dao.GetCatSkills(cat.ID);
-
             }
             catch (Exception)
             {
+                throw;
+            }
+            return cat;
+        }
 
+        public int GetCatId(string picId)
+        {
+            int catId = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(SQL_GetCatId);
+                    command.Connection = conn;
+                    command.Parameters.AddWithValue("@photo", picId);
+                    SqlDataReader reader = command.ExecuteReader();
 
+                    while (reader.Read())
+                    {
+                        catId = Convert.ToInt32(reader["Id"]);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            
+            return catId;
+        }
+
+        public Cat GetFeaturedCat()
+        {
+            Cat cat = new Cat();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(SQL_GetFeaturedCat);
+                    command.Connection = conn;
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        cat = (MapRowToCats(reader));
+                    }
+                }
+
+            }
+            catch (SqlException ex)
+            {
                 throw;
             }
             return cat;
