@@ -62,9 +62,10 @@ namespace c_final_capstone_v2.DAL
                     {
                         cmd.Parameters.AddWithValue("@catId", catId);
                         cmd.Parameters.AddWithValue("@skillId", ConvertToSkillId(skill));
-                    }
 
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+                    }   
                 }
             }
             catch (SqlException ex)
