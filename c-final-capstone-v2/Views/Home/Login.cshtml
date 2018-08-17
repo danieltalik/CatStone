@@ -1,0 +1,31 @@
+﻿@model c_final_capstone_v2.Models.User
+@{
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Staff Login</title>
+</head>
+<body>
+    <div>
+        <img src="~/Content/img/login2.png" alt="Banner" width="100%" height="auto">
+        <br />
+
+        <br><br>
+        Username*:<br />
+        <input type="text" name="username" />
+        <br />
+        Password*:<br />
+        <input type="text" name="password" />
+        <br />
+
+        <br><br>
+        @*@Html.ActionLink("Index", "Index", "User")<input type="submit" value="Submit">*@
+        <input type="button" class="btn btn-info" value="Login" onclick="location.href='@Url.Action("Index", "User")'" />
+    </div>
+</body>
+</html>

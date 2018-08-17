@@ -9,6 +9,6 @@ namespace c_final_capstone_v2.DAL
 {
    public interface IUserDao
     {
-      
+        Staff Login(string username, string password);
     }
 }

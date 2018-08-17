@@ -12,6 +12,7 @@ namespace c_final_capstone_v2.DAL
         //build
         private string connectionString;
         private const string sql_AddStaff = "Insert Into Users(name, email, password, is_admin) VALUES(@name, @email, @password, @is_admin)";
+        private const string sql_ReturnStaffInfo = "SELECT * FROM Users WHERE @name = name AND @password = password";
 
         public AdminDao(string connectionString)
         {
@@ -42,6 +43,33 @@ namespace c_final_capstone_v2.DAL
             {
                 throw ex;
             }
+        }
+        public Staff Login(string username, string password)
+        {
+            Staff staff = new Staff();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(sql_ReturnStaffInfo);
+                    command.Connection = conn;
+                    command.Parameters.AddWithValue("@name", username);
+                    command.Parameters.AddWithValue("@password", password);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        staff.IsAdmin = Convert.ToBoolean(reader["is_admin"]);
+                        staff.Email = Convert.ToString(reader["email"]);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return staff;
         }
 
     }

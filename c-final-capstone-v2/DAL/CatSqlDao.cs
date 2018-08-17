@@ -99,7 +99,7 @@ namespace c_final_capstone_v2.DAL
                     cmd.Parameters.AddWithValue("@hair_length", cat.HairLength);
                     cmd.Parameters.AddWithValue("@age", cat.Age);
                     cmd.Parameters.AddWithValue("@prior_exp", cat.PriorExperience);
-
+                    //TODO shit is broken
                     Random rand = new Random();
                     cat.PictureId = cat.Name + rand.Next(4200000) +".jpg";
                     cmd.Parameters.AddWithValue("@photo", cat.PictureId);//eventho we are not actually submitting a photo the cats name(+.jpeg) is added int the DB to make it happy

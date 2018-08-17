@@ -25,6 +25,9 @@
 <img src="~/Images/@Model.PictureId .jpg" />
 
 <div>
+    @Html.DisplayNameFor(model => model.PictureId):
+    @Html.DisplayFor(model => Model.PictureId)
+    <br />
     @Html.DisplayNameFor(model => model.Name):
     @Html.DisplayFor(model => Model.Name)
     <br />
@@ -40,10 +43,12 @@
     @Html.DisplayNameFor(model => model.PriorExperience):
     @Html.DisplayFor(model => Model.PriorExperience)
     <br />
+
     @Html.DisplayNameFor(model => model.PictureId):
     @Html.DisplayFor(model => Model.PictureId)
 
     @Html.HiddenFor(model => model.ID)
+
 </div>
 <head>
     <title>Image Upload</title>
