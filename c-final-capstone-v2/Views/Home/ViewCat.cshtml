@@ -19,39 +19,60 @@
         }
     }
 }
+<br />
+<br />
+<br />
+<body>
 
-<h2>View Cat!</h2>
+    <h2>@Model.Name</h2>
+    <img class="viewImg" src="~/Images/@Model.PictureId" />
 
-<img src="~/Images/@Model.PictureId" />
-
-<div>
 
     @*<br />
-    @Html.DisplayNameFor(model => model.PictureId):
-    @Html.DisplayFor(model => Model.PictureId)*@
-    <br />
-    @Html.DisplayNameFor(model => model.Name):
-    @Html.DisplayFor(model => Model.Name)
-    <br />
-    @Html.DisplayNameFor(model => model.Age):
-    @Html.DisplayFor(model => Model.Age)
-    <br />
-    @Html.DisplayNameFor(model => model.HairLength):
-    @Html.DisplayFor(model => Model.HairLength)
-    <br />
-    @Html.DisplayNameFor(model => model.Skills):
-    @Html.DisplayFor(model => Model.Skills)
-    <br />
-    @Html.DisplayNameFor(model => model.PriorExperience):
-    @Html.DisplayFor(model => Model.PriorExperience)
-    <br />
+        @Html.DisplayNameFor(model => model.PictureId):
+        @Html.DisplayFor(model => Model.PictureId)*@
+    @*<br />
+        @Html.DisplayNameFor(model => model.Name):
+        @Html.DisplayFor(model => Model.Name)
+        <br />*@
+    <h4>Resume:</h4>
+    <p>
+        @Model.Name is a
+        @*@Html.DisplayNameFor(model => model.Age):*@
+        @Html.DisplayFor(model => Model.Age) year old
 
-    @Html.DisplayNameFor(model => model.PictureId):
-    @Html.DisplayFor(model => Model.PictureId)
+        @*@Html.DisplayNameFor(model => model.Colors):*@
+        @Html.DisplayFor(model => Model.Colors)
 
-    @Html.HiddenFor(model => model.ID)
+        @*@Html.DisplayNameFor(model => model.HairLength):*@
+        @Html.DisplayFor(model => Model.HairLength)-haired cat.
+        @Model.Name is proficient at
 
-</div>
+        @*@Html.DisplayNameFor(model => model.Skills):*@
+        @Html.DisplayFor(model => Model.Skills)
+
+        and has prior experience in "
+        @*@Html.DisplayNameFor(model => model.PriorExperience):*@
+        @Html.DisplayFor(model => Model.PriorExperience)". Whatever that means...
+        <br />
+
+    </p>
+    @*@Html.DisplayNameFor(model => model.PictureId):*@
+
+    @*@Html.HiddenFor(model => model.ID)*@
+
+</body>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
 <head>
     <title>Image Upload</title>
 </head>
@@ -61,12 +82,8 @@
             <label for="Image">Image</label>*@
         <div>
 
-            Image*:<br />
+            Upload Image: @Html.DisplayFor(model => Model.PictureId)
             <input type="file" name="pictureId" />@*swicthed from pictureid to name*@
-            @{
-
-
-            }
             <input type="submit" value="Upload" />
             <br />
         </div>

@@ -47,12 +47,12 @@ namespace c_final_capstone_v2.Controllers
             return RedirectToAction("CatList");/// Would love to return to viewcat for the added cat.
         }
 
-        public ActionResult AddPhoto(Cat selectedCat)//put this is catDetails??
-        {
-            catDao.AddPhoto(selectedCat);
+        //public ActionResult AddPhoto(Cat selectedCat)//put this is catDetails??
+        //{
+        //    catDao.AddPhoto(selectedCat);
 
-            return RedirectToAction("");//do not want to redirect need to hold onto the catid
-        }
+        //    return RedirectToAction("");//do not want to redirect need to hold onto the catid
+        //}
 
         public ActionResult About()
         {
