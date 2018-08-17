@@ -44,7 +44,7 @@ namespace c_final_capstone_v2.Controllers
         {
             catDao.AddCat(newCat);
 
-            return RedirectToAction("CatList");
+            return RedirectToAction("CatList");/// Would love to return to viewcat for the added cat.
         }
 
         public ActionResult AddPhoto(Cat selectedCat)//put this is catDetails??
@@ -97,7 +97,7 @@ namespace c_final_capstone_v2.Controllers
         //TODO change skill 'Comendeering' to 'Commandeering'
 
 
-        public ActionResult TempImage()
+        public ActionResult TempImage()//TODO destroy tempImage. most likely won't need
         {
             return View("TempImage");
         }

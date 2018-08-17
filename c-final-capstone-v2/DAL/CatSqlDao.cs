@@ -12,8 +12,8 @@ namespace c_final_capstone_v2.DAL
     {
         private const string SQL_All_Cats = "SELECT * FROM Cats";
         private const string SQL_AddCats = "INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, description ) VALUES (@name, @color, @hair_length, @age, @prior_exp, @photo, @description )";
-        private const string SQL_AddPhoto = "INSERT INTO Cats where Id = @ID (photo) VALUES (@photo)";//added new sql sttament for photos
-        private const string SQL_ViewCat = "SELECT * FROM cats WHERE Id = @ID";
+        private const string SQL_AddPhoto = "REPLACE INTO Cats where Id = @ID (photo) VALUES (@photo)";//added new sql sttament for photos
+        private const string SQL_ViewCat = "SELECT * FROM cats WHERE Id = @ID";//TODO replace good?
         private const string SQL_RemoveCat = "";//UNDONE
         private const string SQL_AlterCat = "";//UNDONE
         private const string SQL_GetFeaturedCat = "SELECT * FROM Cats WHERE is_featured = 1";
