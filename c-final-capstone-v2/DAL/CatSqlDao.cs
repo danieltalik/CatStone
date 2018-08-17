@@ -12,7 +12,7 @@ namespace c_final_capstone_v2.DAL
     {
         private const string SQL_All_Cats = "SELECT * FROM Cats";
         private const string SQL_AddCats = "INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, description ) VALUES (@name, @color, @hair_length, @age, @prior_exp, @photo, @description )";
-        private const string SQL_AddPhoto = "REPLACE INTO Cats where Id = @ID (photo) VALUES (@photo)";//added new sql sttament for photos
+        //private const string SQL_AddPhoto = "REPLACE INTO Cats where Id = @ID (photo) VALUES (@photo)";//added new sql sttament for photos NEVER IMPLEMENTED
         private const string SQL_ViewCat = "SELECT * FROM cats WHERE Id = @ID";//TODO replace good?
         private const string SQL_RemoveCat = "";//UNDONE
         private const string SQL_AlterCat = "";//UNDONE
@@ -122,32 +122,32 @@ namespace c_final_capstone_v2.DAL
             return (resultNum > 0);
         }
 
-        public bool AddPhoto(Cat cat)//need to reference catId?
-        {
+        //public bool AddPhoto(Cat cat)//need to reference catId?
+        //{
 
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
+        //    try
+        //    {
+        //        using (SqlConnection conn = new SqlConnection(connectionString))
+        //        {
+        //            conn.Open();
 
-                    SqlCommand cmd = new SqlCommand(SQL_AddPhoto);
-                    cmd.Connection = conn;
+        //            SqlCommand cmd = new SqlCommand(SQL_AddPhoto);
+        //            cmd.Connection = conn;
                  
-                    cmd.Parameters.AddWithValue("@photo", cat.PictureId);//here we shuld be able to reassign the photoID as the actually photo id
-                    cmd.Parameters.AddWithValue("@ID", cat.ID);
+        //            cmd.Parameters.AddWithValue("@photo", cat.PictureId);//here we shuld be able to reassign the photoID as the actually photo id
+        //            cmd.Parameters.AddWithValue("@ID", cat.ID);
 
-                    int num = cmd.ExecuteNonQuery();
+        //            int num = cmd.ExecuteNonQuery();
 
-                    return (num > 0);
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
+        //            return (num > 0);
+        //        }
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        throw ex;
+        //    }
 
-        }
+        //}
 
         private Cat MapRowToCats(SqlDataReader sdr)
         {
