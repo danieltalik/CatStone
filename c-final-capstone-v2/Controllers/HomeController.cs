@@ -44,7 +44,14 @@ namespace c_final_capstone_v2.Controllers
         {
             catDao.AddCat(newCat);
 
-            return RedirectToAction("CatList");
+            return RedirectToAction("CatList");/// Would love to return to viewcat for the added cat.
+        }
+
+        public ActionResult AddPhoto(Cat selectedCat)//put this is catDetails??
+        {
+            catDao.AddPhoto(selectedCat);
+
+            return RedirectToAction("");//do not want to redirect need to hold onto the catid
         }
 
         public ActionResult About()
@@ -77,7 +84,12 @@ namespace c_final_capstone_v2.Controllers
             return View(cats);
         }
 
-        public ActionResult Us()
+        public ActionResult Login()
+        {
+            return View("Login");
+        }
+
+        public ActionResult Us()// cause we're adorable
         {
             return View("Us");
         }
@@ -85,9 +97,11 @@ namespace c_final_capstone_v2.Controllers
         //TODO change skill 'Comendeering' to 'Commandeering'
 
 
-        public ActionResult TempImage()
+        public ActionResult TempImage()//TODO destroy tempImage. most likely won't need
         {
             return View("TempImage");
         }
+
+      
     }
 }
