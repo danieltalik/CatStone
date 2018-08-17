@@ -12,6 +12,7 @@ namespace c_final_capstone_v2.DAL
     {
         private const string SQL_All_Cats = "SELECT * FROM Cats";
         private const string SQL_AddCats = "INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, description ) VALUES (@name, @color, @hair_length, @age, @prior_exp, @photo, @description )";
+        private const string SQL_AddPhoto = "INSERT INTO Cats where Id = @ID (photo) VALUES (@photo)";//added new sql sttament for photos
         private const string SQL_ViewCat = "SELECT * FROM cats WHERE Id = @ID";
         private const string SQL_RemoveCat = "";//UNDONE
         private const string SQL_AlterCat = "";//UNDONE
@@ -95,7 +96,7 @@ namespace c_final_capstone_v2.DAL
                     cmd.Parameters.AddWithValue("@hair_length", cat.HairLength);
                     cmd.Parameters.AddWithValue("@age", cat.Age);
                     cmd.Parameters.AddWithValue("@prior_exp", cat.PriorExperience);
-                    cmd.Parameters.AddWithValue("@photo", cat.PictureId);
+                    cmd.Parameters.AddWithValue("@photo", cat.Name+".jpeg");//eventho we are not actually submitting a photo the cats name(+.jpeg) is added int the DB to make it happy
                     cmd.Parameters.AddWithValue("@is_featured", cat.Featured);
                     cmd.Parameters.AddWithValue("@description", cat.Description);
 
@@ -108,6 +109,33 @@ namespace c_final_capstone_v2.DAL
             {
                 throw ex;
             }
+        }
+
+        public bool AddPhoto(Cat cat)//need to reference catId?
+        {
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_AddPhoto);
+                    cmd.Connection = conn;
+                 
+                    cmd.Parameters.AddWithValue("@photo", cat.PictureId);//here we shuld be able to reassign the photoID as the actually photo id
+                    cmd.Parameters.AddWithValue("@ID", cat.ID);
+
+                    int num = cmd.ExecuteNonQuery();
+
+                    return (num > 0);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
         }
 
         private Cat MapRowToCats(SqlDataReader sdr)

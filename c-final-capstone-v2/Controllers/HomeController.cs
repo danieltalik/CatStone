@@ -42,7 +42,14 @@ namespace c_final_capstone_v2.Controllers
         {
             catDao.AddCat(newCat);
 
-            return RedirectToAction("TempImage");//don't want to redirect. on tempimage fo now
+            return RedirectToAction("CatList");
+        }
+
+        public ActionResult AddPhoto(Cat selectedCat)//put this is catDetails??
+        {
+            catDao.AddPhoto(selectedCat);
+
+            return RedirectToAction("");//do not want to redirect need to hold onto the catid
         }
 
         public ActionResult About()
@@ -90,11 +97,6 @@ namespace c_final_capstone_v2.Controllers
             return View("TempImage");
         }
 
-        //public ActionResult SubmitCat(Cat newCat) OG method
-        //{
-        //    catDao.AddCat(newCat);
-
-        //    return RedirectToAction("TempImage");//don't want to redirect. on tempimage fo now
-        //}
+      
     }
 }

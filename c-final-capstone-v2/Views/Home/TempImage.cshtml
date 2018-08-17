@@ -24,12 +24,6 @@
 <head>
     <title>Image Upload</title>
 </head>
-<script>
-
-    function TransferFileName() {
-        document.getElementsByClassName("pixText").innerHtml = document.getElementsByClassName("stuff").files.item(0).name;
-    }
-</script>
 
 <body>
     <form action="" method="post" enctype="multipart/form-data">
@@ -40,8 +34,8 @@
             <div>
 
                 Image*:<br />
-                <input class="stuff" type="file" name="pictureId" /> @*change to pictureid instread of image/accpet image??*@
-                <input type="submit" value="Upload" onclick="TransferFileName();" />
+                <input type="file" name="pictureId" /> @*change to pictureid instread of image/accpet image??*@
+                <input type="submit" value="Upload"" />
                 <br />
             </div>
 

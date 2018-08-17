@@ -1,11 +1,28 @@
 ﻿@model c_final_capstone_v2.Models.Cat
 @{
     ViewBag.Title = "ViewCat";
+    WebImage photo = null;
+    var newFileName = "";
+    var imagePath = "";
+
+    if (IsPost)
+    {
+        photo = WebImage.GetImageFromRequest();
+        if (photo != null)
+        {
+            newFileName = /*Guid.NewGuid().ToString() + "_" + */Path.GetFileName(Model.Name);
+            imagePath = @"images\" + newFileName;
+
+            photo.Save(@"~\" + imagePath);
+
+            Model.PictureId = newFileName;
+        }
+    }
 }
 
 <h2>View Cat!</h2>
 
-<img src="~/Images/@Model.PictureId" />
+<img src="~/Images/@Model.PictureId .jpg" />
 
 <div>
     @Html.DisplayNameFor(model => model.Name):
@@ -25,5 +42,28 @@
     <br />
     @Html.DisplayNameFor(model => model.PictureId):
     @Html.DisplayFor(model => Model.PictureId)
+
+    @Html.HiddenFor(model => model.ID)
 </div>
+<head>
+    <title>Image Upload</title>
+</head>
+<form action="AddPhoto" method="post" enctype="multipart/form-data">
+    <fieldset>
+        @*<legend> Upload Image </legend>
+            <label for="Image">Image</label>*@
+        <div>
+
+            Image*:<br />
+            <input type="file" name="pictureId" />@*swicthed from pictureid to name*@
+            @{ 
+                
+            }
+            <input type="submit" value="Upload" />
+            <br />
+        </div>
+
+    </fieldset>
+
+</form>
 
