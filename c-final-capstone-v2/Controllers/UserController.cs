@@ -31,7 +31,9 @@ namespace c_final_capstone_v2.Controllers
             //Will be centered around IUserDao and is a hard coded workaround
             Staff staff = userDao.Login(login.Username, login.Password);
 
-            if (!staff.IsAdmin)
+            Session["User"] = staff.IsAdmin;
+
+            if (!(bool)Session["User"])
             {
                 return View("StaffView");
             }
@@ -39,6 +41,22 @@ namespace c_final_capstone_v2.Controllers
             {
                 return View("AdminView");
             }
+        }
+        public ActionResult NewStaffView()
+        {
+            if ((bool)Session["User"])
+            {
+                return View();
+            }
+            else return RedirectToAction("StaffView");
+        }
+
+        [HttpPost]
+        public ActionResult SubmitStaff(Staff newStaff)//TODO tmove to admin controller
+        {
+            AdminDao admin = new AdminDao(connectionString);
+            admin.AddStaff(newStaff);
+            return View("AdminView");
         }
     }
 }

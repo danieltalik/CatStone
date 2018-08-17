@@ -238,13 +238,11 @@
     <Content Include="Views\Home\AddCat.cshtml" />
     <Content Include="Views\Home\ViewCat.cshtml" />
     <Content Include="Views\Home\Us.cshtml" />
-
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\AdminView.cshtml" />
     <Content Include="Views\User\StaffView.cshtml" />
-    <Content Include="Views\User\NewStaffView.cshtml" />
     <Content Include="Views\Home\TempImage.cshtml" />
-
+    <Content Include="Views\User\NewStaffView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />
