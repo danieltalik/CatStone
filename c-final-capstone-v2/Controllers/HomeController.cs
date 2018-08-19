@@ -9,16 +9,13 @@ using System.Configuration;
 
 namespace c_final_capstone_v2.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : CatController
     {
-        ICatSqlDao catDao;
-        ISkillDao skillDao;
-        string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
+       
 
         public HomeController()
         {
-            this.catDao = new CatSqlDao(connectionString);
-            this.skillDao = new SkillDao(connectionString);
+
         }
 
         public ActionResult Index()

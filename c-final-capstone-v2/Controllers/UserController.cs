@@ -9,10 +9,9 @@ using System.Configuration;
 
 namespace c_final_capstone_v2.Controllers
 {
-    public class UserController : Controller
+    public class UserController : CatController
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
-        IUserDao userDao;
+        
 
         public UserController()
         {
