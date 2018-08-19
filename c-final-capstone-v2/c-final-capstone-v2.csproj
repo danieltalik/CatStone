@@ -159,12 +159,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\CatSqlDao.cs" />
-    <Compile Include="DAL\StaffDao.cs" />
+    <Compile Include="DAL\UserDao.cs" />
     <Compile Include="DAL\Interface\ICatSqlDao.cs" />
     <Compile Include="DAL\Interface\ISkillDao.cs" />
     <Compile Include="DAL\Interface\IUserDao.cs" />
     <Compile Include="DAL\SkillDao.cs" />
-    <Compile Include="DAL\AdminDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

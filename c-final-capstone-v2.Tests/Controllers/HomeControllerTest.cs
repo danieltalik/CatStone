@@ -6,17 +6,25 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using c_final_capstone_v2;
 using c_final_capstone_v2.Controllers;
+using c_final_capstone_v2.DAL;
+using c_final_capstone_v2.Models;
+using System.Configuration;
 
 namespace c_final_capstone_v2.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
     {
+        protected string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
+        private ICatSqlDao catSqlDao;
+        private ISkillDao skillDao;
+        private IUserDao userDao;
+
         [TestMethod]
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(userDao, skillDao, catSqlDao);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -29,7 +37,7 @@ namespace c_final_capstone_v2.Tests.Controllers
         public void About()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(userDao, skillDao, catSqlDao);
 
             // Act
             ViewResult result = controller.About() as ViewResult;
@@ -42,7 +50,7 @@ namespace c_final_capstone_v2.Tests.Controllers
         public void Contact()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(userDao, skillDao, catSqlDao);
 
             // Act
             ViewResult result = controller.Contact() as ViewResult;

@@ -24,7 +24,7 @@ namespace c_final_capstone_v2.Controllers
 
         public CatController(IUserDao userDao)
         {
-             userDao = new StaffDao(connectionString);
+             userDao = new UserDao(connectionString);
              catDao = new CatSqlDao(connectionString);
              skillDao = new SkillDao(connectionString);
         }
@@ -90,7 +90,8 @@ namespace c_final_capstone_v2.Controllers
 
             if (IsAuthenticated)
             {
-                model = IUserDao.GetUser(CurrentUser);
+                //model = IUserDao.GetUser(CurrentUser);
+                model = userDao.GetUser(CurrentUser);
             }
 
             return View("_Layout", model);

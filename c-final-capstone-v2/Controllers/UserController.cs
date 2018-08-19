@@ -11,11 +11,11 @@ namespace c_final_capstone_v2.Controllers
 {
     public class UserController : CatController
     {
-        
-
-        public UserController()
+        public UserController(IUserDao userDao, ISkillDao skillDao, ICatSqlDao catSqlDao) : base(userDao)
         {
-            this.userDao = new StaffDao(connectionString);
+            this.skillDao = skillDao;
+            this.catDao = catSqlDao;
+            this.userDao = userDao;
         }
 
         public ActionResult Login()
@@ -62,8 +62,8 @@ namespace c_final_capstone_v2.Controllers
         public ActionResult SubmitStaff(Staff newStaff)//TODO tmove to admin controller
         {
             //Fix Issue where refresh adds new staff entry over and over
-            AdminDao admin = new AdminDao(connectionString);
-            admin.AddStaff(newStaff);
+            //AdminDao admin = new AdminDao(connectionString);
+            //admin.AddStaff(newStaff);
             return View("AdminView");
         }
     }

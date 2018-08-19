@@ -9,12 +9,16 @@ using System.Configuration;
 
 namespace c_final_capstone_v2.Controllers
 {
-    public class HomeController : CatController
+    public class HomeController : Controller
     {
-        public HomeController(IUserDao userDao, ISkillDao skillDao, ICatSqlDao catSqlDao) : base(userDao)
+        ICatSqlDao catDao;
+        ISkillDao skillDao;
+        string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
+
+        public HomeController()
         {
-            this.skillDao = skillDao;
-            this.catDao = catSqlDao; 
+            this.catDao = new CatSqlDao(connectionString);
+            this.skillDao = new SkillDao(connectionString);
         }
 
         public ActionResult Index()
@@ -98,6 +102,6 @@ namespace c_final_capstone_v2.Controllers
             return View("TempImage");
         }
 
-
+      
     }
 }
