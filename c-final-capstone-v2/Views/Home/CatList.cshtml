@@ -9,7 +9,18 @@
 
 
 <p>
-    @Html.ActionLink("Add Cat", "AddCat", "Home")
+    @Html.ActionLink("Add Cat", "AddCat", "Home")@*TODO mkae header*@
+    Search By:
+    <select name="Color"@*>TODO have "age" and "color" as first "option"*@
+        <option value="color">Kitten</option>
+    <option value="color">Kitten</option>
+    </select>
+    <select name="Age">
+        <option value="Kitten">Kitten</option>
+        <option value="Adult">Adult</option>
+        <option value="Elder">Elder</option>
+    </select>
+    <input type="Submit" value="Submit" />
     @*@Html.ActionLink()*@
 </p>
 <div class="container">

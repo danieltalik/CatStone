@@ -67,5 +67,10 @@ namespace c_final_capstone_v2.Controllers
             admin.AddStaff(newStaff);
             return View("AdminView");
         }
+
+        public ActionResult Search()
+        {
+            return View("Search");
+        }
     }
 }
