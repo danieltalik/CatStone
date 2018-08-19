@@ -2,47 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using c_final_capstone_v2.Models;
 using System.Data.SqlClient;
+using c_final_capstone_v2.Models;
+using System.Configuration;
+
 
 namespace c_final_capstone_v2.DAL
 {
-    public class AdminDao : IUserDao
+    public class StaffDao : IUserDao
     {
-        //build
         private string connectionString;
-        private const string sql_AddStaff = "Insert Into Users(name, email, password, is_admin) VALUES(@name, @email, @password, @is_admin)";
         private const string sql_ReturnStaffInfo = "SELECT * FROM Users WHERE @name = name AND @password = password";
-
-        public AdminDao(string connectionString)
+        private const string sql_AddStaff = "Insert Into Users(name, email, password, is_admin) VALUES(@name, @email, @password, @is_admin)";
+        private const string sql_GetUser = "SELECT * FROM users WHERE name = @name";
+        public StaffDao(string connectionString)
         {
             this.connectionString = connectionString;
-        }
-
-        public bool AddStaff(Staff staff)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-
-                    SqlCommand cmd = new SqlCommand(sql_AddStaff);
-                    cmd.Connection = conn;
-                    cmd.Parameters.AddWithValue("@name", staff.Username);
-                    cmd.Parameters.AddWithValue("@email", staff.Email);
-                    cmd.Parameters.AddWithValue("@password", staff.Password);
-                    cmd.Parameters.AddWithValue("@is_admin", staff.IsAdmin);
-
-                    int num = cmd.ExecuteNonQuery();//FIX - not a fix, does this variable do anything?
-
-                    return (num > 0);
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
         }
         public Staff Login(string username, string password)
         {
@@ -71,6 +46,61 @@ namespace c_final_capstone_v2.DAL
             }
             return staff;
         }
+        public bool AddStaff(Staff staff)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
 
+                    SqlCommand cmd = new SqlCommand(sql_AddStaff);
+                    cmd.Connection = conn;
+                    cmd.Parameters.AddWithValue("@name", staff.Username);
+                    cmd.Parameters.AddWithValue("@email", staff.Email);
+                    cmd.Parameters.AddWithValue("@password", staff.Password);
+                    cmd.Parameters.AddWithValue("@is_admin", staff.IsAdmin);
+
+                    int num = cmd.ExecuteNonQuery();//FIX - not a fix, does this variable do anything?
+
+                    return (num > 0);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Staff GetUser(string username)
+        {
+            Staff staff = new Staff();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(sql_GetUser);
+                    command.Connection = conn;
+                    command.Parameters.AddWithValue("@name", username);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        staff.Username = Convert.ToString(reader["name"]);
+                        staff.Email = Convert.ToString(reader["email"]);
+                        staff.Password = Convert.ToString(reader["password"]);
+                        staff.IsAdmin = Convert.ToBoolean(reader["is_admin"]);
+                    }
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return staff;
+        }
     }
+}
 }

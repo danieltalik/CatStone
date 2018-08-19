@@ -18,9 +18,9 @@ namespace c_final_capstone_v2.Controllers
         private const string userNameKey = "UserName";
         private const string isAdminKey = "isAdmin";
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
-        IUserDao userDao;
-        ICatSqlDao catDao;
-        ISkillDao skillDao;
+        protected IUserDao userDao;
+        protected ICatSqlDao catDao;
+        protected ISkillDao skillDao;
 
         public CatController(IUserDao userDao)
         {
@@ -74,7 +74,26 @@ namespace c_final_capstone_v2.Controllers
             }
 
             HttpCookie newCookie = new HttpCookie("ASP.NET_SessionId", username);
-            newCookie.Expires = DateTime
+            newCookie.Expires = DateTime.Now.AddHours(1.0);
+            Response.Cookies.Add(newCookie);
+        }
+        public void LogUserOut()
+        {
+            Session.Abandon();
+            Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
+        }
+
+        [ChildActionOnly]
+        public ActionResult GetAuthenticatedUsser()
+        {
+            Staff model = null;
+
+            if (IsAuthenticated)
+            {
+                model = IUserDao.GetUser(CurrentUser);
+            }
+
+            return View("_Layout", model);
         }
     }
 }

@@ -11,11 +11,10 @@ namespace c_final_capstone_v2.Controllers
 {
     public class HomeController : CatController
     {
-       
-
-        public HomeController()
+        public HomeController(IUserDao userDao, ISkillDao skillDao, ICatSqlDao catSqlDao) : base(userDao)
         {
-
+            this.skillDao = skillDao;
+            this.catDao = catSqlDao; 
         }
 
         public ActionResult Index()
@@ -99,6 +98,6 @@ namespace c_final_capstone_v2.Controllers
             return View("TempImage");
         }
 
-      
+
     }
 }
