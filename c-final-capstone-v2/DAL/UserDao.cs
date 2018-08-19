@@ -14,7 +14,7 @@ namespace c_final_capstone_v2.DAL
         private string connectionString;
         private const string sql_ReturnStaffInfo = "SELECT * FROM Users WHERE @name = name AND @password = password";
         private const string sql_AddStaff = "Insert Into Users(name, email, password, is_admin) VALUES(@name, @email, @password, @is_admin)";
-        private const string sql_GetUser = "SELECT * FROM users WHERE name = @name";
+        private const string sql_GetUser = "SELECT TOP 1 FROM users WHERE name = @name";
         public UserDao(string connectionString)
         {
             this.connectionString = connectionString;

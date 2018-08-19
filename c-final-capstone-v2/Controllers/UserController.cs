@@ -11,11 +11,11 @@ namespace c_final_capstone_v2.Controllers
 {
     public class UserController : CatController
     {
-        public UserController(IUserDao userDao, ISkillDao skillDao, ICatSqlDao catSqlDao) : base(userDao)
+        private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
+        IUserDao userDao;
+        public UserController()
         {
-            this.skillDao = skillDao;
-            this.catDao = catSqlDao;
-            this.userDao = userDao;
+            this.userDao = new UserDao(connectionString);
         }
 
         public ActionResult Login()
@@ -27,9 +27,9 @@ namespace c_final_capstone_v2.Controllers
         public ActionResult UserHome(LoginModel login)
         {
             //We need to have parameters where session is NOT NULL and checks and redirects to the right view
-
+            
             //Needs to check if null and build a staff member if session is null and they logged in
-            Staff staff = userDao.Login(login.Username, login.Password);
+            Staff staff =  userDao.Login(login.Username, login.Password);
 
             Session["User"] = staff.IsAdmin;
             //If session is null and user login is valid and not an admin

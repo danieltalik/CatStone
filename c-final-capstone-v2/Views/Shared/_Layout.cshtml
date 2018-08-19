@@ -1,6 +1,4 @@
-﻿@model c_final_capstone_v2.Models.Staff
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -29,14 +27,8 @@
                     <li>@Html.ActionLink("Care Tips", "CareTips", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (Model == null)
-                    {
-                        <li>@Html.ActionLink("Login", "Login", "User")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Log Out", "Logout", "User", new { username = Model.Username }, null)</li>
-                    }
+                    <li>@Html.ActionLink("Login", "Login", "User")</li>
+                   
                 </ul>
             </div>
         </div>

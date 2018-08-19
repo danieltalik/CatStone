@@ -22,19 +22,14 @@ namespace c_final_capstone_v2.Controllers
         protected ICatSqlDao catDao;
         protected ISkillDao skillDao;
 
-        public CatController(IUserDao userDao)
+        public CatController()
         {
-             userDao = new UserDao(connectionString);
-             catDao = new CatSqlDao(connectionString);
-             skillDao = new SkillDao(connectionString);
+            userDao = new UserDao(connectionString);
+            catDao = new CatSqlDao(connectionString);
+            skillDao = new SkillDao(connectionString);
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public string CurrentUser
+       public string CurrentUser
         {
             get
             {
@@ -63,7 +58,7 @@ namespace c_final_capstone_v2.Controllers
             get
             {
                 return Session[isAdminKey] != null;
-            } 
+            }
         }
         public void LogUserIn(string username, bool isAdmin)
         {
