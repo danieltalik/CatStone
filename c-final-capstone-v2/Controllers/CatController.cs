@@ -35,7 +35,11 @@ namespace c_final_capstone_v2.Controllers
             {
                 string username = string.Empty;
 
-                if (Request.Cookies["ASP.NET_SessionId"] == null) { return username; }
+                if (Request.Cookies["ASP.NET_SessionId"] == null)
+                {
+                    return username;
+                }
+
                 HttpCookie cookie = Request.Cookies["ASP.NET_SessionId"];
                 string cookieValue = cookie.Value;
 
@@ -62,15 +66,17 @@ namespace c_final_capstone_v2.Controllers
         }
         public void LogUserIn(string username, bool isAdmin)
         {
-            Session[userNameKey] = username;
+
+            System.Web.HttpContext.Current.Session[userNameKey] = username;
+
             if (isAdmin)
             {
-                Session[isAdminKey] = isAdmin;
+                System.Web.HttpContext.Current.Session[isAdminKey] = isAdmin;
             }
 
             HttpCookie newCookie = new HttpCookie("ASP.NET_SessionId", username);
             newCookie.Expires = DateTime.Now.AddHours(1.0);
-            Response.Cookies.Add(newCookie);
+            System.Web.HttpContext.Current.Response.Cookies.Add(newCookie);
         }
         public void LogUserOut()
         {

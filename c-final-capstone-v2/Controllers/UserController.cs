@@ -27,34 +27,40 @@ namespace c_final_capstone_v2.Controllers
         [HttpPost]
         public ActionResult UserHome(LoginModel login)
         {
-            //We need to have parameters where session is NOT NULL and checks and redirects to the right view
-
-            //Needs to check if null and build a staff member if session is null and they logged in
             Staff staff = userDao.Login(login.Username, login.Password);
+            CatController catController = new CatController();
+            string username = staff.Username;
+            bool isAdmin = staff.IsAdmin;
 
-            Session["User"] = staff.IsAdmin;
-            //If session is null and user login is valid and not an admin
-            if (!(bool)Session["User"])
+            catController.LogUserIn(username, isAdmin);
+            try
             {
-                return View("StaffView");
+                if (!(bool)Session["isAdmin"])
+                {
+                    return View("StaffView");
+                }
+                else if ((bool)Session["isAdmin"])
+                {
+                    return View("AdminView");
+                }
+
             }
-            //Returns admin view if session is null and builds it
-            else
+            catch (Exception ex)
             {
-                return View("AdminView");
+                return View("Login");
             }
-            //We also need to check if Model state is vaild and if it is not then redirect to login with error message
+            return View("Login");
+
         }
         public ActionResult NewStaffView()
         {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Login");
-
-            }
-            else if ((bool)Session["User"])
+            if ((bool)Session["isAdmin"])
             {
                 return View();
+            }
+            else if (Session["User"] == null)
+            {
+                return RedirectToAction("Login");
             }
             else return RedirectToAction("StaffView");
         }
@@ -62,16 +68,16 @@ namespace c_final_capstone_v2.Controllers
         [HttpPost]
         public ActionResult SubmitStaff(Staff newStaff)//TODO tmove to admin controller
         {
-            
-            if ((bool)Session["User"])
+
+            if ((bool)Session["isAdmin"])
             {
                 userDao.AddStaff(newStaff);
                 //Fix Issue where refresh adds new staff entry over and over
                 //Needs to redirect to action instead
-                return View("AdminView");
+                return RedirectToAction("UserHome", new { login = Session["User"] });
             }
             //Fix RedirectToAction
-            else return RedirectToAction("UserHome");
+            else return RedirectToAction("UserHome", new {login = Session["User"] });
         }
 
         public ActionResult Search()

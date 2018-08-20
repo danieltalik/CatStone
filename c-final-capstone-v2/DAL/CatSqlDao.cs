@@ -257,7 +257,7 @@ namespace c_final_capstone_v2.DAL
 
         public List<string> GetColors()
         {
-            List<Cat> catColors = new List<Cat>();
+            List<string> catColors = new List<string>();
 
             try
             {
@@ -271,7 +271,7 @@ namespace c_final_capstone_v2.DAL
 
                     while (reader.Read())
                     {
-                        catColors.Add(MapRowToCats(reader));
+                        catColors.Add(Convert.ToString(reader["color"]));
                     }
                 }
             }
