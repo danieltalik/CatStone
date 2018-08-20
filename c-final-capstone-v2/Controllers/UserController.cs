@@ -77,6 +77,7 @@ namespace c_final_capstone_v2.Controllers
         [HttpPost]
         public ActionResult UserHome(LoginModel login)
         {
+            //Check Critter Line120 In user controller
             Staff staff = userDao.Login(login.Username, login.Password);
             CatController catController = new CatController();
             string username = staff.Username;
