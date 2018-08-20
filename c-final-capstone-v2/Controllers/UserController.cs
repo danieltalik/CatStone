@@ -11,6 +11,7 @@ namespace c_final_capstone_v2.Controllers
 {
     public class UserController : CatController
     {
+        //Test git push
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
         IUserDao userDao;
         public UserController()
