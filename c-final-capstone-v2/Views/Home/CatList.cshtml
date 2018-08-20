@@ -12,16 +12,18 @@
 
 <p>
     @Html.ActionLink("Add Cat", "AddCat", "Home")
-    Sort By:
+   @using (Html.BeginForm("CatList", "Home", FormMethod.Get))
+   {
     <select name="sort">
         <option value="">Sort By...</option>
-        <option value="Name">Name A-Z</option>
-        <option value="Name">Name Z-A</option>
-        <option value="Age">Age: Yougest - Oldest</option>
-        <option value="Age">Age: Oldest - Youngest</option>
+        <option value="NameAZ">Name A-Z</option>
+        <option value="NameZA">Name Z-A</option>
+        <option value="AgeYoungOld">Age: Yougest - Oldest</option>
+        <option value="AgeOldYoung">Age: Oldest - Youngest</option>
         <option value="Color">Colors</option>
     </select>
-    <input type="submit" value="Submit" onclick=""/> @*need to call the method onclick*@
+    <input type="submit" value="Submit"/>
+    }
 </p>
 <div class="container">
     <div class="row">
@@ -34,6 +36,9 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Age)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Colors)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.HairLength)
@@ -61,6 +66,9 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Age)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Colors)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.HairLength)

@@ -80,9 +80,9 @@ namespace c_final_capstone_v2.Controllers
             return View("CareTips");
         }
 
-        public ActionResult CatList()
+        public ActionResult CatList(string sort = "NameAZ")
         {
-            List<Cat> cats = catDao.GetAllCats();
+            List<Cat> cats = catDao.GetAllCats(sort);
             return View(cats);
         }
 
