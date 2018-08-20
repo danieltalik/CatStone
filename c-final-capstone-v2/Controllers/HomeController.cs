@@ -94,6 +94,18 @@ namespace c_final_capstone_v2.Controllers
             return View("Us");
         }
 
+        public ActionResult ReviewCat(int id)
+        {
+            Cat theCat = catDao.ViewCat(id);
+
+            return View(theCat);
+        }
+
+        public ActionResult SubmitReview()
+        {
+            return RedirectToAction("Index");
+        }
+
         //TODO change skill 'Comendeering' to 'Commandeering'
 
 

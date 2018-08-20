@@ -22,6 +22,9 @@
                         @Html.DisplayNameFor(model => model.Age)
                     </th>
                     <th>
+                        @Html.DisplayNameFor(model => model.Colors)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.HairLength)
                     </th>
                     <th>
@@ -47,6 +50,9 @@
                             @Html.DisplayFor(modelItem => item.Age)
                         </td>
                         <td>
+                            @Html.DisplayFor(modelItem => item.Colors)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.HairLength)
                         </td>
                         <td>
@@ -60,9 +66,8 @@
                         </td>
                         <td>
                             @*TODO make these options available to administrators only*@
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                         @Html.ActionLink("Details", "ViewCat", new { id = item.ID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        @Html.ActionLink("Review", "ReviewCat", new { id = item.ID })
                     </td>
                 </tr>
             }
