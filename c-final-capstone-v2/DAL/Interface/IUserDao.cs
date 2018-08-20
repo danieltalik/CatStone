@@ -10,5 +10,7 @@ namespace c_final_capstone_v2.DAL
    public interface IUserDao
     {
         Staff Login(string username, string password);
+        Staff GetUser(string username); //TODO: Add Methods for GetUser with USERNAME and USERNAME & PASSWORD
+        bool AddStaff(Staff staff);
     }
 }

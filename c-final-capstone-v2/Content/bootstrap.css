@@ -5693,6 +5693,7 @@ a.list-group-item {
     }
 
 .panel-footer {
+    bottom: 0;
     padding: 10px 15px;
     background-color: #f5f5f5;
     border-top: 1px solid #dddddd;
@@ -5987,6 +5988,7 @@ button.close {
 }
 
 .modal-footer {
+    bottom: 0;
     padding: 19px 20px 20px;
     margin-top: 15px;
     text-align: right;

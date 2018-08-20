@@ -1,20 +1,36 @@
-﻿@model IEnumerable<c_final_capstone_v2.Models.Cat>
+﻿@*@model c_final_capstone_v2.Models.Cat*@
+@model IEnumerable<c_final_capstone_v2.Models.Cat>
 
 @{
     ViewBag.Title = "CatList";
 }
+<div class="jumbotron">
 
 <h2>CatList</h2>
+</div>
 
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add Cat", "AddCat", "Home")
+   @using (Html.BeginForm("CatList", "Home", FormMethod.Get))
+   {
+    <select name="sort">
+        <option value="">Sort By...</option>
+        <option value="NameAZ">Name A-Z</option>
+        <option value="NameZA">Name Z-A</option>
+        <option value="AgeYoungOld">Age: Yougest - Oldest</option>
+        <option value="AgeOldYoung">Age: Oldest - Youngest</option>
+        <option value="Color">Colors</option>
+    </select>
+    <input type="submit" value="Submit"/>
+    }
 </p>
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
             <table class="table">
                 <tr>
+                    <th>Image</th>
                     <th>
                         @Html.DisplayNameFor(model => model.Name)
                     </th>
@@ -34,15 +50,17 @@
                         @Html.DisplayNameFor(model => model.PriorExperience)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.PictureId)
+                        AdminOnly @*@Html.DisplayNameFor(model => model.PictureId)*@
                     </th>
                     <th></th>
                 </tr>
 
-
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>
+                            <img class="listImg" src="~/Images/@item.PictureId" />
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
@@ -61,17 +79,17 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.PriorExperience)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PictureId)
-                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.PictureId)don't really need to dsiplay picid
+                        </td>*@
                         <td>
                             @*TODO make these options available to administrators only*@
+
                         @Html.ActionLink("Details", "ViewCat", new { id = item.ID }) |
                         @Html.ActionLink("Review", "ReviewCat", new { id = item.ID })
                     </td>
                 </tr>
             }
-
             </table>
         </div>
     </div>

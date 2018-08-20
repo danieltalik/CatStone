@@ -9,16 +9,18 @@ using System.Configuration;
 
 namespace c_final_capstone_v2.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : CatController
     {
         ICatSqlDao catDao;
         ISkillDao skillDao;
+        IUserDao userDao;
         string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
 
         public HomeController()
         {
             this.catDao = new CatSqlDao(connectionString);
             this.skillDao = new SkillDao(connectionString);
+            this.userDao = new UserDao(connectionString);
         }
 
         public ActionResult Index()
@@ -47,12 +49,12 @@ namespace c_final_capstone_v2.Controllers
             return RedirectToAction("CatList");/// Would love to return to viewcat for the added cat.
         }
 
-        public ActionResult AddPhoto(Cat selectedCat)//put this is catDetails??
-        {
-            catDao.AddPhoto(selectedCat);
+        //public ActionResult AddPhoto(Cat selectedCat)//put this is catDetails??
+        //{
+        //    catDao.AddPhoto(selectedCat);
 
-            return RedirectToAction("");//do not want to redirect need to hold onto the catid
-        }
+        //    return RedirectToAction("");//do not want to redirect need to hold onto the catid
+        //}
 
         public ActionResult About()
         {
@@ -78,9 +80,9 @@ namespace c_final_capstone_v2.Controllers
             return View("CareTips");
         }
 
-        public ActionResult CatList()
+        public ActionResult CatList(string sort = "NameAZ")
         {
-            List<Cat> cats = catDao.GetAllCats();
+            List<Cat> cats = catDao.GetAllCats(sort);
             return View(cats);
         }
 
@@ -112,6 +114,11 @@ namespace c_final_capstone_v2.Controllers
         public ActionResult TempImage()//TODO destroy tempImage. most likely won't need
         {
             return View("TempImage");
+        }
+
+        public ActionResult AgeSearch()
+        {
+            return View("AgeSearch");
         }
 
       

@@ -155,19 +155,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NInjectWebCommons.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\CatSqlDao.cs" />
-    <Compile Include="DAL\StaffDao.cs" />
+    <Compile Include="DAL\UserDao.cs" />
     <Compile Include="DAL\Interface\ICatSqlDao.cs" />
     <Compile Include="DAL\Interface\ISkillDao.cs" />
     <Compile Include="DAL\Interface\IUserDao.cs" />
     <Compile Include="DAL\SkillDao.cs" />
-    <Compile Include="DAL\AdminDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cat.cs" />
+    <Compile Include="Models\Search.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\NewStaffModel.cs" />
     <Compile Include="Models\Staff.cs" />
@@ -244,6 +245,7 @@
     <Content Include="Views\Home\TempImage.cshtml" />
     <Content Include="Views\User\NewStaffView.cshtml" />
     <Content Include="Views\Home\ReviewCat.cshtml" />
+    <Content Include="Views\Home\AgeSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />
@@ -252,6 +254,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cat\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>

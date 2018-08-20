@@ -9,14 +9,13 @@ using System.Configuration;
 
 namespace c_final_capstone_v2.Controllers
 {
-    public class UserController : Controller
+    public class UserController : CatController
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
         IUserDao userDao;
-
         public UserController()
         {
-            this.userDao = new StaffDao(connectionString);
+            this.userDao = new UserDao(connectionString);
         }
 
         public ActionResult Login()
@@ -62,10 +61,21 @@ namespace c_final_capstone_v2.Controllers
         [HttpPost]
         public ActionResult SubmitStaff(Staff newStaff)//TODO tmove to admin controller
         {
-            //Fix Issue where refresh adds new staff entry over and over
-            AdminDao admin = new AdminDao(connectionString);
-            admin.AddStaff(newStaff);
-            return View("AdminView");
+            
+            if ((bool)Session["User"])
+            {
+                userDao.AddStaff(newStaff);
+                //Fix Issue where refresh adds new staff entry over and over
+                //Needs to redirect to action instead
+                return View("AdminView");
+            }
+            //Fix RedirectToAction
+            else return RedirectToAction("UserHome");
+        }
+
+        public ActionResult Search()
+        {
+            return View("Search");
         }
     }
 }

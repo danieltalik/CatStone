@@ -11,14 +11,19 @@ namespace c_final_capstone_v2.DAL
     public class CatSqlDao : ICatSqlDao
     {
         private const string SQL_All_Cats = "SELECT * FROM Cats";
+        private const string SQL_SortByName = "SELECT * FROM Cats ORDER BY name";//could desc
+        private const string SQL_SortByNameDesc = "SELECT * FROM Cats ORDER BY name desc";
+        private const string SQL_SortByColor = "SELECT * FROM Cats ORDER BY color";
+        private const string SQL_SortByAge = "SELECT * FROM Cats ORDER BY age";
+        private const string SQL_SortByAgeDesc = "SELECT * FROM Cats ORDER BY age desc";
         private const string SQL_AddCats = "INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, description ) VALUES (@name, @color, @hair_length, @age, @prior_exp, @photo, @description )";
-        private const string SQL_AddPhoto = "REPLACE INTO Cats where Id = @ID (photo) VALUES (@photo)";//added new sql sttament for photos
         private const string SQL_ViewCat = "SELECT * FROM cats WHERE Id = @ID";//TODO replace good?
         private const string SQL_RemoveCat = "";//UNDONE
         private const string SQL_AlterCat = "";//UNDONE
         private const string SQL_GetFeaturedCat = "SELECT * FROM Cats WHERE is_featured = 1";
         private const string SQL_EmployCat = "";//UNDONE
         private const string SQL_GetCatId = "SELECT id FROM Cats WHERE photo = @photo";
+        private const string SQL_GetColors = "SELECT DISTINCT color FROM cats";
 
         private ISkillDao dao;
         private string connectionString;
@@ -29,31 +34,31 @@ namespace c_final_capstone_v2.DAL
             dao = new SkillDao(connectionString);
         }
         
-        public List<Cat> GetAllCats()
+        public List<Cat> GetAllCats(string sortOrder = "NameAZ")
         {
             List<Cat> cats = new List<Cat>();
-
-            try
+       
+            if(sortOrder =="NameZA")
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand command = new SqlCommand(SQL_All_Cats);
-                    command.Connection = conn;
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        cats.Add(MapRowToCats(reader));
-                    }
-                }
+                return SortByNameDesc();
             }
-            catch (SqlException ex)
+            if(sortOrder == "AgeYoungOld")
             {
-                throw;
+                return SortByAge();
             }
-            return cats;
+            if(sortOrder== "AgeOldYoung")
+            {
+                return SortByAgeDesc();
+            }
+            if(sortOrder== "Color")
+            {
+                return SortByColor();
+            }
+            return SortByName();
+                
+
+            
+
         }
 
         public Cat ViewCat(int id)
@@ -122,32 +127,32 @@ namespace c_final_capstone_v2.DAL
             return (resultNum > 0);
         }
 
-        public bool AddPhoto(Cat cat)//need to reference catId?
-        {
+        //public bool AddPhoto(Cat cat)//need to reference catId?
+        //{
 
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
+        //    try
+        //    {
+        //        using (SqlConnection conn = new SqlConnection(connectionString))
+        //        {
+        //            conn.Open();
 
-                    SqlCommand cmd = new SqlCommand(SQL_AddPhoto);
-                    cmd.Connection = conn;
+        //            SqlCommand cmd = new SqlCommand(SQL_AddPhoto);
+        //            cmd.Connection = conn;
                  
-                    cmd.Parameters.AddWithValue("@photo", cat.PictureId);//here we shuld be able to reassign the photoID as the actually photo id
-                    cmd.Parameters.AddWithValue("@ID", cat.ID);
+        //            cmd.Parameters.AddWithValue("@photo", cat.PictureId);//here we shuld be able to reassign the photoID as the actually photo id
+        //            cmd.Parameters.AddWithValue("@ID", cat.ID);
 
-                    int num = cmd.ExecuteNonQuery();
+        //            int num = cmd.ExecuteNonQuery();
 
-                    return (num > 0);
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
+        //            return (num > 0);
+        //        }
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        throw ex;
+        //    }
 
-        }
+        //}
 
         private Cat MapRowToCats(SqlDataReader sdr)
         {
@@ -248,6 +253,168 @@ namespace c_final_capstone_v2.DAL
             bool result = false;
 
             return result;
+        }
+
+        public List<string> GetColors()
+        {
+            List<string> catColors = new List<string>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(SQL_GetColors);
+                    command.Connection = conn;
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        catColors.Add(reader["color"] as string);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return catColors;
+        }
+
+        public List<Cat> SortByName()
+        {
+            List<Cat> cats = new List<Cat>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(SQL_SortByName);
+                    command.Connection = conn;
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        cats.Add(MapRowToCats(reader));
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return cats;
+        }
+
+        public List<Cat> SortByNameDesc()
+        {
+            List<Cat> cats = new List<Cat>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(SQL_SortByNameDesc);
+                    command.Connection = conn;
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        cats.Add(MapRowToCats(reader));
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return cats;
+        }
+
+        public List<Cat> SortByColor()
+        {
+            List<Cat> cats = new List<Cat>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(SQL_SortByColor);
+                    command.Connection = conn;
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        cats.Add(MapRowToCats(reader));
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return cats;
+        }
+
+        public List<Cat> SortByAge()
+        {
+            List<Cat> cats = new List<Cat>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(SQL_SortByAge);
+                    command.Connection = conn;
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        cats.Add(MapRowToCats(reader));
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return cats;
+        }
+
+        public List<Cat> SortByAgeDesc()
+        {
+            List<Cat> cats = new List<Cat>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(SQL_SortByAgeDesc);
+                    command.Connection = conn;
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        cats.Add(MapRowToCats(reader));
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return cats;
         }
     }
 }

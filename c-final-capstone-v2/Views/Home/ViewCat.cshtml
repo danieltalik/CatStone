@@ -10,7 +10,7 @@
         photo = WebImage.GetImageFromRequest();
         if (photo != null)
         {
-            newFileName = /*Guid.NewGuid().ToString() + "_" + */Path.GetFileName(Model.Name);
+            newFileName = /*Guid.NewGuid().ToString() + "_" + */Path.GetFileName(Model.PictureId);
             imagePath = @"images\" + newFileName;
 
             photo.Save(@"~\" + imagePath);
@@ -19,7 +19,61 @@
         }
     }
 }
+<br />
+<br />
+<br />
+<body>
 
+    <h2>@Model.Name</h2>
+    <img class="viewImg" src="~/Images/@Model.PictureId" />
+
+
+    @*<br />
+        @Html.DisplayNameFor(model => model.PictureId):
+        @Html.DisplayFor(model => Model.PictureId)*@
+    @*<br />
+        @Html.DisplayNameFor(model => model.Name):
+        @Html.DisplayFor(model => Model.Name)
+        <br />*@
+    <h4>Resume:</h4>
+    <p>
+        @Model.Name is a
+        @*@Html.DisplayNameFor(model => model.Age):*@
+        @Html.DisplayFor(model => Model.Age) year old
+
+        @*@Html.DisplayNameFor(model => model.Colors):*@
+        @Html.DisplayFor(model => Model.Colors)
+
+        @*@Html.DisplayNameFor(model => model.HairLength):*@
+        @Html.DisplayFor(model => Model.HairLength)-haired cat.
+        @Model.Name is proficient at
+
+        @*@Html.DisplayNameFor(model => model.Skills):*@
+        @Html.DisplayFor(model => Model.Skills)
+
+        and has prior experience in "
+        @*@Html.DisplayNameFor(model => model.PriorExperience):*@
+        @Html.DisplayFor(model => Model.PriorExperience)". Whatever that means...
+        <br />
+
+    </p>
+    @*@Html.DisplayNameFor(model => model.PictureId):*@
+
+    @*@Html.HiddenFor(model => model.ID)*@
+
+</body>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<<<<<<< HEAD
 <h2>View Cat!</h2>
 
 <img src="~/Images/@Model.PictureId .jpg" />
@@ -50,20 +104,19 @@
     @Html.HiddenFor(model => model.ID)
 
 </div>
+=======
+>>>>>>> fff9fc841fcaa697f13fb34e6ddb1ec6c7becf34
 <head>
     <title>Image Upload</title>
 </head>
-<form action="AddPhoto" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data">
     <fieldset>
         @*<legend> Upload Image </legend>
             <label for="Image">Image</label>*@
         <div>
 
-            Image*:<br />
+            Upload Image: @Html.DisplayFor(model => Model.PictureId)
             <input type="file" name="pictureId" />@*swicthed from pictureid to name*@
-            @{ 
-                
-            }
             <input type="submit" value="Upload" />
             <br />
         </div>

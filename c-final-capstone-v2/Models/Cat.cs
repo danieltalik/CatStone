@@ -29,6 +29,7 @@ namespace c_final_capstone_v2.Models
 
         public bool Featured { get; set; }
         public List<string> Skills { get; set; }
+        
         public string Description { get; set; }
 
     }
