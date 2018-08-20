@@ -168,6 +168,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cat.cs" />
+    <Compile Include="Models\Search.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\NewStaffModel.cs" />
     <Compile Include="Models\Staff.cs" />
@@ -243,7 +244,9 @@
     <Content Include="Views\User\StaffView.cshtml" />
     <Content Include="Views\Home\TempImage.cshtml" />
     <Content Include="Views\User\NewStaffView.cshtml" />
-    <Content Include="Views\User\LoginTemp.cshtml" />
+
+    <Content Include="Views\Home\AgeSearch.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />

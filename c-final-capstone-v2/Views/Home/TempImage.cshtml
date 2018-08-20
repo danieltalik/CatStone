@@ -1,86 +1,20 @@
-﻿@model c_final_capstone_v2.Models.Cat
-@using c_final_capstone_v2.Models;
-@using c_final_capstone_v2.DAL;
+﻿@model IEnumerable<c_final_capstone_v2.Models.Cat>
+
 @{
-    ViewBag.Title = "Home Page";
-    WebImage photo = null;
-    var newFileName = ""; /*Can work? was ""*/
-    var imagePath = "";
-
-    if (IsPost)
-    {
-        photo = WebImage.GetImageFromRequest();
-        if (photo != null)
-        {
-            newFileName = /*Guid.NewGuid().ToString() + "_" +*/Path.GetFileName(photo.FileName);
-            imagePath = @"images\" + newFileName;
-
-            photo.Save(@"~\" + imagePath);
-        }
-    }
+    ViewBag.Title = "TempImage";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Image Upload</title>
-</head>
+<div class="jumbotron">
 
-<body>
-    <form action="" method="post" enctype="multipart/form-data">
-        @*need action=submicat?*@
-        <fieldset>
-            @*<legend> Upload Image </legend>
-                <label for="Image">Image</label>*@
-            <div>
-
-                Image*:<br />
-                <input type="file" name="pictureId" /> @*change to pictureid instread of image/accpet image??*@
-                <input type="submit" value="Upload"" />
-                <br />
-            </div>
-
-        </fieldset>
-
-    </form>
-    <form action="SubmitCat" method="post">
-        Name:<br>
-        <input type="text" name="name">
-        <br>
-        Color*:<br>
-        <input type="text" name="colors">
-        <br>
-
-        <input class="pixText" type="text" name="pictureId" />
-        Age:<br>
-        <input type="text" name="age">
-        <br />
-        Hair Length*:<br>
-        <select name="hairLength">
-            <option value="shorthair">Short-Hair</option>
-            <option value="longhair">Long-Hair</option>
-            <option value="nohair">No Hair</option>
-        </select>
-        <br />
-        Skills*:<br />
-        <input type="text" name="skills" />
-        <br />
-        Prior Experience*:<br />
-        <input type="text" name="priorExperience" />
-        <br />
-        Description*:<br />
-        <input type="text" name="description" />
-        <br />
-        <br />
-        @*<input type="submit" value="Upload" />*@
-        <input type="submit" value="Submit">
-    </form>
-    <h4>Uploaded Image:</h4>
-    @if (imagePath != "")
-    {
-        <div class="result">
-            <img src="@imagePath" alt="image" />
-
-        </div>
-    }
-</body>
-</html>
+<h2>SearchTemp</h2>
+</div>
+<p>
+    <select name="Age">
+        <option value="Age" >Kitten</option>
+        <option value="Age">Adult</option>
+        <option value="Age">Elder</option>
+    </select>
+    <select name="Color">
+        <option value="Color">Input</option>
+    </select>
+    <input type="submit" value="Submit" />
+</p>

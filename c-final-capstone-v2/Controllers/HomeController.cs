@@ -104,6 +104,11 @@ namespace c_final_capstone_v2.Controllers
             return View("TempImage");
         }
 
+        public ActionResult AgeSearch()
+        {
+            return View("AgeSearch");
+        }
+
       
     }
 }

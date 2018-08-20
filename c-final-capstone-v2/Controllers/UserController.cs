@@ -72,5 +72,10 @@ namespace c_final_capstone_v2.Controllers
             //Fix RedirectToAction
             else return RedirectToAction("UserHome");
         }
+
+        public ActionResult Search()
+        {
+            return View("Search");
+        }
     }
 }

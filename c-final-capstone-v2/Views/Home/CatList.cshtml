@@ -4,13 +4,24 @@
 @{
     ViewBag.Title = "CatList";
 }
+<div class="jumbotron">
 
 <h2>CatList</h2>
+</div>
 
 
 <p>
     @Html.ActionLink("Add Cat", "AddCat", "Home")
-    @*@Html.ActionLink()*@
+    Sort By:
+    <select name="sort">
+        <option value="">Sort By...</option>
+        <option value="Name">Name A-Z</option>
+        <option value="Name">Name Z-A</option>
+        <option value="Age">Age: Yougest - Oldest</option>
+        <option value="Age">Age: Oldest - Youngest</option>
+        <option value="Color">Colors</option>
+    </select>
+    <input type="submit" value="Submit" onclick=""/> @*need to call the method onclick*@
 </p>
 <div class="container">
     <div class="row">
@@ -38,7 +49,6 @@
                     </th>
                     <th></th>
                 </tr>
-
 
                 @foreach (var item in Model)
                 {
