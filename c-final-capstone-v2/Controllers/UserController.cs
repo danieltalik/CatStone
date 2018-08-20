@@ -21,7 +21,57 @@ namespace c_final_capstone_v2.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            if (IsAuthenticated)
+            {
+                return RedirectToAction("", new { username = CurrentUser });
+            }
+            LoginModel model = new LoginModel();
+            return View("Login", model);
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Staff staff = userDao.GetUser(model.Username);
+                if (staff ==null)
+                {
+                    ModelState.AddModelError("invalid-user", "The username provided does not exist");
+                    return View("Login", model);
+                }
+                else if (staff.Password != model.Password)
+                {
+                    ModelState.AddModelError("invalid-password", "The password provided is not valid");
+                    return View("Login", model);
+
+                }
+                LogUserIn(staff.Username, staff.IsAdmin);
+
+                var queryString = this.Request.UrlReferrer.Query;
+                var urlParams = HttpUtility.ParseQueryString(queryString);
+                if (urlParams["landingPage"] != null)
+                {
+                    // then redirect them
+                    return new RedirectResult(urlParams["landingPage"]);
+                }
+                else
+                {
+                    return RedirectToAction("AdminView", "User", new { username = staff.Username });
+                }
+            }
+            else
+            {
+                return View("Login", model);
+            }
+        }
+        
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            LogUserOut();
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -54,7 +104,7 @@ namespace c_final_capstone_v2.Controllers
         }
         public ActionResult NewStaffView()
         {
-            if ((bool)Session["isAdmin"])
+            if ((bool)Session["isAdmin"])//Method in CatController to handle session data
             {
                 return View();
             }
@@ -77,7 +127,7 @@ namespace c_final_capstone_v2.Controllers
                 return RedirectToAction("UserHome", new { login = Session["User"] });
             }
             //Fix RedirectToAction
-            else return RedirectToAction("UserHome", new {login = Session["User"] });
+            else return RedirectToAction("UserHome", new { login = Session["User"] });
         }
 
         public ActionResult Search()
