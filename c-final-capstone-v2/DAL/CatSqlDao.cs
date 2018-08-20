@@ -245,6 +245,7 @@ namespace c_final_capstone_v2.DAL
                     while (reader.Read())
                     {
                         catColors.Add(Convert.ToString(reader["color"]));
+                        catColors.Add(reader["color"] as string);
                     }
                 }
             }
