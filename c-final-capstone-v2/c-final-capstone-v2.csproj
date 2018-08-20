@@ -168,9 +168,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cat.cs" />
-    <Compile Include="Models\Search.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\NewStaffModel.cs" />
+    <Compile Include="Models\Search.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -181,6 +181,7 @@
     <Content Include="Content\gif\banner.gif" />
     <Content Include="Content\gif\Dan.gif" />
     <Content Include="Content\gif\dizzy.gif" />
+    <Content Include="Content\gif\dot.gif" />
     <Content Include="Content\gif\glasses.gif" />
     <Content Include="Content\gif\Me.gif" />
     <Content Include="Content\gif\newBanner.gif" />
