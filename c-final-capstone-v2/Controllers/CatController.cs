@@ -15,8 +15,8 @@ namespace c_final_capstone_v2.Controllers
         //Implements Login and Logout methods
         // "Login" button changes to "Logout"
         // GET: Cat
-        private const string userNameKey = "";
-        private const string isAdminKey = "";
+        private const string userNameKey = "Name";
+        private const string isAdminKey = "isAdmin";
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
         protected IUserDao userDao;
         protected ICatSqlDao catDao;
@@ -35,13 +35,10 @@ namespace c_final_capstone_v2.Controllers
             {
                 string username = string.Empty;
 
-                //if (Session[userNameKey] == null)
-                //{
-                //    return username;
-                //}
-
-                //HttpCookie cookie = Request.Cookies["ASP.NET_SessionId"];
-                //string cookieValue = cookie.Value;
+                if (Session[userNameKey] == null)
+                {
+                    return username;
+                }
 
                 if (Session[userNameKey] != null)
                 {
@@ -69,18 +66,9 @@ namespace c_final_capstone_v2.Controllers
         public void LogUserIn(string username, bool isAdmin)
         {
 
-            System.Web.HttpContext.Current.Session[userNameKey] = username;
+            Session[userNameKey] = username;
 
-            if (isAdmin)
-            {
-                System.Web.HttpContext.Current.Session[isAdminKey] = isAdmin;
-            }
-
-            HttpCookie newCookie = new HttpCookie("ASP.NET_SessionId", username);
-            newCookie.Expires = DateTime.Now.AddHours(1.0);
-            System.Web.HttpContext.Current.Response.Cookies.Add(newCookie);
-
-            Session[userNameKey] = username;//FIX System.NullReferenceException: 'Object reference not set to an instance of an object.'
+            Session[userNameKey] = username;
             if (isAdmin)
             {
                 Session[isAdminKey] = isAdmin;

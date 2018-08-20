@@ -79,11 +79,11 @@ namespace c_final_capstone_v2.Controllers
         {
             //Check Critter Line120 In user controller
             Staff staff = userDao.Login(login.Username, login.Password);
-            CatController catController = new CatController();
+            //CatController catController = new CatController();
             string username = staff.Username;
             bool isAdmin = staff.IsAdmin;
 
-            catController.LogUserIn(username, isAdmin);
+            LogUserIn(username, isAdmin);
             try
             {
                 if (!(bool)Session["isAdmin"])

@@ -30,7 +30,7 @@
                     <li>@Html.ActionLink("Care Tips", "CareTips", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (true)
+                    @if (Session["Name"] == null)
                     {
                         <li>@Html.ActionLink("Login", "Login", "User")</li>
 
