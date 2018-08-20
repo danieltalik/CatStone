@@ -113,7 +113,7 @@ namespace c_final_capstone_v2.Controllers
             if (option == "Age")
             {
                 
-                return View(catDao.GetAllCats().Where(x => x.Age == search || search == null).ToList());
+                //return View(catDao.GetAllCats().Where(x => x.Age == search || search == null).ToList());
             }
             return View("Search", cats);
         }
