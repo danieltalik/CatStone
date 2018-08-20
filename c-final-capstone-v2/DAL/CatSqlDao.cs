@@ -11,11 +11,11 @@ namespace c_final_capstone_v2.DAL
     public class CatSqlDao : ICatSqlDao
     {
         private const string SQL_All_Cats = "SELECT * FROM Cats";
-        private const string SQL_SortByName = "SELECT * FROM Cats SORTBY name";//could desc
-        private const string SQL_SortByNameDesc = "SELECT * FROM Cats SORTBY name desc";
-        private const string SQL_SortByColor = "SELECT * FROM Cats SORTBY color";
-        private const string SQL_SortByAge = "SELECT * FROM Cats SORTBY age";
-        private const string SQL_SortByAgeDesc = "SELECT * FROM Cats SORTBY age desc";
+        private const string SQL_SortByName = "SELECT * FROM Cats ORDER BY name";//could desc
+        private const string SQL_SortByNameDesc = "SELECT * FROM Cats ORDER BY name desc";
+        private const string SQL_SortByColor = "SELECT * FROM Cats ORDER BY color";
+        private const string SQL_SortByAge = "SELECT * FROM Cats ORDER BY age";
+        private const string SQL_SortByAgeDesc = "SELECT * FROM Cats ORDER BY age desc";
         private const string SQL_AddCats = "INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, description ) VALUES (@name, @color, @hair_length, @age, @prior_exp, @photo, @description )";
         private const string SQL_ViewCat = "SELECT * FROM cats WHERE Id = @ID";//TODO replace good?
         private const string SQL_RemoveCat = "";//UNDONE
@@ -34,31 +34,31 @@ namespace c_final_capstone_v2.DAL
             dao = new SkillDao(connectionString);
         }
         
-        public List<Cat> GetAllCats()
+        public List<Cat> GetAllCats(string sortOrder = "NameAZ")
         {
             List<Cat> cats = new List<Cat>();
-
-            try
+       
+            if(sortOrder =="NameZA")
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand command = new SqlCommand(SQL_All_Cats);
-                    command.Connection = conn;
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        cats.Add(MapRowToCats(reader));
-                    }
-                }
+                return SortByNameDesc();
             }
-            catch (SqlException ex)
+            if(sortOrder == "AgeYoungOld")
             {
-                throw;
+                return SortByAge();
             }
-            return cats;
+            if(sortOrder== "AgeOldYoung")
+            {
+                return SortByAgeDesc();
+            }
+            if(sortOrder== "Color")
+            {
+                return SortByColor();
+            }
+            return SortByName();
+                
+
+            
+
         }
 
         public Cat ViewCat(int id)
@@ -257,7 +257,7 @@ namespace c_final_capstone_v2.DAL
 
         public List<string> GetColors()
         {
-            List<Cat> catColors = new List<Cat>();
+            List<string> catColors = new List<string>();
 
             try
             {
@@ -271,7 +271,7 @@ namespace c_final_capstone_v2.DAL
 
                     while (reader.Read())
                     {
-                        catColors.Add(MapRowToCats(reader));
+                        catColors.Add(reader["color"] as string);
                     }
                 }
             }

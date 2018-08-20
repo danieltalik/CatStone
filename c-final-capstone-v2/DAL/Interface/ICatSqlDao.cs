@@ -9,7 +9,7 @@ namespace c_final_capstone_v2.DAL
 {
     public interface ICatSqlDao
     {
-        List<Cat> GetAllCats();
+        List<Cat> GetAllCats(string sortOrder = "NameAZ");
         bool AddCat(Cat cat);
         //bool AddPhoto(Cat pictureId);
         Cat ViewCat(int id);
