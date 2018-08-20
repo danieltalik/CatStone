@@ -37,7 +37,7 @@ namespace c_final_capstone_v2.Controllers
             return View("ViewCat", theCat);
         }
 
-        public ActionResult AddCat()//TODO move to admin controller
+        public ActionResult AddCat()//TODO does this do anthing?
         {
             return View();
         }
@@ -46,15 +46,8 @@ namespace c_final_capstone_v2.Controllers
         {
             catDao.AddCat(newCat);
 
-            return RedirectToAction("CatList");/// Would love to return to viewcat for the added cat.
+            return RedirectToAction("CatList");
         }
-
-        //public ActionResult AddPhoto(Cat selectedCat)//put this is catDetails??
-        //{
-        //    catDao.AddPhoto(selectedCat);
-
-        //    return RedirectToAction("");//do not want to redirect need to hold onto the catid
-        //}
 
         public ActionResult About()
         {
@@ -70,9 +63,9 @@ namespace c_final_capstone_v2.Controllers
             return View();
         }
 
-        public ActionResult CatDetails()//FIX what is different about this versus Action Result ViewCat(int id) Above?
+        public ActionResult CatDetails()
         {
-            return View("ViewCat");//not created view yet. for sepceific cat. is viewcat now
+            return View("ViewCat");
         }
 
         public ActionResult CareTips()
@@ -104,9 +97,21 @@ namespace c_final_capstone_v2.Controllers
             return View("TempImage");
         }
 
-        public ActionResult AgeSearch()
+        public ActionResult Search(string option, string search)
         {
-            return View("AgeSearch");
+            if(option=="Name")
+            {
+                return View();
+            }
+            if(option=="Color")
+            {
+                return View();
+            }
+            if(option=="Age")
+            {
+                return View();
+            }
+            return View("Search");
         }
 
       
