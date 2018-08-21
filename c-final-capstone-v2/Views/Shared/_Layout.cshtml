@@ -2,14 +2,12 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<header>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - WhatsCat</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -33,7 +31,6 @@
                     @if (Session["Name"] == null)
                     {
                         <li>@Html.ActionLink("Login", "Login", "User")</li>
-
                     }
                     else
                     {
@@ -44,23 +41,26 @@
             </div>
         </div>
     </div>
+</header>
+<body>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
 
-        <footer>
-            @*TODO if we ever work on bootstrap lets have the footer always be on the bottum: 0;*@
-            <div>
-
-                <p>Applicats, Send Us Your Resume - Email Us At applicats@concat.cat</p>
-                <p>&copy; @DateTime.Now.Year - New Cats Available Now!</p>
-                <a href="http://localhost:52338/Home/Us"><img class="footer-gif" src="~/Content/gif/nyanCat.gif" /></a>
-            </div>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <footer>
+        @*TODO if we ever work on bootstrap lets have the footer always be on the bottum: 0;*@
+        <div>
+
+            <p>Applicats, Send Us Your Resume - Email Us At applicats@concat.cat</p>
+            <p>&copy; @DateTime.Now.Year - New Cats Available Now!</p>
+            <a href="http://localhost:52338/Home/Us"><img class="footer-gif" src="~/Content/gif/nyanCat.gif" /></a>
+        </div>
+    </footer>
 </body>
 </html>
