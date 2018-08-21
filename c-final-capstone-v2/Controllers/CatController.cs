@@ -15,7 +15,7 @@ namespace c_final_capstone_v2.Controllers
         //Implements Login and Logout methods
         // "Login" button changes to "Logout"
         // GET: Cat
-        private const string userNameKey = "UserName";
+        private const string userNameKey = "Name";
         private const string isAdminKey = "isAdmin";
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
         protected IUserDao userDao;
@@ -35,13 +35,10 @@ namespace c_final_capstone_v2.Controllers
             {
                 string username = string.Empty;
 
-                if (Request.Cookies["ASP.NET_SessionId"] == null)
+                if (Session[userNameKey] == null)
                 {
                     return username;
                 }
-
-                HttpCookie cookie = Request.Cookies["ASP.NET_SessionId"];
-                string cookieValue = cookie.Value;
 
                 if (Session[userNameKey] != null)
                 {
@@ -50,6 +47,7 @@ namespace c_final_capstone_v2.Controllers
                 return username;
             }
         }
+
         public bool IsAuthenticated
         {
             get
@@ -57,6 +55,7 @@ namespace c_final_capstone_v2.Controllers
                 return Session[userNameKey] != null;
             }
         }
+
         public bool IsAdmin
         {
             get
@@ -67,25 +66,22 @@ namespace c_final_capstone_v2.Controllers
         public void LogUserIn(string username, bool isAdmin)
         {
 
-            System.Web.HttpContext.Current.Session[userNameKey] = username;
+            Session[userNameKey] = username;
 
+            Session[userNameKey] = username;
             if (isAdmin)
             {
-                System.Web.HttpContext.Current.Session[isAdminKey] = isAdmin;
+                Session[isAdminKey] = isAdmin;
             }
-
-            HttpCookie newCookie = new HttpCookie("ASP.NET_SessionId", username);
-            newCookie.Expires = DateTime.Now.AddHours(1.0);
-            System.Web.HttpContext.Current.Response.Cookies.Add(newCookie);
         }
         public void LogUserOut()
         {
             Session.Abandon();
-            Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
+            //Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
         }
 
         [ChildActionOnly]
-        public ActionResult GetAuthenticatedUsser()
+        public ActionResult GetAuthenticatedUser()
         {
             Staff model = null;
 
@@ -97,5 +93,7 @@ namespace c_final_capstone_v2.Controllers
 
             return View("_Layout", model);
         }
+
+        //method from here to call determine if someone is logged in
     }
 }

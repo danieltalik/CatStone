@@ -29,8 +29,9 @@ namespace c_final_capstone_v2.Controllers
         public ActionResult Index()
         {
             Cat featuredCat = catDao.GetFeaturedCat();
+            ViewBag.FeaturedCat = featuredCat;
 
-            return View("Index", featuredCat);
+            return View("Index");
         }
 
         public ActionResult ViewCat(int id)
@@ -114,23 +115,27 @@ namespace c_final_capstone_v2.Controllers
             return View("TempImage");
         }
 
-        public ActionResult Search(string option, string search)
+        public ActionResult Search(string option, string search)//TODO only takes in casesensitive data. must fix
         {
-            if(option=="Name")
+            List<Cat> cats = catDao.GetAllCats();
+
+            if (option == "Name")
             {
-                return View();
+                return View(catDao.GetAllCats().Where(x => x.Name.StartsWith(search) || search == null).ToList());
             }
-            if(option=="Color")
+            if (option == "Color")
             {
-                return View();
+                
+                return View(catDao.GetAllCats().Where(x => x.Colors == search || search == null).ToList());
             }
-            if(option=="Age")
+            if (option == "Age")
             {
-                return View();
+                
+                //return View(catDao.GetAllCats().Where(x => x.Age == search || search == null).ToList());
             }
-            return View("Search");
+            return View("Search", cats);
         }
 
-      
+
     }
 }

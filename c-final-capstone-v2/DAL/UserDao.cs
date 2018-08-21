@@ -14,7 +14,8 @@ namespace c_final_capstone_v2.DAL
         private string connectionString;
         private const string sql_ReturnStaffInfo = "SELECT * FROM Users WHERE @name = name AND @password = password";
         private const string sql_AddStaff = "Insert Into Users(name, email, password, is_admin) VALUES(@name, @email, @password, @is_admin)";
-        private const string sql_GetUser = "SELECT TOP 1 FROM users WHERE name = @name";
+        private const string sql_GetUser = "SELECT TOP 1 * FROM users WHERE name = @name";
+        string SQL_UserLoggingIn = "SELECT TOP 1 * FROM users WHERE name = @name AND password = @password";
         public UserDao(string connectionString)
         {
             this.connectionString = connectionString;
@@ -96,6 +97,39 @@ namespace c_final_capstone_v2.DAL
                     }
                 }
 
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return staff;
+        }
+
+        public Staff GetUser(string username, string password)
+        {
+            Staff staff = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand command = new SqlCommand(SQL_UserLoggingIn);
+                    command.Parameters.AddWithValue("@name", username);
+                    command.Parameters.AddWithValue("@password", password);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        staff = new Staff
+                        {
+                            Username = Convert.ToString(reader["name"]),
+                            Password = Convert.ToString(reader["password"]),
+                            IsAdmin = Convert.ToBoolean(reader["is_admin"])
+                        };
+                    }
+
+                }
             }
             catch (SqlException ex)
             {
