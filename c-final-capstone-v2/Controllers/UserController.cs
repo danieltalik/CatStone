@@ -14,6 +14,8 @@ namespace c_final_capstone_v2.Controllers
         //Test git push
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
         IUserDao userDao;
+        private Staff staff = new Staff();
+
         public UserController()
         {
             this.userDao = new UserDao(connectionString);
@@ -35,7 +37,7 @@ namespace c_final_capstone_v2.Controllers
             if (ModelState.IsValid)
             {
                 Staff staff = userDao.GetUser(model.Username);
-                if (staff ==null)
+                if (staff == null)
                 {
                     ModelState.AddModelError("invalid-user", "The username provided does not exist");
                     return View("Login", model);
@@ -57,7 +59,7 @@ namespace c_final_capstone_v2.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("AdminView", "User", new { username = staff.Username });
+                    return RedirectToAction("UserHome", "User", new { username = staff.Username });
                 }
             }
             else
@@ -65,7 +67,7 @@ namespace c_final_capstone_v2.Controllers
                 return View("Login", model);
             }
         }
-        
+
         [HttpGet]
         public ActionResult Logout()
         {
@@ -78,8 +80,7 @@ namespace c_final_capstone_v2.Controllers
         public ActionResult UserHome(LoginModel login)
         {
             //Check Critter Line120 In user controller
-            Staff staff = userDao.Login(login.Username, login.Password);
-            //CatController catController = new CatController();
+            staff = userDao.Login(login.Username, login.Password);
             string username = staff.Username;
             bool isAdmin = staff.IsAdmin;
 
@@ -101,11 +102,11 @@ namespace c_final_capstone_v2.Controllers
             {
                 return View();
             }
-            else if (Session["User"] == null)
+            else if (Session["Name"] == null)
             {
                 return RedirectToAction("Login");
             }
-            else return RedirectToAction("StaffView");
+            else return RedirectToAction("UserHome");
         }
 
         [HttpPost]
@@ -117,10 +118,10 @@ namespace c_final_capstone_v2.Controllers
                 userDao.AddStaff(newStaff);
                 //Fix Issue where refresh adds new staff entry over and over
                 //Needs to redirect to action instead
-                return RedirectToAction("UserHome", new { login = Session["User"] });
+                return RedirectToAction("UserHome", new { login = Session["Name"] });
             }
             //Fix RedirectToAction
-            else return RedirectToAction("UserHome", new { login = Session["User"] });
+            else return RedirectToAction("UserHome", new { login = Session["Name"] });
         }
 
         public ActionResult Search()
@@ -130,7 +131,12 @@ namespace c_final_capstone_v2.Controllers
         [HttpGet]
         public ActionResult UserHome()
         {
-            return View();
+            //Local Variable in this class
+            
+            staff.Username = (string)Session["Name"];
+            //Session["isAdmin"] causes exception ONLY WHEN staff is logged in. Admin is fine
+            staff.IsAdmin = (bool)Session["isAdmin"];
+            return View("UserHome", staff);
         }
     }
 }
