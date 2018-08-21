@@ -1,8 +1,4 @@
-﻿
-@{
-    Layout = null;
-}
-
+﻿@model c_final_capstone_v2.Models.Staff
 <!DOCTYPE html>
 
 <html>
@@ -12,8 +8,8 @@
 </head>
 <body>
     <div>
-        <h1>ITS ALIVE!!</h1>
+        <h1>Welcome @Model.Username</h1>
     </div>
-    @Html.ActionLink("Add New Staff Member", "NewStaffView") 
+    @Html.ActionLink("Add New Staff Member", "NewStaffView")
 </body>
 </html>

@@ -86,21 +86,13 @@ namespace c_final_capstone_v2.Controllers
             LogUserIn(username, isAdmin);
             try
             {
-                if (!(bool)Session["isAdmin"])
-                {
-                    return View("StaffView");
-                }
-                else if ((bool)Session["isAdmin"])
-                {
-                    return View("AdminView");
-                }
+                return View("UserHome", staff);
 
             }
             catch (Exception ex)
             {
                 return View("Login");
             }
-            return View("Login");
 
         }
         public ActionResult NewStaffView()

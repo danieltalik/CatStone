@@ -1,7 +1,11 @@
-﻿
+﻿@model c_final_capstone_v2.Models.Staff
 @{
 
     ViewBag.Title = "UserHome";
 }
-<h2>UserHome</h2>
+<h2>Welcome @Model.Username</h2>
 
+@if (Model.IsAdmin)
+{
+<div> @Html.ActionLink("Add New Staff Member", "NewStaffView")</div>
+}
