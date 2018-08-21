@@ -137,5 +137,27 @@ namespace c_final_capstone_v2.DAL
             }
             return staff;
         }
+
+        public Review EditReviews()
+        {
+            Review review = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand command = new SqlCommand(SQL_ReviewToEdit);
+                }
+
+            }
+            catch ()
+            {
+
+            }
+
+            return review;
+        }
     }
 }
