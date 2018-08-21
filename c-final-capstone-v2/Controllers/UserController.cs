@@ -135,5 +135,10 @@ namespace c_final_capstone_v2.Controllers
         {
             return View("Search");
         }
+        [HttpGet]
+        public ActionResult UserHome()
+        {
+            return View();
+        }
     }
 }
