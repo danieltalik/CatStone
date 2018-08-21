@@ -127,33 +127,6 @@ namespace c_final_capstone_v2.DAL
             return (resultNum > 0);
         }
 
-        //public bool AddPhoto(Cat cat)//need to reference catId?
-        //{
-
-        //    try
-        //    {
-        //        using (SqlConnection conn = new SqlConnection(connectionString))
-        //        {
-        //            conn.Open();
-
-        //            SqlCommand cmd = new SqlCommand(SQL_AddPhoto);
-        //            cmd.Connection = conn;
-                 
-        //            cmd.Parameters.AddWithValue("@photo", cat.PictureId);//here we shuld be able to reassign the photoID as the actually photo id
-        //            cmd.Parameters.AddWithValue("@ID", cat.ID);
-
-        //            int num = cmd.ExecuteNonQuery();
-
-        //            return (num > 0);
-        //        }
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        throw ex;
-        //    }
-
-        //}
-
         private Cat MapRowToCats(SqlDataReader sdr)
         {
             Cat cat = new Cat();
@@ -271,6 +244,7 @@ namespace c_final_capstone_v2.DAL
 
                     while (reader.Read())
                     {
+                        catColors.Add(Convert.ToString(reader["color"]));
                         catColors.Add(reader["color"] as string);
                     }
                 }

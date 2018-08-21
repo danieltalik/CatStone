@@ -1,0 +1,19 @@
+﻿@*@model IEnumerable<c_final_capstone_v2.Models.Cat>*@
+@model IEnumerable<c_final_capstone_v2.Models.Search>
+@{
+    ViewBag.title = "Search";
+}
+
+<div class="jumbotron">
+    <h1>Find Your Perfect Employee</h1>
+</div>
+@using (Html.BeginForm("Search", "Home", FormMethod.Get))
+{
+
+<b>Search Option:</b> @Html.RadioButton("option", "Name") <text>Name</text> @Html.RadioButton("option", "Color")<text>Colors</text>
+    @Html.RadioButton("option", "Age")<text>Age</text> @Html.TextBox("search") <input type = "submit" name = "submit" value = "Search" />
+}
+ 
+
+
+

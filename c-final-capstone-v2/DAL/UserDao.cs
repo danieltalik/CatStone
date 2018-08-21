@@ -37,6 +37,8 @@ namespace c_final_capstone_v2.DAL
                     {
                         staff.IsAdmin = Convert.ToBoolean(reader["is_admin"]);
                         staff.Email = Convert.ToString(reader["email"]);
+                        staff.Username = Convert.ToString(reader["name"]);
+                        staff.Password = Convert.ToString(reader["password"]);
                     }
                 }
             }

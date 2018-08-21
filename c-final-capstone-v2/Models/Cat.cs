@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace c_final_capstone_v2.Models
 {
-    public class Cat
+    public class Cat //TODO genders?
     {
 
         public int ID { get; set; }
