@@ -5,54 +5,50 @@
 
 <html>
 <body>
-    <div>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="~/Images/@Model.PictureId" alt="Featured Cat">
+                <div class="carousel-caption">
+                    <h3>Featured Cat</h3>
+                    <p>Learn what makes this cat the cat's meow!</p>
+                </div>
+            </div>
 
-        <img class="hero-image img-responsive" src="~/Content/img/HeroImage.png" />
+            <div class="item">
+                <img src="~/Content/img/About.jpeg" alt="About Us" style="align-content: center">
+                <div class="carousel-caption">
+                    <h3>About Us</h3>
+                    <p>Find out who we are and what we do!</p>
+                </div>
+            </div>
 
-        <br />
-        @*<img class="hero-image" src="~/Content/img/HeroImage.png" />*@
-
-        <div class="hero-text">
-            <h1>Day 4</h1>
-            <p>The cats have accepted me as one of their own...</p>
-            <button>Hey, a button</button>
-        </div>
-    </div>
-    <br />
-
-    <br><br>
-    <div style="align-content:center">
-        <h2 style="text-align:center">Featured Cat!</h2>
-        <div class="container">
-            <div class="row">
-                <div class=" col-sm-12">
-                    <ul class="noBullets">
-                        <li><img src="~/Images/@Model.PictureId" /></li>
-                        <li>
-                            @Html.DisplayNameFor(model => model.Name):
-                            @Html.DisplayFor(model => Model.Name)
-                        </li>
-                        <li>
-                            @Html.DisplayNameFor(model => model.Age):
-                            @Html.DisplayFor(model => Model.Age)
-                        </li>
-                        <li>
-                            @Html.DisplayNameFor(model => model.HairLength):
-                            @Html.DisplayFor(model => Model.HairLength)
-                        </li>
-                        <li>
-                            @Html.DisplayNameFor(model => model.Skills):
-                            @Html.DisplayFor(model => Model.Skills)
-                        </li>
-                        <li>
-                            @Html.DisplayNameFor(model => model.PriorExperience):
-                            @Html.DisplayFor(model => Model.PriorExperience)
-                        </li>
-                    </ul>
+            <div class="item">
+                <img src="~/Images/businesscat.jpg" alt="Success Stories">
+                <div class="carousel-caption">
+                    <h3>Success Stories</h3>
+                    <p>Read about how these cats were the purrrfect fit</p>
                 </div>
             </div>
         </div>
-    </div>
 
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 </body>
 </html>
