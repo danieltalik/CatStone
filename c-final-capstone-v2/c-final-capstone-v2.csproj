@@ -157,6 +157,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\CatSqlDao.cs" />
     <Compile Include="DAL\Interface\IReviewSqlDao.cs" />
@@ -260,6 +261,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cat\" />
+    <Folder Include="Views\Review\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>

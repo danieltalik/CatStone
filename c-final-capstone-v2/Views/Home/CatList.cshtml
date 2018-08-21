@@ -6,23 +6,23 @@
 }
 <div class="jumbotron">
 
-<h2>CatList</h2>
+    <h2>CatList</h2>
 </div>
 
 
 <p>
     @Html.ActionLink("Add Cat", "AddCat", "Home")
-   @using (Html.BeginForm("CatList", "Home", FormMethod.Get))
-   {
-    <select name="sort">
-        <option value="">Sort By...</option>
-        <option value="NameAZ">Name A-Z</option>
-        <option value="NameZA">Name Z-A</option>
-        <option value="AgeYoungOld">Age: Yougest - Oldest</option>
-        <option value="AgeOldYoung">Age: Oldest - Youngest</option>
-        <option value="Color">Colors</option>
-    </select>
-    <input type="submit" value="Submit"/>
+    @using (Html.BeginForm("CatList", "Home", FormMethod.Get))
+    {
+        <select name="sort">
+            <option value="">Sort By...</option>
+            <option value="NameAZ">Name A-Z</option>
+            <option value="NameZA">Name Z-A</option>
+            <option value="AgeYoungOld">Age: Yougest - Oldest</option>
+            <option value="AgeOldYoung">Age: Oldest - Youngest</option>
+            <option value="Color">Colors</option>
+        </select>
+        <input type="submit" value="Submit" />
     }
 </p>
 <div class="container">
@@ -49,11 +49,14 @@
                     <th>
                         @Html.DisplayNameFor(model => model.PriorExperience)
                     </th>
-                    <th>
-                        AdminOnly @*@Html.DisplayNameFor(model => model.PictureId)*@
-                    </th>
-                    <th></th>
-                </tr>
+                    @if (Session["Name"] != null)
+                    {
+                        <th>
+                            AdminOnly @*@Html.DisplayNameFor(model => model.PictureId)*@
+                        </th>
+                    }
+                        <th></th>
+                    </tr>
 
                 @foreach (var item in Model)
                 {
@@ -79,17 +82,18 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.PriorExperience)
                         </td>
-                        <td>
-                            @*TODO make these options available to administrators only*@
-                        @if ((bool)Session["isAdmin"])
-	                    {
-                        @Html.ActionLink("Edit", "EditCat", new { id = item.ID } )
-                        @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
-                        @Html.ActionLink("Review", "ReviewCat", new { id = item.ID })
-                       	}
-                    </td>
-                </tr>
-            }
+                        @*TODO make these options available to administrators only*@
+                        @if (Session["Name"] != null)
+                        {
+                            <td>
+                                @Html.ActionLink("Edit", "EditCat", new { id = item.ID })
+                                @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
+                                @Html.ActionLink("Review", "ReviewCat", new { id = item.ID })
+                            </td>
+                        }
+                        
+                    </tr>
+                }
             </table>
         </div>
     </div>

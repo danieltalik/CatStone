@@ -141,7 +141,7 @@ namespace c_final_capstone_v2.DAL
                 cat.PictureId = Convert.ToString(sdr["photo"]);
                 cat.PriorExperience = Convert.ToString(sdr["prior_exp"]);
                 cat.Description = Convert.ToString(sdr["description"]);
-
+                cat.Gender = Convert.ToString(sdr["gender"]);
                 cat.Skills = dao.GetCatSkills(cat.ID);
             }
             catch (Exception)
