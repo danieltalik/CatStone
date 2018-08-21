@@ -121,17 +121,17 @@ namespace c_final_capstone_v2.Controllers
 
             if (option == "Name")
             {
-                return View(catDao.GetAllCats().Where(x => x.Name.StartsWith(search) || search == null).ToList());
+                return View(catDao.GetAllCats().Where(x => x.Name.ToUpper().StartsWith(search.ToUpper()) || search.ToUpper() == null).ToList());
             }
             if (option == "Color")
             {
                 
-                return View(catDao.GetAllCats().Where(x => x.Colors == search || search == null).ToList());
+                return View(catDao.GetAllCats().Where(x => x.Colors.ToUpper().StartsWith(search.ToUpper()) || search.ToUpper() == null).ToList());
             }
             if (option == "Age")
             {
                 
-                //return View(catDao.GetAllCats().Where(x => x.Age == search || search == null).ToList());
+                return View(catDao.GetAllCats().Where(x => x.Age.ToString() == search || search == null).ToList());
             }
             return View("Search", cats);
         }
