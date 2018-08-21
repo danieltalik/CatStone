@@ -39,8 +39,7 @@ namespace c_final_capstone_v2.Controllers
                 {
                     return username;
                 }
-
-                if (Session[userNameKey] != null)
+                else
                 {
                     username = (string)Session[userNameKey];
                 }
