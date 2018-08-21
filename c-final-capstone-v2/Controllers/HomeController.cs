@@ -14,6 +14,8 @@ namespace c_final_capstone_v2.Controllers
         ICatSqlDao catDao;
         ISkillDao skillDao;
         IUserDao userDao;
+        IReviewSqlDao reviewDao;
+
         string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
 
         public HomeController()
@@ -21,6 +23,7 @@ namespace c_final_capstone_v2.Controllers
             this.catDao = new CatSqlDao(connectionString);
             this.skillDao = new SkillDao(connectionString);
             this.userDao = new UserDao(connectionString);
+            this.reviewDao = new ReviewSqlDao(connectionString);
         }
 
         public ActionResult Index()
@@ -88,6 +91,20 @@ namespace c_final_capstone_v2.Controllers
         public ActionResult Us()// cause we're adorable
         {
             return View("Us");
+        }
+
+        public ActionResult ReviewCat(int id)
+        {
+            Cat theCat = catDao.ViewCat(id);
+
+            return View(theCat);
+        }
+
+        public ActionResult SubmitReview(Review review)
+        {
+            reviewDao.AddCatReview(review);
+
+            return RedirectToAction("ViewCat/" + review.CatID);
         }
 
         //TODO change skill 'Comendeering' to 'Commandeering'

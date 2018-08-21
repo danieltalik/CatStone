@@ -1,0 +1,48 @@
+﻿@model c_final_capstone_v2.Models.Cat
+@{
+    ViewBag.Title = "ReviewCat";
+}
+
+<html>
+<body>
+
+    <img src="~/Content/img/Contact2.jpg" alt="NO">
+    <div class="hero-text">
+        <h1>NO</h1>
+    </div>
+    <h2>Review Cat</h2>
+
+    <img src="~/Images/@Model.PictureId .jpg" />
+    <div>
+        @Html.DisplayNameFor(model => model.Name):
+        @Html.DisplayFor(model => Model.Name)
+    </div>
+    <br />
+
+    <form action="SubmitReview" method="post">
+        Rating:
+        <select name="rating">
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+            <option value="0">0</option>
+        </select>
+        <br />
+        Title:<br />
+        <input type="text" name="title" />
+        <br />
+        Review:<br>
+        <input type="text" name="successstory">
+        <br>
+
+        <br><br>
+        <input type="submit" value="Submit" onclick="AdjustCheckBoxNames()">
+    </form>
+
+    <br><br>
+</body>
+</html>
+
+

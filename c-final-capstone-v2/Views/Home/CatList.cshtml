@@ -81,13 +81,12 @@
                         </td>
                         <td>
                             @*TODO make these options available to administrators only*@
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                            @Html.ActionLink("Details", "ViewCat", new { id = item.ID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                        </td>
-                    </tr>
-                }
 
+                        @Html.ActionLink("Details", "ViewCat", new { id = item.ID }) |
+                        @Html.ActionLink("Review", "ReviewCat", new { id = item.ID })
+                    </td>
+                </tr>
+            }
             </table>
         </div>
     </div>

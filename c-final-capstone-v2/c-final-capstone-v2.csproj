@@ -159,6 +159,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\CatSqlDao.cs" />
+    <Compile Include="DAL\Interface\IReviewSqlDao.cs" />
+    <Compile Include="DAL\ReviewSqlDao.cs" />
     <Compile Include="DAL\UserDao.cs" />
     <Compile Include="DAL\Interface\ICatSqlDao.cs" />
     <Compile Include="DAL\Interface\ISkillDao.cs" />
@@ -167,6 +169,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Cat.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\NewStaffModel.cs" />
@@ -244,6 +247,8 @@
     <Content Include="Views\User\AdminView.cshtml" />
     <Content Include="Views\User\StaffView.cshtml" />
     <Content Include="Views\User\NewStaffView.cshtml" />
+    <Content Include="Views\Home\ReviewCat.cshtml" />
+    <Content Include="Views\Home\AgeSearch.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
