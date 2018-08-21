@@ -132,3 +132,6 @@ body, html {
     height: auto;
     width: 500px;
 }
+.noBullets{
+    list-style:none;
+}

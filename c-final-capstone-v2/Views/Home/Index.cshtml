@@ -21,27 +21,38 @@
     <br />
 
     <br><br>
-        <div>
-            <h2>Featured Cat!</h2>
-            <div>
-                @Html.DisplayNameFor(model => model.Name):
-                @Html.DisplayFor(model => Model.Name)
-                <br />
-                @Html.DisplayNameFor(model => model.Age):
-                @Html.DisplayFor(model => Model.Age)
-                <br />
-                @Html.DisplayNameFor(model => model.HairLength):
-                @Html.DisplayFor(model => Model.HairLength)
-                <br />
-                @Html.DisplayNameFor(model => model.Skills):
-                @Html.DisplayFor(model => Model.Skills)
-                <br />
-                @Html.DisplayNameFor(model => model.PriorExperience):
-                @Html.DisplayFor(model => Model.PriorExperience)
-                <br />
-                @Html.DisplayNameFor(model => model.PictureId):
-                @Html.DisplayFor(model => Model.PictureId)
+    <div style="align-content:center">
+        <h2 style="text-align:center">Featured Cat!</h2>
+        <div class="container">
+            <div class="row">
+                <div class=" col-sm-12">
+                    <ul class="noBullets">
+                        <li><img src="~/Images/@Model.PictureId" /></li>
+                        <li>
+                            @Html.DisplayNameFor(model => model.Name):
+                            @Html.DisplayFor(model => Model.Name)
+                        </li>
+                        <li>
+                            @Html.DisplayNameFor(model => model.Age):
+                            @Html.DisplayFor(model => Model.Age)
+                        </li>
+                        <li>
+                            @Html.DisplayNameFor(model => model.HairLength):
+                            @Html.DisplayFor(model => Model.HairLength)
+                        </li>
+                        <li>
+                            @Html.DisplayNameFor(model => model.Skills):
+                            @Html.DisplayFor(model => Model.Skills)
+                        </li>
+                        <li>
+                            @Html.DisplayNameFor(model => model.PriorExperience):
+                            @Html.DisplayFor(model => Model.PriorExperience)
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
+    </div>
+
 </body>
 </html>
