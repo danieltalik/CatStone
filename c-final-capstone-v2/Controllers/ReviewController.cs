@@ -118,7 +118,7 @@ namespace c_final_capstone_v2.Controllers
         {
             sucessStory.UserID = (int)Session["userID"];
             reviewSqlDao.AddSuccessStory(sucessStory);
-            return RedirectToAction("SuccessStories");
+            return View("SuccessStories");
         }
     }
 }

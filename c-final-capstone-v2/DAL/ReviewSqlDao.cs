@@ -19,10 +19,12 @@ namespace c_final_capstone_v2.DAL
         private const string SQL_InsertSucessStory = "INSERT INTO Reviews(user_id, cat_id, sucess_story) VALUES (@user_id, @cat_id, @sucess_story)";
         private const string SQL_GetSuccessStories = "SELECT cat_id, sucess_story FROM Reviews WHERE sucess_story IS NOT NULL";
         private string connectionString;
+        private ICatSqlDao catSqlDao;
 
         public ReviewSqlDao(string connectionString)
         {
             this.connectionString = connectionString;
+            this.catSqlDao = new CatSqlDao(connectionString);
         }
 
         public List<Review> GetCatReviews(int catID)
@@ -235,7 +237,6 @@ namespace c_final_capstone_v2.DAL
         public List<Review> GetSuccessStories()
         {
             List<Review> successList = new List<Review>();
-            Review review = new Review();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -248,7 +249,9 @@ namespace c_final_capstone_v2.DAL
 
                     while (reader.Read())
                     {
+                        Review review = new Review();
                         review.CatID = Convert.ToInt32(reader["cat_id"]);
+                        review.cat = catSqlDao.ViewCat(review.CatID);
                         review.SuccessStory = Convert.ToString(reader["sucess_story"]);
                         successList.Add(review);
                     }

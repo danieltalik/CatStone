@@ -84,7 +84,7 @@ namespace c_final_capstone_v2.Controllers
             string username = staff.Username;
             bool isAdmin = staff.IsAdmin;
 
-            LogUserIn(username, isAdmin);
+            LogUserIn(username, isAdmin, staff.ID);
             try
             {
                 return View("UserHome", staff);

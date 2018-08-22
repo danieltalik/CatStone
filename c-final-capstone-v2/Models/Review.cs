@@ -8,7 +8,7 @@ namespace c_final_capstone_v2.Models
 {
     public class Review
     {
-
+        public Cat cat { get; set; }
         public int? ID { get; set; }
 
         public int CatID { get; set; }
