@@ -36,7 +36,11 @@ namespace c_final_capstone_v2.Controllers
             {
                 return RedirectToAction("", ""); //return to 
             }
-            return RedirectToAction("", "");
+            else
+            {
+                return RedirectToAction("", "");
+            }
+
         }
 
 
@@ -52,7 +56,10 @@ namespace c_final_capstone_v2.Controllers
             {
                 return RedirectToAction("", "");
             }
-            return RedirectToAction("", "");
+            else
+            {
+                return RedirectToAction("", "");
+            }
         }
 
         [HttpPost]
@@ -67,7 +74,10 @@ namespace c_final_capstone_v2.Controllers
             {
                 return RedirectToAction("", "");
             }
-            return RedirectToAction("", "");
+            else
+            {
+                return RedirectToAction("", "");
+            }
         }
     }
 }
