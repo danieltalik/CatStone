@@ -203,7 +203,7 @@ namespace c_final_capstone_v2.DAL
             }
             return result;
         }
-<<<<<<< HEAD
+
         public bool AddSuccessStory(Review sucessStory)
         {
             bool result = false;
@@ -217,6 +217,7 @@ namespace c_final_capstone_v2.DAL
                     command.Parameters.AddWithValue("@sucess_story", sucessStory.SuccessStory);
                     command.Parameters.AddWithValue("@user_id", sucessStory.UserID);
                     command.Parameters.AddWithValue("@cat_id", sucessStory.CatID);
+                    command.Connection = conn;
 
                     if (command.ExecuteNonQuery() > 0)
                     {
@@ -248,7 +249,8 @@ namespace c_final_capstone_v2.DAL
                     while (reader.Read())
                     {
                         review.CatID = Convert.ToInt32(reader["cat_id"]);
-                        review.SuccessStory = Convert.ToString(reader["success_story"]);
+                        review.SuccessStory = Convert.ToString(reader["sucess_story"]);
+                        successList.Add(review);
                     }
                 }
             }
@@ -257,25 +259,7 @@ namespace c_final_capstone_v2.DAL
                 throw;
             }
             return successList;
-=======
 
-        public void AddSuccessStory(string story, int id)
-        {
-
-            try
-            {
-                using(SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(SQL_SuccessStory);
-
-                }
-            }
-            catch
-            {
-
-            }
->>>>>>> f1a17b095d62f8134bf43c114e8bbd86fa084b80
         }
     }
 }
