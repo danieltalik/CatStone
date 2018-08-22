@@ -9,7 +9,7 @@ using c_final_capstone_v2.Models;
 
 namespace c_final_capstone_v2.Controllers
 {
-    public class ReviewController : Controller
+    public class ReviewController : CatController
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
         private IReviewSqlDao reviewSqlDao;
