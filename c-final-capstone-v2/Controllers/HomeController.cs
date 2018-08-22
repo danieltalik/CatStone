@@ -93,11 +93,25 @@ namespace c_final_capstone_v2.Controllers
         {
             Cat theCat = catDao.ViewCat(id);
 
-            return View(theCat);
+            ViewBag.Cat = theCat;
+            Review myReview = new Review();
+            myReview.CatID = theCat.ID;
+            myReview.Date = DateTime.Now;
+
+            // myReview.UserID = (int)Session["Id"];
+
+            return View(myReview);
         }
 
+        [HttpPost]
         public ActionResult SubmitReview(Review review)
         {
+            //TODO Rework, this is temp before pull
+            if (review.UserID == null)
+            {
+                review.UserID = 1;
+            }
+
             reviewDao.AddCatReview(review);
 
             return RedirectToAction("ViewCat/" + review.CatID);

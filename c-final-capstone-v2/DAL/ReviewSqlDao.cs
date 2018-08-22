@@ -12,7 +12,7 @@ namespace c_final_capstone_v2.DAL
     public class ReviewSqlDao : IReviewSqlDao
     {
         private const string SQL_GetCatReviews = "SELECT * FROM Reviews WHERE cat_id = @catId";
-        private const string SQL_InsertCatReview = "INSERT INTO [dbo].[Reviews] ([user_id], [cat_id], [date], [rating], [title], [sucess_story]) VALUES (@userId, @catId, @date, @rating, @title, @successStory)";
+        private const string SQL_InsertCatReview = "INSERT INTO [dbo].[Reviews] ([user_id], [cat_id], [date], [rating], [title], [review]) VALUES (@userId, @catId, @date, @rating, @title, @review)";
         private const string SQL_ReviewToEdit = "SELECT * FROM reviews WHERE id = @reviewID";
         private const string SQL_EditReview = "UPDATE reviews SET rating = @rating, title = @title, success_story = @successStory, review = @review, is_approved = @isApproved @WHERE id = @reviewID";
         private const string SQL_DeleteReview = "DELETE * FROM reviews WHERE id = @reviewID";
@@ -68,7 +68,7 @@ namespace c_final_capstone_v2.DAL
                     cmd.Parameters.AddWithValue("@date", DateTime.UtcNow);
                     cmd.Parameters.AddWithValue("@rating", newReview.Rating);
                     cmd.Parameters.AddWithValue("@title", newReview.Title);
-                    cmd.Parameters.AddWithValue("@successStory", newReview.SuccessStory);
+                    cmd.Parameters.AddWithValue("@review", newReview.ReviewComment);
 
                     int count = cmd.ExecuteNonQuery();
 
