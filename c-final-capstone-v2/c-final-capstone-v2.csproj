@@ -249,8 +249,8 @@
     <Content Include="Views\Home\AgeSearch.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\User\UserHome.cshtml" />
-    <Content Include="Views\Review\CatReviews.cshtml" />
     <Content Include="Views\Review\AllReviews.cshtml" />
+    <Content Include="Views\Review\CatReviews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />

@@ -29,7 +29,7 @@ namespace c_final_capstone_v2.Controllers
             return View("AllReviews", reviewList);
         }
 
-        public ActionResult ReviewCat(int id)
+        public ActionResult CatReviews(int id)
         {
             Cat theCat = catSqlDao.ViewCat(id);
 
@@ -57,7 +57,7 @@ namespace c_final_capstone_v2.Controllers
             }
             else
             {
-                return RedirectToAction("ReviewCat", "Review");
+                return View("CatReviews", "Review");
             }
         }
 
