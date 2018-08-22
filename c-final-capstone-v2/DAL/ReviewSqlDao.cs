@@ -107,7 +107,7 @@ namespace c_final_capstone_v2.DAL
             return review;
         }
 
-        public Review ReviewToEdit(int reviewID) //TODO
+        public Review ReviewToEdit(int reviewID) //TODO pulls review we want to edit
         {
             Review review = null;
 
@@ -146,7 +146,7 @@ namespace c_final_capstone_v2.DAL
             return review;
         }
 
-        public bool EditReview(Review review)
+        public bool EditReview(Review review)//TODO resubmit review we edited
         {
             bool result = false;
             try
