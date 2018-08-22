@@ -250,10 +250,12 @@
     <Content Include="Views\Home\AgeSearch.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\User\UserHome.cshtml" />
+
     <Content Include="Views\Home\SuccessStories.cshtml" />
     <Content Include="Views\User\CreateSuccess.cshtml" />
 
     <Content Include="Views\Review\CatReviews.cshtml" />
+    <Content Include="Views\Review\AllReviews.cshtml" />
 
   </ItemGroup>
   <ItemGroup>
