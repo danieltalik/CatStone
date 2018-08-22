@@ -252,6 +252,9 @@
     <Content Include="Views\User\UserHome.cshtml" />
     <Content Include="Views\Home\SuccessStories.cshtml" />
     <Content Include="Views\User\CreateSuccess.cshtml" />
+
+    <Content Include="Views\Review\CatReviews.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />
@@ -261,7 +264,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cat\" />
-    <Folder Include="Views\Review\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>

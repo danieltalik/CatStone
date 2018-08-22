@@ -1,6 +1,9 @@
-﻿@model c_final_capstone_v2.Models.Cat
+﻿@model c_final_capstone_v2.Models.Review
+@using c_final_capstone_v2.Models
 @{
     ViewBag.Title = "ReviewCat";
+
+    Cat myCat = ViewBag.Cat as Cat;
 }
 
 <html>
@@ -12,37 +15,61 @@
     </div>
     <h2>Review Cat</h2>
 
-    <img src="~/Images/@Model.PictureId" class="img-circle"/>
+    <img src="~/Images/@myCat.PictureId" />
     <div>
-        <h3>@Html.DisplayNameFor(model => model.Name):</h3>
-        <h3>@Html.DisplayFor(model => Model.Name)</h3>
+        Name: @myCat.Name
+
     </div>
     <br />
 
-    <form action="SubmitReview" method="post">
-        Rating:
-        <select name="rating">
-            <option value="5">5</option>
-            <option value="4">4</option>
-            <option value="3">3</option>
-            <option value="2">2</option>
-            <option value="1">1</option>
-            <option value="0">0</option>
-        </select>
-        <br />
-        Title:<br />
-        <input type="text" name="title" />
-        <br />
-        Review:<br>
-        <input type="text" name="successstory">
-        <br>
+    @using (Html.BeginForm("SubmitReview", "Home"))
+    {
+        @Html.AntiForgeryToken()
 
-        <br><br>
-        <input type="submit" value="Submit" onclick="AdjustCheckBoxNames()">
-    </form>
+    <div class="form-horizontal">
+        <h4>Review</h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CatID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CatID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.CatID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReviewComment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReviewComment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ReviewComment, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
 
     <br><br>
 </body>
 </html>
-
-

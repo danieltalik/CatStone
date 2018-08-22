@@ -125,7 +125,10 @@ body, html {
     border-radius: 50%;
     height: 100px;
     width: 100px;
-    /*make all same size or in poportion?*/
+}
+.listImg2 {
+    height: 100px;
+    width: 100px;
 }
 .viewImg {
     float:right;
@@ -169,4 +172,16 @@ li {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+
+.grid-item {
+    padding: 60px;
+    font-size: 10px;
+    text-align: center;
 }

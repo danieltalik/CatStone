@@ -5,17 +5,17 @@ using System.Web;
 using c_final_capstone_v2.DAL;
 using c_final_capstone_v2.Models;
 using System.Data.SqlClient;
+using c_final_capstone_v2.DAL;
 
 namespace c_final_capstone_v2.DAL
 {
     public class ReviewSqlDao : IReviewSqlDao
     {
         private const string SQL_GetCatReviews = "SELECT * FROM Reviews WHERE cat_id = @catId";
-        private const string SQL_InsertCatReview = "INSERT INTO [dbo].[Reviews] ([user_id], [cat_id], [date], [rating], [title], [sucess_story]) VALUES (@userId, @catId, @date, @rating, @title, @successStory)";
+        private const string SQL_InsertCatReview = "INSERT INTO [dbo].[Reviews] ([user_id], [cat_id], [date], [rating], [title], [review]) VALUES (@userId, @catId, @date, @rating, @title, @review)";
         private const string SQL_ReviewToEdit = "SELECT * FROM reviews WHERE id = @reviewID";
         private const string SQL_EditReview = "UPDATE reviews SET rating = @rating, title = @title, success_story = @successStory, review = @review, is_approved = @isApproved @WHERE id = @reviewID";
         private const string SQL_DeleteReview = "DELETE * FROM reviews WHERE id = @reviewID";
-        private const string SQL_Review = "SELECT * FROM reviews WHERE ";
 
         private string connectionString;
 
@@ -24,7 +24,7 @@ namespace c_final_capstone_v2.DAL
             this.connectionString = connectionString;
         }
 
-        public List<Review> GetCatReviews(int id)
+        public List<Review> GetCatReviews(int catID)
         {
             List<Review> resultList = new List<Review>();
 
@@ -36,7 +36,7 @@ namespace c_final_capstone_v2.DAL
                     SqlCommand cmd = new SqlCommand(SQL_GetCatReviews);
                     cmd.Connection = conn;
 
-                    cmd.Parameters.AddWithValue("@CatId", id);
+                    cmd.Parameters.AddWithValue("@CatId", catID);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -52,8 +52,9 @@ namespace c_final_capstone_v2.DAL
             return resultList;
         }
 
-        public void AddCatReview(Review newReview)
+        public bool AddCatReview(Review newReview)
         {
+            bool result = false;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -67,9 +68,14 @@ namespace c_final_capstone_v2.DAL
                     cmd.Parameters.AddWithValue("@date", DateTime.UtcNow);
                     cmd.Parameters.AddWithValue("@rating", newReview.Rating);
                     cmd.Parameters.AddWithValue("@title", newReview.Title);
-                    cmd.Parameters.AddWithValue("@successStory", newReview.SuccessStory);
+                    cmd.Parameters.AddWithValue("@review", newReview.ReviewComment);
 
-                    cmd.ExecuteNonQuery();
+                    int count = cmd.ExecuteNonQuery();
+
+                    if (count >0)
+                    {
+                        result = true;
+                    }
                     cmd.Parameters.Clear();
                 }
             }
@@ -78,6 +84,7 @@ namespace c_final_capstone_v2.DAL
 
                 throw;
             }
+            return result;
         }
 
         private Review MapRowToReviews(SqlDataReader sdr)
@@ -100,7 +107,7 @@ namespace c_final_capstone_v2.DAL
             return review;
         }
 
-        public Review ReviewToEdit(int reviewID) //TODO
+        public Review ReviewToEdit(int reviewID) //TODO pulls review we want to edit
         {
             Review review = null;
 
@@ -139,7 +146,7 @@ namespace c_final_capstone_v2.DAL
             return review;
         }
 
-        public bool EditReview(Review review)//TODO
+        public bool EditReview(Review review)//TODO resubmit review we edited
         {
             bool result = false;
             try
@@ -167,6 +174,33 @@ namespace c_final_capstone_v2.DAL
                 throw;
             }
 
+        }
+
+        public bool DeleteReview(int reviewID)
+        {
+            bool result = false;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand command = new SqlCommand(SQL_DeleteReview);
+                    command.Parameters.AddWithValue("@reviewID", reviewID);
+
+                     int trasaction = command.ExecuteNonQuery();
+                    if (trasaction>0)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return result;
         }
     }
 }
