@@ -14,6 +14,8 @@ namespace c_final_capstone_v2.DAL
         bool EditReview(Review review);
         bool DeleteReview(int reviewID);
         Review ReviewToEdit(int reviewID);
+        List<Review> GetSuccessStories();
+        bool AddSuccessStory(Review successStory);
 
     }
 }

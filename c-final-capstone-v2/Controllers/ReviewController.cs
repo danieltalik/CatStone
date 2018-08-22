@@ -9,7 +9,7 @@ using c_final_capstone_v2.Models;
 
 namespace c_final_capstone_v2.Controllers
 {
-    public class ReviewController : Controller
+    public class ReviewController : CatController
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
         private IReviewSqlDao reviewSqlDao;
@@ -79,6 +79,24 @@ namespace c_final_capstone_v2.Controllers
                 return RedirectToAction("", "");
 
             }
+        }
+        public ActionResult SuccessStories()
+        {
+            List<Review> successStories = reviewSqlDao.GetSuccessStories();
+            return View(successStories);
+        }
+        public ActionResult CreateSuccess()
+        {
+            if (Session["Name"] != null)
+            {
+                return View("CreateSuccess");
+            }
+            else return RedirectToAction("UserHome", new { login = Session["Name"] });
+        }
+        public ActionResult SubmitSucess(Review sucessStory)
+        {
+            reviewSqlDao.AddSuccessStory(sucessStory);
+            return RedirectToAction("SuccessStories");
         }
     }
 }

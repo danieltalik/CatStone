@@ -140,13 +140,6 @@ namespace c_final_capstone_v2.Controllers
             staff.IsAdmin = (bool)Session["isAdmin"];
             return View("UserHome", staff);
         }
-        public ActionResult CreateSuccess()
-        {
-            if(Session["Name"]!= null)
-            {
-                return View("CreateSuccess");
-            }
-            else return RedirectToAction("UserHome", new { login = Session["Name"] });
-        }
+       
     }
 }

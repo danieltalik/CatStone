@@ -16,6 +16,8 @@ namespace c_final_capstone_v2.DAL
         private const string SQL_ReviewToEdit = "SELECT * FROM reviews WHERE id = @reviewID";
         private const string SQL_EditReview = "UPDATE reviews SET rating = @rating, title = @title, success_story = @successStory, review = @review, is_approved = @isApproved @WHERE id = @reviewID";
         private const string SQL_DeleteReview = "DELETE * FROM reviews WHERE id = @reviewID";
+        private const string SQL_InsertSucessStory = "INSERT INTO Reviews(user_id, cat_id, sucess_story) VALUES (@user_id, @cat_id, @sucess_story)";
+        private const string SQL_GetSuccessStories = "SELECT cat_id, sucess_story FROM Reviews WHERE sucess_story IS NOT NULL";
 
         private string connectionString;
 
@@ -72,7 +74,7 @@ namespace c_final_capstone_v2.DAL
 
                     int count = cmd.ExecuteNonQuery();
 
-                    if (count >0)
+                    if (count > 0)
                     {
                         result = true;
                     }
@@ -189,8 +191,8 @@ namespace c_final_capstone_v2.DAL
                     SqlCommand command = new SqlCommand(SQL_DeleteReview);
                     command.Parameters.AddWithValue("@reviewID", reviewID);
 
-                     int trasaction = command.ExecuteNonQuery();
-                    if (trasaction>0)
+                    int trasaction = command.ExecuteNonQuery();
+                    if (trasaction > 0)
                     {
                         result = true;
                     }
@@ -201,6 +203,60 @@ namespace c_final_capstone_v2.DAL
                 throw;
             }
             return result;
+        }
+        public bool AddSuccessStory(Review sucessStory)
+        {
+            bool result = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand command = new SqlCommand(SQL_InsertSucessStory);
+                    command.Parameters.AddWithValue("@sucess_story", sucessStory.SuccessStory);
+                    command.Parameters.AddWithValue("@user_id", sucessStory.UserID);
+                    command.Parameters.AddWithValue("@cat_id", sucessStory.CatID);
+
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        result = true;
+                    }
+                }
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+
+        }
+        public List<Review> GetSuccessStories()
+        {
+            List<Review> successList = new List<Review>();
+            Review review = new Review();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(SQL_GetSuccessStories);
+                    command.Connection = conn;
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        review.CatID = Convert.ToInt32(reader["cat_id"]);
+                        review.SuccessStory = Convert.ToString(reader["success_story"]);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return successList;
         }
     }
 }
