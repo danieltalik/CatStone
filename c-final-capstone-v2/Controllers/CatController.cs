@@ -16,6 +16,7 @@ namespace c_final_capstone_v2.Controllers
         // "Login" button changes to "Logout"
         // GET: Cat
         private const string userNameKey = "Name";
+        private const string userID = "userID";
         private const string isAdminKey = "isAdmin";
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
         protected IUserDao userDao;
@@ -62,6 +63,25 @@ namespace c_final_capstone_v2.Controllers
                 return Session[isAdminKey] != null;
             }
         }
+
+        public int? UserID
+        {
+            get
+            {
+                int userID = 0;
+
+                if (Session[userNameKey] == null)
+                {
+                    return userID;
+                }
+                else
+                {
+                    userID = (int)Session[userID];
+                }
+                return userID;
+            }
+        }
+
         public void LogUserIn(string username, bool isAdmin)
         {
 
