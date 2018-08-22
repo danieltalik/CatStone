@@ -1,7 +1,29 @@
-﻿
+﻿@model c_final_capstone_v2.Models.Staff
 @{
 
     ViewBag.Title = "UserHome";
 }
-<h2>UserHome</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            @* Fix issue where it crashes after returning to UserHome *@
+            <h2 style="text-align:center">Welcome @Model.Username</h2>
+            <img src="~/Content/img/layout_banner.png" class="centerImage" />
+            <ul class="noBullets staffmenu">
+                <li class="stafflinks"><a>@Html.ActionLink("Rank Cats", "", "")</a></li>
+                <li class="stafflinks"><a>@Html.ActionLink("Review Cats", "", "")</a></li>
+                <li class="stafflinks"><a>@Html.ActionLink("Success Stories", "", "")</a></li>
+                @if (Model.IsAdmin)
+                {
+                    //Add routes for the admin links
 
+                    <li class="stafflinks"><a>@Html.ActionLink("Add New Staff Member", "NewStaffView")</a></li>
+                    <li class="stafflinks"><a>@Html.ActionLink("Add Cat", "AddCat", "Home")</a></li>
+                    <li class="stafflinks"><a>@Html.ActionLink("Mark Featured Cat", "", "")</a></li>
+                    <li class="stafflinks"><a>@Html.ActionLink("Upload Photo", "", "")</a></li>
+                    <li class="stafflinks"><a>@Html.ActionLink("Edit Reviews and Polls", "", "")</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

@@ -29,7 +29,7 @@ namespace c_final_capstone_v2.Controllers
             skillDao = new SkillDao(connectionString);
         }
 
-       public string CurrentUser
+        public string CurrentUser
         {
             get
             {
@@ -68,10 +68,8 @@ namespace c_final_capstone_v2.Controllers
             Session[userNameKey] = username;
 
             Session[userNameKey] = username;
-            if (isAdmin)
-            {
-                Session[isAdminKey] = isAdmin;
-            }
+            Session[isAdminKey] = isAdmin;
+            
         }
         public void LogUserOut()
         {
