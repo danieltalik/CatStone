@@ -82,7 +82,7 @@ namespace c_final_capstone_v2.Controllers
             }
         }
 
-        public void LogUserIn(string username, bool isAdmin, int idp)
+        public void LogUserIn(string username, bool isAdmin, int id)
         {
             Session[userNameKey] = username;
             Session[isAdminKey] = isAdmin;

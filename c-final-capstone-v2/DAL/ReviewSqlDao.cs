@@ -203,6 +203,7 @@ namespace c_final_capstone_v2.DAL
             }
             return result;
         }
+
         public bool AddSuccessStory(Review sucessStory)
         {
             bool result = false;
@@ -216,6 +217,7 @@ namespace c_final_capstone_v2.DAL
                     command.Parameters.AddWithValue("@sucess_story", sucessStory.SuccessStory);
                     command.Parameters.AddWithValue("@user_id", sucessStory.UserID);
                     command.Parameters.AddWithValue("@cat_id", sucessStory.CatID);
+                    command.Connection = conn;
 
                     if (command.ExecuteNonQuery() > 0)
                     {
@@ -247,7 +249,8 @@ namespace c_final_capstone_v2.DAL
                     while (reader.Read())
                     {
                         review.CatID = Convert.ToInt32(reader["cat_id"]);
-                        review.SuccessStory = Convert.ToString(reader["success_story"]);
+                        review.SuccessStory = Convert.ToString(reader["sucess_story"]);
+                        successList.Add(review);
                     }
                 }
             }
@@ -256,6 +259,7 @@ namespace c_final_capstone_v2.DAL
                 throw;
             }
             return successList;
+
         }
     }
 }

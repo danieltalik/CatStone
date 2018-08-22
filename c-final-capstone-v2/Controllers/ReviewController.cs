@@ -17,6 +17,7 @@ namespace c_final_capstone_v2.Controllers
 
         public ReviewController() {
             catSqlDao = new CatSqlDao(connectionString);
+            reviewSqlDao = new ReviewSqlDao(connectionString);
         }
 
         // GET: Review
@@ -112,8 +113,10 @@ namespace c_final_capstone_v2.Controllers
             }
             else return RedirectToAction("UserHome", new { login = Session["Name"] });
         }
+        [HttpPost]
         public ActionResult SubmitSucess(Review sucessStory)
         {
+            sucessStory.UserID = (int)Session["userID"];
             reviewSqlDao.AddSuccessStory(sucessStory);
             return RedirectToAction("SuccessStories");
         }
