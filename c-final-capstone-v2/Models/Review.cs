@@ -23,6 +23,7 @@ namespace c_final_capstone_v2.Models
         public string Title { get; set; }
 
         [MaxLength(300, ErrorMessage = "We had to put a limit at some point, and you found it. Make it shorter please.")]
+        [DataType(DataType.MultilineText)]
         public string SuccessStory { get; set; }
             
         [MaxLength(300, ErrorMessage = "We had to put a limit at some point, and you found it. Make it shorter please.")]

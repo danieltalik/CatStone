@@ -12,10 +12,10 @@
     </div>
     <h2>Review Cat</h2>
 
-    <img src="~/Images/@Model.PictureId .jpg" />
+    <img src="~/Images/@Model.PictureId" class="img-circle"/>
     <div>
-        @Html.DisplayNameFor(model => model.Name):
-        @Html.DisplayFor(model => Model.Name)
+        <h3>@Html.DisplayNameFor(model => model.Name):</h3>
+        <h3>@Html.DisplayFor(model => Model.Name)</h3>
     </div>
     <br />
 

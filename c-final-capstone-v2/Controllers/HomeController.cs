@@ -135,7 +135,10 @@ namespace c_final_capstone_v2.Controllers
             }
             return View("Search", cats);
         }
-
+        public ActionResult SuccessStories()
+        {
+            return View("SuccessStories");
+        }
 
     }
 }
