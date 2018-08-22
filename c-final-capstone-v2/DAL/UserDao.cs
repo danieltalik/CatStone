@@ -15,8 +15,9 @@ namespace c_final_capstone_v2.DAL
         private const string sql_ReturnStaffInfo = "SELECT * FROM Users WHERE @name = name AND @password = password";
         private const string sql_AddStaff = "Insert Into Users(name, email, password, is_admin) VALUES(@name, @email, @password, @is_admin)";
         private const string sql_GetUser = "SELECT TOP 1 * FROM users WHERE name = @name";
-        string SQL_UserLoggingIn = "SELECT TOP 1 * FROM users WHERE name = @name AND password = @password";
-        private const string SQL_ReviewToEdit = "";
+        private const string SQL_UserLoggingIn = "SELECT TOP 1 * FROM users WHERE name = @name AND password = @password";
+
+
         public UserDao(string connectionString)
         {
             this.connectionString = connectionString;
@@ -139,26 +140,6 @@ namespace c_final_capstone_v2.DAL
             return staff;
         }
 
-        public Review EditReviews() //TODO
-        {
-            Review review = null;
-
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-
-                    SqlCommand command = new SqlCommand(SQL_ReviewToEdit);
-                }
-
-            }
-            catch (SqlException ex)
-            {
-                throw;
-            }
-
-            return review;
-        }
+        
     }
 }

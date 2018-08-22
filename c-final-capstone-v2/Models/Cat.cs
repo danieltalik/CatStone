@@ -32,5 +32,9 @@ namespace c_final_capstone_v2.Models
         
         public string Description { get; set; }
 
+        public string Gender { get; set; }
+
+        public bool IsApproved { get; set; }
+
     }
 }
