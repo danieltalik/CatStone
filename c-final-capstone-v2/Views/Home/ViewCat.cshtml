@@ -1,4 +1,6 @@
 ﻿@model c_final_capstone_v2.Models.Cat
+@using c_final_capstone_v2.Models;
+@using c_final_capstone_v2.DAL;
 @{
     ViewBag.Title = "ViewCat";
     WebImage photo = null;
@@ -42,7 +44,19 @@
         and has prior experience in "
         @Html.DisplayFor(model => Model.PriorExperience)". Whatever that means...
         <br />
-
+    </p>
+    <p>
+        @*foreach for the reviews for this cat*@
+        @*@if (Session["isAdmin"] == null || !(bool)Session["isAdmin"])
+        {
+            @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
+        }*@
+        @*@if((bool)Session["isAdmin"])
+        {
+            @Html.ActionLink("Edit Review", "ReviewToEdit", new { id = item.ID })
+            @Html.ActionLink("Delete Review", "DeleteReview", new { id = item.ID })
+            @Html.ActionLink("Review", "ReviewCat", new { id = item.ID })
+        }*@
     </p>
 
 </body>
@@ -75,5 +89,5 @@
 
     </fieldset>
 
-@Html.ActionLink("Review this Cat!", "ReviewCat", new { id = Model.ID })@*TODO turn into btn*@
+    @Html.ActionLink("Review this Cat!", "ReviewCat", new { id = Model.ID })@*TODO turn into btn*@
 </form>
