@@ -16,6 +16,7 @@ namespace c_final_capstone_v2.DAL
         private const string SQL_ReviewToEdit = "SELECT * FROM reviews WHERE id = @reviewID";
         private const string SQL_EditReview = "UPDATE reviews SET rating = @rating, title = @title, success_story = @successStory, review = @review, is_approved = @isApproved @WHERE id = @reviewID";
         private const string SQL_DeleteReview = "DELETE * FROM reviews WHERE id = @reviewID";
+        private const string SQL_SuccessStory = "UPDATE review SET success_story = @story WHERE ";
 
         private string connectionString;
 
@@ -201,6 +202,24 @@ namespace c_final_capstone_v2.DAL
                 throw;
             }
             return result;
+        }
+
+        public void AddSuccessStory(string story, int id)
+        {
+
+            try
+            {
+                using(SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(SQL_SuccessStory);
+
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ using c_final_capstone_v2.Models;
 
 namespace c_final_capstone_v2.Controllers
 {
-    public class ReviewController : Controller
+    public class ReviewController : CatController
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
         private IReviewSqlDao reviewSqlDao;
@@ -21,13 +21,13 @@ namespace c_final_capstone_v2.Controllers
 
         // GET: Review
         [HttpGet]
-        public ActionResult CatReviews(int catID)
+        public ActionResult AllReviews(int catID)
         {
             reviewSqlDao = new ReviewSqlDao(connectionString);
             
             List<Review> reviewList = reviewSqlDao.GetCatReviews(catID);
 
-            return View("CatReviews", reviewList);
+            return View("AllReviews", reviewList);
         }
 
         public ActionResult ReviewCat(int id)
