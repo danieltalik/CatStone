@@ -9,13 +9,13 @@
             @* Fix issue where it crashes after returning to UserHome *@
             <h2 style="text-align:center">Welcome @Model.Username</h2>
             <img src="~/Content/img/layout_banner.png" class="centerImage" />
-            <ul class="noBullets staffmenu">
+            <ul class="noBullets staffmenu"> 
                 <li class="stafflinks"><a>@Html.ActionLink("Rank Cats", "", "")</a></li>
                 <li class="stafflinks"><a>@Html.ActionLink("Review Cats", "", "")</a></li>
                 <li class="stafflinks"><a>@Html.ActionLink("Success Stories", "", "")</a></li>
                 @if (Model.IsAdmin)
                 {
-                    //Add routes for the admin links
+                    //TODO: Add routes for the links
 
                     <li class="stafflinks"><a>@Html.ActionLink("Add New Staff Member", "NewStaffView")</a></li>
                     <li class="stafflinks"><a>@Html.ActionLink("Add Cat", "AddCat", "Home")</a></li>

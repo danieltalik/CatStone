@@ -1,4 +1,4 @@
-﻿@*@model c_final_capstone_v2.Models.Cat*@
+﻿
 @model IEnumerable<c_final_capstone_v2.Models.Cat>
 
 @{
@@ -49,14 +49,19 @@
                     <th>
                         @Html.DisplayNameFor(model => model.PriorExperience)
                     </th>
-                    @if (Session["Name"] != null)
-                    {
-                        <th>
-                            AdminOnly @*@Html.DisplayNameFor(model => model.PictureId)*@
-                        </th>
-                    }
-                        <th></th>
-                    </tr>
+                    <th>
+                        AdminOnly
+                    </th>
+                    <th></th>
+                </tr>
+                @if (Session["Name"] != null)
+                {
+                    <th>
+                        AdminOnly @*@Html.DisplayNameFor(model => model.PictureId)*@
+                    </th>
+                }
+                <th></th>
+
 
                 @foreach (var item in Model)
                 {
@@ -83,16 +88,21 @@
                             @Html.DisplayFor(modelItem => item.PriorExperience)
                         </td>
                         <td>
-                            @*TODO make these options available to administrators only*@
-                        @if ((bool)Session["isAdmin"])
-	                    {
-                        @Html.ActionLink("Edit", "EditCat", new { id = item.ID } )
-                        @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
-                        @Html.ActionLink("Review", "ReviewCat", new { id = item.ID })
-                       	}
-                    </td>
-                </tr>
-            }
+                            @if (Session["isAdmin"] == null || !(bool)Session["isAdmin"])
+                            {
+                                @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
+                            }
+                            else if ((bool)Session["isAdmin"])
+                            {
+                                @Html.ActionLink("Edit", "EditCat", new { id = item.ID })
+                                @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
+                                @Html.ActionLink("Review", "ReviewCat", new { id = item.ID })
+                            }
+
+                        </td>
+                    </tr>
+                }
+
             </table>
         </div>
     </div>
