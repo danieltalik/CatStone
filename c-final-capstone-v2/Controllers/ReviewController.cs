@@ -13,7 +13,9 @@ namespace c_final_capstone_v2.Controllers
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
         private IReviewSqlDao reviewSqlDao;
+
         // GET: Review
+        [HttpGet]
         public ActionResult CatReviews(int catID)
         {
             reviewSqlDao = new ReviewSqlDao(connectionString);
@@ -22,39 +24,50 @@ namespace c_final_capstone_v2.Controllers
             return View("CatReviews", reviewList);
         }
 
-        public ActionResult AddReview()
+        [HttpPost]
+        public ActionResult AddReview(Review review)
         {
-            return View();
+            bool reviewAdded = false;
+            if (Session["Name"] != null)
+            {
+                reviewAdded = reviewSqlDao.AddCatReview(review);
+            }
+            if (reviewAdded)
+            {
+                return RedirectToAction("", ""); //return to 
+            }
+            return RedirectToAction("", "");
         }
 
-        public ActionResult ApproveReview()
-        {
-            if ((bool)Session["isAdmin"])
-            {
-                return RedirectToAction("", "");
-            }
-            return View();
-        }
 
         [HttpPost]
-        public ActionResult EditReview()
+        public ActionResult EditReview(Review review)
         {
+            bool reviewEdited = false;
             if ((bool)Session["isAdmin"])
             {
-                return RedirectToAction("", "");
+                reviewEdited = reviewSqlDao.EditReview(review);
             }
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult DeleteReview()
-        {
-            if ( (bool)Session["isAdmin"] )
+            if (reviewEdited)
             {
                 return RedirectToAction("", "");
             }
             return RedirectToAction("", "");
         }
 
+        [HttpPost]
+        public ActionResult DeleteReview(int reviewID)
+        {
+            bool reviewDeleted = false;
+            if ((bool)Session["isAdmin"])
+            {
+                reviewDeleted = reviewSqlDao.DeleteReview(reviewID);
+            }
+            if (reviewDeleted)
+            {
+                return RedirectToAction("", "");
+            }
+            return RedirectToAction("", "");
+        }
     }
 }

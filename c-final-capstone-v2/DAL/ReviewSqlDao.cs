@@ -52,8 +52,9 @@ namespace c_final_capstone_v2.DAL
             return resultList;
         }
 
-        public void AddCatReview(Review newReview)
+        public bool AddCatReview(Review newReview)
         {
+            bool result = false;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -69,7 +70,12 @@ namespace c_final_capstone_v2.DAL
                     cmd.Parameters.AddWithValue("@title", newReview.Title);
                     cmd.Parameters.AddWithValue("@successStory", newReview.SuccessStory);
 
-                    cmd.ExecuteNonQuery();
+                    int count = cmd.ExecuteNonQuery();
+
+                    if (count >0)
+                    {
+                        result = true;
+                    }
                     cmd.Parameters.Clear();
                 }
             }
@@ -78,6 +84,7 @@ namespace c_final_capstone_v2.DAL
 
                 throw;
             }
+            return result;
         }
 
         private Review MapRowToReviews(SqlDataReader sdr)
