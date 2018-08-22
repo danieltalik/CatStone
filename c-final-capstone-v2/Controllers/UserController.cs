@@ -96,6 +96,7 @@ namespace c_final_capstone_v2.Controllers
             }
 
         }
+
         public ActionResult NewStaffView()
         {
             if ((bool)Session["isAdmin"])//Method in CatController to handle session data
@@ -128,6 +129,7 @@ namespace c_final_capstone_v2.Controllers
         {
             return View("Search");
         }
+
         [HttpGet]
         public ActionResult UserHome()
         {

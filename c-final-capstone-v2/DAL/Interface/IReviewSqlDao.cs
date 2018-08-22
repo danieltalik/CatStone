@@ -10,6 +10,10 @@ namespace c_final_capstone_v2.DAL
     public interface IReviewSqlDao
     {
         List<Review> GetCatReviews(int id);
-        void AddCatReview(Review newReview);
+        bool AddCatReview(Review newReview);
+        bool EditReview(Review review);
+        bool DeleteReview(int reviewID);
+        Review ReviewToEdit(int reviewID);
+
     }
 }
