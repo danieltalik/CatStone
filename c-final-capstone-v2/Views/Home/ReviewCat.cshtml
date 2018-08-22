@@ -12,7 +12,7 @@
     </div>
     <h2>Review Cat</h2>
 
-    <img src="~/Images/@Model.PictureId .jpg" />
+    <img src="~/Images/@Model.PictureId" />
     <div>
         @Html.DisplayNameFor(model => model.Name):
         @Html.DisplayFor(model => Model.Name)
@@ -34,7 +34,7 @@
         <input type="text" name="title" />
         <br />
         Review:<br>
-        <input type="text" name="successstory">
+        <input type="text" name="review">
         <br>
 
         <br><br>
@@ -44,5 +44,3 @@
     <br><br>
 </body>
 </html>
-
-
