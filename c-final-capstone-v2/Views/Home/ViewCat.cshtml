@@ -50,21 +50,21 @@
     </p>
     <p>
         @if (Session["isAdmin"] == null || !(bool)Session["isAdmin"])
-    {
-        @Html.ActionLink("See Reviews", "AllReviews", new { id = Model.ID })
-}
-    @* PArtial View of list of review here *@ <partial name="_CatReviews">This is the Partial View</partial>
+        {
+            @Html.ActionLink("See Reviews", "AllReviews", "Review", new { id = Model.ID }, null)
+        }
+        @* PArtial View of list of review here *@ <partial name="_CatReviews">This is the Partial View</partial>
         @*foreach for the reviews for this cat*@
         @*@if (Session["isAdmin"] == null || !(bool)Session["isAdmin"])
-        {
-            @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
-        }*@
+            {
+                @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
+            }*@
         @*@if((bool)Session["isAdmin"])
-        {
-            @Html.ActionLink("Edit Review", "ReviewToEdit", new { id = item.ID })
-            @Html.ActionLink("Delete Review", "DeleteReview", new { id = item.ID })
-            @Html.ActionLink("Review", "ReviewCat", new { id = item.ID })
-        }*@
+            {
+                @Html.ActionLink("Edit Review", "ReviewToEdit", new { id = item.ID })
+                @Html.ActionLink("Delete Review", "DeleteReview", new { id = item.ID })
+                @Html.ActionLink("Review", "ReviewCat", new { id = item.ID })
+            }*@
     </p>
 
 </body>

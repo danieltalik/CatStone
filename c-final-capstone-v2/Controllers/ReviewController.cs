@@ -16,10 +16,10 @@ namespace c_final_capstone_v2.Controllers
 
         // GET: Review
         [HttpGet]
-        public ActionResult AllReviews(int catID)
+        public ActionResult AllReviews(int id)
         {
             reviewSqlDao = new ReviewSqlDao(connectionString);
-            List<Review> reviewList = reviewSqlDao.GetCatReviews(catID);
+            List<Review> reviewList = reviewSqlDao.GetCatReviews(id);
 
             return View("AllReviews", reviewList);
         }
