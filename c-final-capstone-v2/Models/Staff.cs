@@ -11,5 +11,6 @@ namespace c_final_capstone_v2.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public bool IsAdmin { get; set; }
+        public int ID { get; set; }
     }
 }

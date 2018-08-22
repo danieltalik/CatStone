@@ -48,7 +48,7 @@ namespace c_final_capstone_v2.Controllers
                     return View("Login", model);
 
                 }
-                LogUserIn(staff.Username, staff.IsAdmin);
+                LogUserIn(staff.Username, staff.IsAdmin, staff.ID);
 
                 var queryString = this.Request.UrlReferrer.Query;
                 var urlParams = HttpUtility.ParseQueryString(queryString);

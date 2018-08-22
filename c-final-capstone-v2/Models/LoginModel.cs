@@ -16,5 +16,6 @@ namespace c_final_capstone_v2.Models
         [Display(Name = "Password: ")]
         [DataType(DataType.Password, ErrorMessage = "Bad Password")]
         public string Password { get; set; }
+
     }
 }

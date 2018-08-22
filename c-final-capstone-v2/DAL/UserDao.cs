@@ -42,6 +42,7 @@ namespace c_final_capstone_v2.DAL
                         staff.Email = Convert.ToString(reader["email"]);
                         staff.Username = Convert.ToString(reader["name"]);
                         staff.Password = Convert.ToString(reader["password"]);
+                        staff.ID = Convert.ToInt32(reader["Id"]);
                     }
                 }
             }

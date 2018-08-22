@@ -100,6 +100,7 @@ namespace c_final_capstone_v2.Controllers
         }
         public ActionResult SuccessStories()
         {
+            reviewSqlDao = new ReviewSqlDao(connectionString);
             List<Review> successStories = reviewSqlDao.GetSuccessStories();
             return View(successStories);
         }

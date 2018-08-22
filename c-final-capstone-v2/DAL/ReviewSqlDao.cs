@@ -203,7 +203,6 @@ namespace c_final_capstone_v2.DAL
             }
             return result;
         }
-<<<<<<< HEAD
         public bool AddSuccessStory(Review sucessStory)
         {
             bool result = false;
@@ -257,25 +256,6 @@ namespace c_final_capstone_v2.DAL
                 throw;
             }
             return successList;
-=======
-
-        public void AddSuccessStory(string story, int id)
-        {
-
-            try
-            {
-                using(SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(SQL_SuccessStory);
-
-                }
-            }
-            catch
-            {
-
-            }
->>>>>>> f1a17b095d62f8134bf43c114e8bbd86fa084b80
         }
     }
 }
