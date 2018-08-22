@@ -13,19 +13,39 @@ namespace c_final_capstone_v2.Controllers
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["CatStoneConnection"].ConnectionString;
         private IReviewSqlDao reviewSqlDao;
+        private ICatSqlDao catSqlDao;
+
+        public ReviewController() {
+            catSqlDao = new CatSqlDao(connectionString);
+        }
 
         // GET: Review
         [HttpGet]
         public ActionResult CatReviews(int catID)
         {
             reviewSqlDao = new ReviewSqlDao(connectionString);
+            
             List<Review> reviewList = reviewSqlDao.GetCatReviews(catID);
 
             return View("CatReviews", reviewList);
         }
 
+        public ActionResult ReviewCat(int id)
+        {
+            Cat theCat = catSqlDao.ViewCat(id);
+
+            ViewBag.Cat = theCat;
+            Review myReview = new Review();
+            myReview.CatID = theCat.ID;
+            myReview.Date = DateTime.Now;
+
+            myReview.UserID = (int)Session["Id"];
+
+            return View(myReview);
+        }
+
         [HttpPost]
-        public ActionResult AddReview(Review review)
+        public ActionResult SubmitReview(Review review)
         {
             bool reviewAdded = false;
             if (Session["Name"] != null)
@@ -34,13 +54,12 @@ namespace c_final_capstone_v2.Controllers
             }
             if (reviewAdded)
             {
-                return RedirectToAction("", ""); //return to 
+                return RedirectToAction("CatList", "Home"); //return to 
             }
             else
             {
-                return RedirectToAction("", "");
+                return RedirectToAction("ReviewCat", "Review");
             }
-
         }
 
 
