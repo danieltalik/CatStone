@@ -15,7 +15,6 @@ namespace c_final_capstone_v2.DAL
         private const string SQL_ReviewToEdit = "SELECT * FROM reviews WHERE id = @reviewID";
         private const string SQL_EditReview = "UPDATE reviews SET rating = @rating, title = @title, success_story = @successStory, review = @review, is_approved = @isApproved @WHERE id = @reviewID";
         private const string SQL_DeleteReview = "DELETE * FROM reviews WHERE id = @reviewID";
-        private const string SQL_Review = "SELECT * FROM reviews WHERE ";
 
         private string connectionString;
 
@@ -24,7 +23,7 @@ namespace c_final_capstone_v2.DAL
             this.connectionString = connectionString;
         }
 
-        public List<Review> GetCatReviews(int id)
+        public List<Review> GetCatReviews(int catID)
         {
             List<Review> resultList = new List<Review>();
 
@@ -36,7 +35,7 @@ namespace c_final_capstone_v2.DAL
                     SqlCommand cmd = new SqlCommand(SQL_GetCatReviews);
                     cmd.Connection = conn;
 
-                    cmd.Parameters.AddWithValue("@CatId", id);
+                    cmd.Parameters.AddWithValue("@CatId", catID);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -139,7 +138,7 @@ namespace c_final_capstone_v2.DAL
             return review;
         }
 
-        public bool EditReview(Review review)//TODO
+        public bool EditReview(Review review)
         {
             bool result = false;
             try
@@ -167,6 +166,33 @@ namespace c_final_capstone_v2.DAL
                 throw;
             }
 
+        }
+
+        public bool DeleteReview(int reviewID)
+        {
+            bool result = false;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand command = new SqlCommand(SQL_DeleteReview);
+                    command.Parameters.AddWithValue("@reviewID", reviewID);
+
+                     int trasaction = command.ExecuteNonQuery();
+                    if (trasaction>0)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return result;
         }
     }
 }
