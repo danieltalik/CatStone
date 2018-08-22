@@ -246,14 +246,16 @@
     <Content Include="Views\Home\Us.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\NewStaffView.cshtml" />
-    <Content Include="Views\Home\ReviewCat.cshtml" />
     <Content Include="Views\Home\AgeSearch.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\User\UserHome.cshtml" />
     <Content Include="Views\Review\CreateSuccess.cshtml" />
     <Content Include="Views\Review\CatReviews.cshtml" />
     <Content Include="Views\Review\AllReviews.cshtml" />
+
     <Content Include="Views\Review\SuccessStories.cshtml" />
+
+    <Content Include="Views\Review\CatReviews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />
