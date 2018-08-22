@@ -88,9 +88,17 @@
                             @Html.DisplayFor(modelItem => item.PriorExperience)
                         </td>
                         <td>
+                            @if (Session["isAdmin"] == null || !(bool)Session["isAdmin"])
+                            {
+                                @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
+                            }
+                            else if ((bool)Session["isAdmin"])
+                            {
+                                @Html.ActionLink("Edit", "EditCat", new { id = item.ID })
+                                @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
+                                @Html.ActionLink("Review", "ReviewCat", new { id = item.ID })
+                            }
 
-                            @Html.ActionLink("Details", "ViewCat", new { id = item.ID }) |
-                            @Html.ActionLink("Review", "ReviewCat", new { id = item.ID })
                         </td>
                         @*TODO make these options available to administrators only*@
                         <td>
