@@ -30,21 +30,21 @@ namespace c_final_capstone_v2.Controllers
             return View("AllReviews", reviewList);
         }
 
-        public ActionResult CatReviews(int id)
-        {
-            Cat theCat = catSqlDao.ViewCat(id);
+        //public ActionResult CatReviews(int id)
+        //{
+        //    Cat theCat = catSqlDao.ViewCat(id);
 
-            ViewBag.Cat = theCat;
-            Review myReview = new Review();
-            myReview.CatID = theCat.ID;
-            myReview.Date = DateTime.Now;
+        //    ViewBag.Cat = theCat;
+        //    Review myReview = new Review();
+        //    myReview.CatID = theCat.ID;
+        //    myReview.Date = DateTime.Now;
 
-            // TODO uncomment when session is created myReview.UserID = (int)Session["Id"];
-            myReview.UserID = 1;
-            return View(myReview);
-        }
+        //    // TODO uncomment when session is created myReview.UserID = (int)Session["Id"];
+        //    myReview.UserID = 1;
+        //    return View(myReview);
+        //}
 
-        public ActionResult ReviewCat(int id)
+        public ActionResult HereYeBeginTheReviewProcess(int id)
         {
             Cat theCat = catSqlDao.ViewCat(id);
 
@@ -55,7 +55,7 @@ namespace c_final_capstone_v2.Controllers
 
             // TODO uncomment when session is created myReview.UserID = (int)Session["Id"];
             
-            return View(myReview);
+            return View("HereYeBeginTheReviewProcess", myReview);
         }
 
         [HttpPost]
@@ -73,7 +73,7 @@ namespace c_final_capstone_v2.Controllers
             }
             else
             {
-                return View("CatReviews", "Review");
+                return View("HereYeBeginTheReviewProcess", "Review");
             }
         }
 
