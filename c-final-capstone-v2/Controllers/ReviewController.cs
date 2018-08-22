@@ -39,8 +39,8 @@ namespace c_final_capstone_v2.Controllers
             myReview.CatID = theCat.ID;
             myReview.Date = DateTime.Now;
 
-            myReview.UserID = (int)Session["Id"];
-
+            // TODO uncomment when session is created myReview.UserID = (int)Session["Id"];
+            myReview.UserID = 1;
             return View(myReview);
         }
 
