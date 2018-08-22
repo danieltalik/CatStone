@@ -252,10 +252,9 @@
     <Content Include="Views\Review\CreateSuccess.cshtml" />
     <Content Include="Views\Review\CatReviews.cshtml" />
     <Content Include="Views\Review\AllReviews.cshtml" />
-
     <Content Include="Views\Review\SuccessStories.cshtml" />
-
     <Content Include="Views\Review\CatReviews.cshtml" />
+    <Content Include="Views\Review\ReviewCat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />
