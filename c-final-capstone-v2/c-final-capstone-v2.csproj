@@ -157,6 +157,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\CatSqlDao.cs" />
     <Compile Include="DAL\Interface\IReviewSqlDao.cs" />
@@ -244,8 +245,6 @@
     <Content Include="Views\Home\ViewCat.cshtml" />
     <Content Include="Views\Home\Us.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\User\AdminView.cshtml" />
-    <Content Include="Views\User\StaffView.cshtml" />
     <Content Include="Views\User\NewStaffView.cshtml" />
     <Content Include="Views\Home\ReviewCat.cshtml" />
     <Content Include="Views\Home\AgeSearch.cshtml" />
@@ -260,6 +259,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cat\" />
+    <Folder Include="Views\Review\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
