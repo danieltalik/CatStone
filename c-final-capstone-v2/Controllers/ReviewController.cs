@@ -54,15 +54,16 @@ namespace c_final_capstone_v2.Controllers
             myReview.CatID = theCat.ID;
             myReview.Date = DateTime.Now;
 
-            myReview.UserID = (int)Session["Id"];
-
             return View("HereYeBeginTheReviewProcess", myReview);
         }
 
         [HttpPost]
         public ActionResult SubmitReview(Review review)
         {
+            review.UserID = (int)Session["userID"];
+
             bool reviewAdded = false;
+
             if (Session["Name"] != null)
             {
                 reviewAdded = reviewSqlDao.AddCatReview(review);
@@ -141,7 +142,7 @@ namespace c_final_capstone_v2.Controllers
         {
             sucessStory.UserID = (int)Session["userID"];
             reviewSqlDao.AddSuccessStory(sucessStory);
-            return View("SuccessStories");
+            return RedirectToAction("SuccessStories");
         }
     }
 }

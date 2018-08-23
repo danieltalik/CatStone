@@ -6,7 +6,9 @@
 }
 
 <h2>Create Success Stories</h2>
-
+<script>
+    var catId = $('#catList').val();
+</script>
 @using (Html.BeginForm("SubmitSucess", "Review", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -18,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.cat.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-               @Html.DropDownList("catList", new SelectList(ViewBag.catlist,"Id","Name"), new {id = Model.CatID }, null)
+               @Html.DropDownListFor(model => model.CatID, new SelectList(ViewBag.catlist,"Id","Name"))
                @Html.ValidationMessageFor(model => model.CatID, "", new { @class = "text-danger" })
             </div>
         </div>

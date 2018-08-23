@@ -26,22 +26,21 @@
                     {
                         <li>@Html.ActionLink("User Home", "UserHome", "User")</li>
                     }
-                        <li>@Html.ActionLink("Add Cat", "AddCat", "Home")</li>
-                        <li>@Html.ActionLink("Cat List", "CatList", "Home")</li>
-                        <li>@Html.ActionLink("Find a Cat", "Search", "Home")</li>
-                        <li>@Html.ActionLink("Care Tips", "CareTips", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        @if (Session["Name"] == null)
-                        {
-                            <li>@Html.ActionLink("Login", "Login", "User")</li>
-                        }
-                        else
-                        {
-                            <li>@Html.ActionLink("Logout", "Logout", "User")</li>
-                        }
+                    <li>@Html.ActionLink("Cat List", "CatList", "Home")</li>
+                    <li>@Html.ActionLink("Find a Cat", "Search", "Home")</li>
+                    <li>@Html.ActionLink("Care Tips", "CareTips", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (Session["Name"] == null)
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "User")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "User")</li>
+                    }
 
-                    </ul>
+                </ul>
             </div>
         </div>
     </div>

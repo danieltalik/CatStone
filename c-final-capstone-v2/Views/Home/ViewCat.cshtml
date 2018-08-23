@@ -2,7 +2,7 @@
 @using c_final_capstone_v2.Models;
 @using c_final_capstone_v2.DAL;
 @{
-    ViewBag.Title = "ViewCat";
+    ViewBag.Title = "ReviewList";
     WebImage photo = null;
     var newFileName = "";
     var imagePath = "";
@@ -53,7 +53,24 @@
         {
             @Html.ActionLink("See Reviews", "AllReviews", "Review", new { id = Model.ID }, null)
         }
-        @* PArtial View of list of review here *@ <partial name="_CatReviews">This is the Partial View</partial>
+        @* PArtial View of list of review here *@ <partial name="_CatReviews">
+        <h4>Reviews:</h4>
+            @foreach (Review review in ViewBag.ReviewList)
+            {
+                <div>
+                    Title: @Html.DisplayFor(modelItem => review.Title);
+                    <br />
+                    User: @Html.DisplayFor(modelItem => review.UserID);
+                    <br />
+                    <br />
+                    Rating: @Html.DisplayFor(modelItem => review.Rating)
+                    <br />
+                    Message: @Html.DisplayFor(modelItem => review.ReviewComment);
+                </div>
+                <br /><br />
+                
+            }
+        </partial>
         @*foreach for the reviews for this cat*@
         @*@if (Session["isAdmin"] == null || !(bool)Session["isAdmin"])
             {
@@ -85,17 +102,22 @@
 <head>
     <title>Image Upload</title>
 </head>
-<form action="" method="post" enctype="multipart/form-data">
-    <fieldset>
-        <div>
+    @if (Session["isAdmin"] != null && Session["Name"] != null)
+    { 
+    <form action="" method="post" enctype="multipart/form-data">
+        {
+        <fieldset>
+            <div>
 
-            Upload Image: @Html.DisplayFor(model => Model.PictureId)
-            <input type="file" name="pictureId" />
-            <input type="submit" value="Upload" />
-            <br />
-        </div>
+                Upload Image: @Html.DisplayFor(model => Model.PictureId)
+                <input type="file" name="pictureId" />
+                <input type="submit" value="Upload" />
+                <br />
+            </div>
 
-    </fieldset>
+        </fieldset>
+            @Html.ActionLink("Review this Cat!", "HereYeBeginTheReviewProcess", "Review", new { id = Model.ID }, null)@*TODO turn into btn*@
+    
 
-    @Html.ActionLink("Review this Cat!", "HereYeBeginTheReviewProcess", "Review", new { id = Model.ID }, null)@*TODO turn into btn*@
-</form>
+    </form>
+}
