@@ -9,22 +9,16 @@
             @* Fix issue where it crashes after returning to UserHome *@
             <h2 style="text-align:center">Welcome @Model.Username</h2>
             <img src="~/Content/img/layout_banner.png" class="centerImage" />
-            <ul class="noBullets staffmenu"> 
-                <li class="stafflinks"><a>@Html.ActionLink("Rank Cats", "RankCat", "")</a></li>
 
-                <li class="stafflinks"><a>@Html.ActionLink("Success Stories", "CreateSuccess", "Review")</a></li>
+            <ul class="noBullets staffBar">
 
-                <li class="stafflinks"><a>@Html.ActionLink("Review Cats", "AddReview", "Review")</a></li>
-
+                <li class="stafflinks">|<a>@Html.ActionLink("Success Stories", "CreateSuccess", "Review")</a>|</li>
+                <li class="stafflinks">|<a>@Html.ActionLink("Staff Cat List", "CatList", "Home")|</a></li>
                 @if (Model.IsAdmin)
                 {
-                    //TODO: Add routes for the links
-
-                    <li class="stafflinks"><a>@Html.ActionLink("Add New Staff Member", "NewStaffView")</a></li>
-                    <li class="stafflinks"><a>@Html.ActionLink("Add Cat", "AddCat", "Home")</a></li>
-                    <li class="stafflinks"><a>@Html.ActionLink("Mark Featured Cat", "", "")</a></li>
-                    <li class="stafflinks"><a>@Html.ActionLink("Upload Photo", "", "")</a></li>
-                    <li class="stafflinks"><a>@Html.ActionLink("Edit Reviews and Polls", "EditReview", "")</a></li>
+                    <li class="stafflinks">|<a>@Html.ActionLink("Add New Staff Member", "NewStaffView")</a>|</li>
+                    <li class="stafflinks">|<a>@Html.ActionLink("Add Cat", "AddCat", "Home")</a>|</li>
+                    <li class="stafflinks">|<a>@Html.ActionLink("Edit Reviews and Polls", "EditReview", "")</a>|</li>
                 }
             </ul>
         </div>
