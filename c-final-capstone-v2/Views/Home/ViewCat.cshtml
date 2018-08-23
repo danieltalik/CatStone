@@ -39,9 +39,13 @@
         @Html.DisplayFor(model => Model.HairLength)-haired cat.
         @Model.Name is proficient at
 
-        @Html.DisplayFor(model => Model.Skills)
+        @foreach (string skill in Model.Skills)
+        {
+            @Html.DisplayFor(model => skill) @:&nbsp;
+        }
 
-        and has prior experience in "
+
+        <br />and has prior experience in "
         @Html.DisplayFor(model => Model.PriorExperience)". Whatever that means...
         <br />
     </p>
@@ -58,14 +62,14 @@
             @foreach (Review review in ViewBag.ReviewList)
             {
                 <div>
-                    Title: @Html.DisplayFor(modelItem => review.Title);
+                    Title: @Html.DisplayFor(modelItem => review.Title)
                     <br />
-                    User: @Html.DisplayFor(modelItem => review.UserID);
+                    User: @Html.DisplayFor(modelItem => review.UserID)
                     <br />
                     <br />
                     Rating: @Html.DisplayFor(modelItem => review.Rating)
                     <br />
-                    Message: @Html.DisplayFor(modelItem => review.ReviewComment);
+                    Message: @Html.DisplayFor(modelItem => review.ReviewComment)
                 </div>
                 <br /><br />
                 
@@ -96,16 +100,15 @@
 <br />
 <br />
 
-
-
-
 <head>
     <title>Image Upload</title>
 </head>
-    @if (Session["isAdmin"] != null && Session["Name"] != null)
-    { 
+
+
+@if (Session["isAdmin"] != null && Session["Name"] != null)
+{ 
     <form action="" method="post" enctype="multipart/form-data">
-        {
+        
         <fieldset>
             <div>
 
@@ -116,8 +119,6 @@
             </div>
 
         </fieldset>
-            @Html.ActionLink("Review this Cat!", "HereYeBeginTheReviewProcess", "Review", new { id = Model.ID }, null)@*TODO turn into btn*@
-    
-
+        @Html.ActionLink("Review this Cat!", "HereYeBeginTheReviewProcess", "Review", new { id = Model.ID }, null)@*TODO turn into btn*@
     </form>
 }
