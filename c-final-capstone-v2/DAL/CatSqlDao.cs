@@ -24,6 +24,7 @@ namespace c_final_capstone_v2.DAL
         private const string SQL_EmployCat = "";//UNDONE
         private const string SQL_GetCatId = "SELECT id FROM Cats WHERE photo = @photo";
         private const string SQL_GetColors = "SELECT DISTINCT color FROM cats";
+        private const string SQL_FeatureCat = "ALTER ";
 
         private ISkillDao dao;
         private string connectionString;
