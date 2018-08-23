@@ -14,7 +14,7 @@ INSERT INTO Skills (skill) VALUES('Hiding')
 INSERT INTO Skills (skill) VALUES('Life Coach')
 --INSERT INTO SKILLS (skill) VALUES('')
 
-INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured, description, isEmployed, gender) VALUES ('Percy',		'orange $ white', 'Long',  12, 'Purficient at wakeup calls',						'Percy.jpg',	1, 'A fluffy cudly mainecoon taht likes to eat hair ties', 0)
+INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured, description, isEmployed, gender) VALUES ('Percy',		'orange and white', 'Long',  12, 'Purficient at wakeup calls',						'Percy.jpg',	1, 'A fluffy cudly mainecoon taht likes to eat hair ties', 0)
 INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured, description, isEmployed, gender) VALUES ('Fern',		'tabby',		  'long',   8, 'Will do anything for bread.',						'fern.jpg',		0, 'Sassy and coy, only eats the finest wet foods', 0)
 INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured, description, isEmployed, gender) VALUES ('Luna',		'Black & Orange', 'short',  3, 'Flexible for the right opportunity',				'luna.jpg',		0, 'Overly affectionate, loves laptop keyboards', 0)
 INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured, description, isEmployed, gender) VALUES ('Picard',		'orange',		  'short',  7, 'Licking, Stealing food, Commanding USS Enterprise', 'picard.jpg',	0, 'Tricky, friendly and bossy. Watch your wallet', 0)
