@@ -69,7 +69,10 @@
                 <br />
                 Rating: @Html.DisplayFor(modelItem => review.Rating)
                 <br />
-                Message: @Html.DisplayFor(modelItem => review.ReviewComment)
+                @if (review.ReviewComment != null)
+                {
+                    @:Message: @Html.DisplayFor(modelItem => review.ReviewComment)
+                }
             </div>
             <br /><br />
         }

@@ -7,9 +7,6 @@
 
 <h2>AllReviews</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create") @*TODO create review?*@
-</p>
 <table class="table">
     <tr>
         <th>
@@ -67,9 +64,9 @@
                 @Html.DisplayFor(modelItem => item.IsApproved)
             </td>
             <td>
+                @Html.ActionLink("Create New", "HereYeBeginTheReviewProcess", new { controller = "Review", id = item.CatID }) |
                 @Html.ActionLink("Edit", "EditReview", new { controller = "Review", id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("Details", "ViewCat", new { controller = "Home", id = item.CatID }) 
             </td>
         </tr>
     }

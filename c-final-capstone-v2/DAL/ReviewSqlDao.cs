@@ -102,6 +102,7 @@ namespace c_final_capstone_v2.DAL
                 //TODO: The success stories are crashing the page with null rating ints
                 review.Rating = Convert.ToInt32(sdr["rating"]);
                 review.Title = Convert.ToString(sdr["title"]);
+                review.ReviewComment = Convert.ToString(sdr["review"]);
                 review.SuccessStory = Convert.ToString(sdr["sucess_story"]);
             }
             catch (Exception)

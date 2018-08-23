@@ -206,6 +206,7 @@
     <Content Include="Content\img\login.jpg" />
     <Content Include="Content\img\login1.jpg" />
     <Content Include="Content\img\login2.png" />
+    <Content Include="Content\img\ReviewImage.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
