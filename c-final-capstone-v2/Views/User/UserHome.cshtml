@@ -12,13 +12,12 @@
 
             <ul class="noBullets staffBar">
 
-                <li class="stafflinks">|<a>@Html.ActionLink("Success Stories", "CreateSuccess", "Review")</a>|</li>
+                <li class="stafflinks">|<a>@Html.ActionLink("Add Success Stories", "CreateSuccess", "Review")</a>|</li>
                 <li class="stafflinks">|<a>@Html.ActionLink("Staff Cat List", "CatList", "Home")|</a></li>
                 @if (Model.IsAdmin)
                 {
                     <li class="stafflinks">|<a>@Html.ActionLink("Add New Staff Member", "NewStaffView")</a>|</li>
                     <li class="stafflinks">|<a>@Html.ActionLink("Add Cat", "AddCat", "Home")</a>|</li>
-                    <li class="stafflinks">|<a>@Html.ActionLink("Edit Reviews and Polls", "EditReview", "")</a>|</li>
                 }
             </ul>
         </div>

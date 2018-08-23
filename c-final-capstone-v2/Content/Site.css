@@ -67,6 +67,9 @@ body, html {
     height: 40px;
     width: auto;
 }
+.footer-push{
+  margin-right: 20px;
+}
 
 .us-gif {
     border-radius: 50%;
@@ -189,7 +192,14 @@ body, html {
 }
 
 .grid-item {
-    padding: 60px;
+    padding: 40px;
     font-size: 10px;
     text-align: center;
+}
+.classname {
+    background: url(../Images/image.gif) no-repeat top left;
+    display: block;
+    width: 150px;
+    height: 150px;
+    text-indent: -9999px; /* hides the link text */
 }
