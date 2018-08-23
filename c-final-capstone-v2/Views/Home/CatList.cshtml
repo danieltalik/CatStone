@@ -11,7 +11,7 @@
 
 
 <p>
-    @if ((bool)Session["isAdmin"])
+    @if (Session["isAdmin"] != null && (bool)Session["isAdmin"])
     {
         @Html.ActionLink("Add Cat", "AddCat", "Home")
     }

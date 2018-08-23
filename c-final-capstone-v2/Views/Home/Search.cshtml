@@ -71,7 +71,11 @@
                                 @Html.DisplayFor(modelItem => item.HairLength)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Skills)
+                                @foreach (string skill in item.Skills)
+                                {
+                                    @Html.DisplayFor(modelItem => skill)<br />
+                                }
+
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.PriorExperience)
