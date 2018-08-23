@@ -49,7 +49,7 @@
 
     </p>
     <p>
-        @if (Session["isAdmin"] == null || !(bool)Session["isAdmin"])
+        @if (Session["isAdmin"] != null && (bool)Session["isAdmin"])
         {
             @Html.ActionLink("See Reviews", "AllReviews", "Review", new { id = Model.ID }, null)
         }

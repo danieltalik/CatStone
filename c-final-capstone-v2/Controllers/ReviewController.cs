@@ -54,7 +54,7 @@ namespace c_final_capstone_v2.Controllers
             myReview.CatID = theCat.ID;
             myReview.Date = DateTime.Now;
 
-            // TODO uncomment when session is created myReview.UserID = (int)Session["Id"];
+            myReview.UserID = (int)Session["Id"];
 
             return View("HereYeBeginTheReviewProcess", myReview);
         }
@@ -62,7 +62,6 @@ namespace c_final_capstone_v2.Controllers
         [HttpPost]
         public ActionResult SubmitReview(Review review)
         {
-            review.UserID = 1;
             bool reviewAdded = false;
             if (Session["Name"] != null)
             {
