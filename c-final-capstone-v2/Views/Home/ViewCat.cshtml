@@ -42,32 +42,14 @@
         @foreach (string skill in Model.Skills)
         {
             <li>@skill</li>
-<<<<<<< HEAD
-
-        @foreach (string skill in Model.Skills)
-        {
-            @Html.DisplayFor(model => skill) @:&nbsp;
         }
 
-
-        <br />and has prior experience in "
-        @Html.DisplayFor(model => Model.PriorExperience); ". Whatever that means...
-        <br />
-        }
-=======
-        }
-
->>>>>>> 4dfeae67e1b66a41bcbfc66dea0df5f40cd8d7e0
     </ul>
 
     <p>This cat has prior experience in "@Html.DisplayFor(model => Model.PriorExperience)" Whatever that means...</p>
    
     <br />
-<<<<<<< HEAD
-    </p>
-    <p>
-=======
->>>>>>> 4dfeae67e1b66a41bcbfc66dea0df5f40cd8d7e0
+
 
     <p>
         @if (Session["isAdmin"] != null && (bool)Session["isAdmin"])
