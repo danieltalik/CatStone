@@ -56,7 +56,7 @@
                     {
                         <tr>
                             <td>
-                                <img class="listImg" src="~/Images/@item.PictureId" />
+                                <a href="ViewCat/@item.ID"><img class="listImg" src="~/Images/@item.PictureId" /></a>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Name)
@@ -71,7 +71,11 @@
                                 @Html.DisplayFor(modelItem => item.HairLength)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Skills)
+                                @foreach (string skill in item.Skills)
+                                {
+                                    @Html.DisplayFor(modelItem => skill)<br />
+                                }
+
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.PriorExperience)

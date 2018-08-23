@@ -16,7 +16,7 @@ namespace c_final_capstone_v2.DAL
         private const string SQL_ReviewToEdit = "SELECT * FROM reviews WHERE id = @reviewID";
         private const string SQL_EditReview = "UPDATE reviews SET rating = @rating, title = @title, review = @review WHERE id = @reviewID";
         private const string SQL_DeleteReview = "DELETE * FROM reviews WHERE id = @reviewID";
-        private const string SQL_InsertSucessStory = "INSERT INTO Reviews(user_id, cat_id, sucess_story) VALUES (@user_id, @cat_id, @sucess_story)";
+        private const string SQL_InsertSucessStory = "INSERT INTO Reviews(user_id, cat_id, sucess_story, date) VALUES (@user_id, @cat_id, @sucess_story, @date)";
         private const string SQL_GetSuccessStories = "SELECT cat_id, sucess_story FROM Reviews WHERE sucess_story IS NOT NULL";
         private string connectionString;
         private ICatSqlDao catSqlDao;
@@ -221,6 +221,7 @@ namespace c_final_capstone_v2.DAL
                     command.Parameters.AddWithValue("@sucess_story", sucessStory.SuccessStory);
                     command.Parameters.AddWithValue("@user_id", sucessStory.UserID);
                     command.Parameters.AddWithValue("@cat_id", sucessStory.CatID);
+                    command.Parameters.AddWithValue("@date", DateTime.Now);
                     command.Connection = conn;
 
                     if (command.ExecuteNonQuery() > 0)

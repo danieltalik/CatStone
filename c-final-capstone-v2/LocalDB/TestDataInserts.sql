@@ -14,6 +14,7 @@ INSERT INTO Skills (skill) VALUES('Hiding')
 INSERT INTO Skills (skill) VALUES('Life Coach')
 --INSERT INTO SKILLS (skill) VALUES('')
 
+
 INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured, description, isEmployed) VALUES ('Percy',		'orange and white', 'Long',  12, 'Purficient at wakeup calls',						'Percy.jpg',	1, 'A fluffy cudly mainecoon taht likes to eat hair ties', 1)
 INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured, description, isEmployed) VALUES ('Fern',		'tabby',		  'long',   8, 'Will do anything for bread.',						'fern.jpg',		0, 'Sassy and coy, only eats the finest wet foods', 1)
 INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured, description, isEmployed) VALUES ('Luna',		'Black & Orange', 'short',  3, 'Flexible for the right opportunity',				'luna.jpg',		0, 'Overly affectionate, loves laptop keyboards', 1)
@@ -21,7 +22,6 @@ INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured, 
 INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured, description, isEmployed) VALUES ('Memesiku',	'calico',		  'long',   9, 'Flooping, Drooling, Hunting gnats',					'memisiku.jpg',	1, 'Drooling, fat lard. Needs incentivized to do anything', 1)
 INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured, description, isEmployed) VALUES ('Wulfgang',	'black',		  'long',   7, 'Always looking for new ways to assinate dogs',		'wulfgang.jpg', 0, '', 1)
 INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured, description, isEmployed) VALUES ('Brahm',		'brown',		  'short',  5, '100% good boy 0% cat',								'brahm.jpg',	0, 'Very excited all the time, Suspected of not being a cat', 1)
---INSERT INTO Cats (name, color, hair_length, age, prior_exp, photo, is_featured ) VALUES ('', '',, '', '', 0 ,'')
 
 INSERT INTO cat_skill (cat_id, skill_id) VALUES(1, 1)
 INSERT INTO cat_skill (cat_id, skill_id) VALUES(1, 7)

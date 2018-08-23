@@ -11,7 +11,11 @@
 
 
 <p>
-    @Html.ActionLink("Add Cat", "AddCat", "Home") @*TODO*@
+    @if (Session["isAdmin"] != null && (bool)Session["isAdmin"])
+    {
+        @Html.ActionLink("Add Cat", "AddCat", "Home")
+    }
+    
     @using (Html.BeginForm("CatList", "Home", FormMethod.Get))
     {
         <select name="sort">
@@ -30,23 +34,16 @@
         @foreach (var item in Model)
         {
             <div class="grid-item">
-                    <img class="listImg2" src="~/Images/@item.PictureId" />
+                <a href="ViewCat/@item.ID"><img class="listImg2" src="~/Images/@item.PictureId" /></a>
                 <br />
                     Name: @Html.DisplayFor(modelItem => item.Name)
                 <br />
                     Age: @Html.DisplayFor(modelItem => item.Age)
                 <br />
-                    @if (Session["isAdmin"] == null || !(bool)Session["isAdmin"])
-                    {
-                        @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
-                    }
-                    else if ((bool)Session["isAdmin"])
-                    {
-                        @Html.ActionLink("Edit", "EditCat", new { id = item.ID }) @*TODO EDITIING CAT?*@
-                        @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
-
-                        @Html.ActionLink("Review", "HereYeBeginTheReviewProcess", new { controller = "Review", id = item.ID })
-                    }
+                    
+                @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
+                    
+                    
             </div>
         }
 </div>
