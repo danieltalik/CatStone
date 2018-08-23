@@ -2,7 +2,7 @@
 @using c_final_capstone_v2.Models;
 @using c_final_capstone_v2.DAL;
 @{
-    ViewBag.Title = "ViewCat";
+    ViewBag.Title = "ReviewList";
     WebImage photo = null;
     var newFileName = "";
     var imagePath = "";
@@ -43,22 +43,51 @@
         {
             <li>@skill</li>
 
+<<<<<<< HEAD
+        @foreach (string skill in Model.Skills)
+        {
+            @Html.DisplayFor(model => skill) @:&nbsp;
+        }
+
+
+        <br />and has prior experience in "
+        @Html.DisplayFor(model => Model.PriorExperience)". Whatever that means...
+        <br />
+=======
         }
     </ul>
 
     <p>This cat has prior experience in "@Html.DisplayFor(model => Model.PriorExperience)" Whatever that means...</p>
    
     <br />
+>>>>>>> d692b1b4208eebcf037ca9e74fe6bcd34154a443
     </p>
     <p>
 
     </p>
     <p>
-        @if (Session["isAdmin"] == null || !(bool)Session["isAdmin"])
+        @if (Session["isAdmin"] != null && (bool)Session["isAdmin"])
         {
             @Html.ActionLink("See Reviews", "AllReviews", "Review", new { id = Model.ID }, null)
         }
-        @* PArtial View of list of review here *@ <partial name="_CatReviews">This is the Partial View</partial>
+        @* PArtial View of list of review here *@ <partial name="_CatReviews">
+        <h4>Reviews:</h4>
+            @foreach (Review review in ViewBag.ReviewList)
+            {
+                <div>
+                    Title: @Html.DisplayFor(modelItem => review.Title)
+                    <br />
+                    User: @Html.DisplayFor(modelItem => review.UserID)
+                    <br />
+                    <br />
+                    Rating: @Html.DisplayFor(modelItem => review.Rating)
+                    <br />
+                    Message: @Html.DisplayFor(modelItem => review.ReviewComment)
+                </div>
+                <br /><br />
+                
+            }
+        </partial>
         @*foreach for the reviews for this cat*@
         @*@if (Session["isAdmin"] == null || !(bool)Session["isAdmin"])
             {
@@ -84,23 +113,25 @@
 <br />
 <br />
 
-
-
-
 <head>
     <title>Image Upload</title>
 </head>
-<form action="" method="post" enctype="multipart/form-data">
-    <fieldset>
-        <div>
 
-            Upload Image: @Html.DisplayFor(model => Model.PictureId)
-            <input type="file" name="pictureId" />
-            <input type="submit" value="Upload" />
-            <br />
-        </div>
 
-    </fieldset>
+@if (Session["isAdmin"] != null && Session["Name"] != null)
+{ 
+    <form action="" method="post" enctype="multipart/form-data">
+        
+        <fieldset>
+            <div>
 
-    @Html.ActionLink("Review this Cat!", "HereYeBeginTheReviewProcess", "Review", new { id = Model.ID }, null)@*TODO turn into btn*@
-</form>
+                Upload Image: @Html.DisplayFor(model => Model.PictureId)
+                <input type="file" name="pictureId" />
+                <input type="submit" value="Upload" />
+                <br />
+            </div>
+
+        </fieldset>
+        @Html.ActionLink("Review this Cat!", "HereYeBeginTheReviewProcess", "Review", new { id = Model.ID }, null)@*TODO turn into btn*@
+    </form>
+}

@@ -36,6 +36,10 @@ namespace c_final_capstone_v2.Controllers
 
         public ActionResult ViewCat(int id)
         {
+            List<Review> reviewList = reviewDao.GetCatReviews(id);
+
+            ViewBag.ReviewList = reviewList;
+
             Cat theCat = catDao.ViewCat(id);
 
             return View("ViewCat", theCat);
