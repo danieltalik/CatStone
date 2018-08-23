@@ -99,6 +99,7 @@ namespace c_final_capstone_v2.DAL
                 review.CatID = Convert.ToInt32(sdr["cat_id"]);
                 review.UserID = Convert.ToInt32(sdr["user_id"]);
                 review.Date = Convert.ToDateTime(sdr["date"]);
+                //TODO: The success stories are crashing the page with null rating ints
                 review.Rating = Convert.ToInt32(sdr["rating"]);
                 review.Title = Convert.ToString(sdr["title"]);
                 review.SuccessStory = Convert.ToString(sdr["sucess_story"]);
