@@ -4,9 +4,9 @@
 @{
     ViewBag.Title = "CatList";
 }
-<div class="jumbotron">
-
-    <h2>CatList</h2>
+<div class="jumbotron catainer">
+    <img src="~/Content/img/HeroImage.png" />
+    <h1 class="deadCentered">Cat List</h1>
 </div>
 
 
@@ -15,7 +15,7 @@
     {
         @Html.ActionLink("Add Cat", "AddCat", "Home")
     }
-    
+
     @using (Html.BeginForm("CatList", "Home", FormMethod.Get))
     {
         <select name="sort">
@@ -31,20 +31,18 @@
 </p>
 <div class="grid-container">
 
-        @foreach (var item in Model)
-        {
-            <div class="grid-item">
-                <a href="ViewCat/@item.ID"><img class="listImg2" src="~/Images/@item.PictureId" /></a>
-                <br />
-                    Name: @Html.DisplayFor(modelItem => item.Name)
-                <br />
-                    Age: @Html.DisplayFor(modelItem => item.Age)
-                <br />
-                    
-                @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
-                    
-                    
+    @foreach (var item in Model)
+    {
+        <div class="grid-item catainer">
+            <a href="ViewCat/@item.ID"><img class="hero-image, listImg2" src="~/Images/@item.PictureId" /></a>
+            <br />
+            <div style="font-size:medium" class="centered">
+                <div>Name: @Html.DisplayFor(modelItem => item.Name)</div>
+                <div>Age: @Html.DisplayFor(modelItem => item.Age)</div>
+                <div style="font-size:larger"> @Html.ActionLink("Details", "ViewCat", new { id = item.ID })</div>
             </div>
-        }
+
+        </div>
+    }
 </div>
 
