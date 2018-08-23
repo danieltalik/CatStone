@@ -6,29 +6,33 @@
 @{ Cat cat = new Cat();}
 <h2>Cat Employment Success Stories</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
-    
+
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            <img src="~/Images/@Html.DisplayFor(modelItem => item.cat.PictureId)" class="img-circle"/>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cat.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SuccessStory)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-        </td>
-    </tr>
+        <tr>
+            <td>
+                <img src="~/Images/@Html.DisplayFor(modelItem => item.cat.PictureId)" class="listImg2" />
+            </td>
+            <td>
+                <p style="font-size:x-large">@Html.DisplayFor(modelItem => item.cat.Name)</p>
+            </td>
+            <td>
+                <p style="font-size:x-large">@Html.DisplayFor(modelItem => item.SuccessStory)</p>
+            </td>
+            @if (Session["isAdmin"] == null)
+            {
+                <td></td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            }
+        </tr>
     }
 
 </table>
