@@ -88,12 +88,13 @@ namespace c_final_capstone_v2.Controllers
             }
             if (reviewEdited)
             {
-                return RedirectToAction("", "");
+                return RedirectToAction("EditReview", "Review");
             }
             else
             {
-                return RedirectToAction("", "");
+                return RedirectToAction("EditReview", "Review");
             }
+
         }
 
         [HttpPost]

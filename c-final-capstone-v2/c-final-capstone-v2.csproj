@@ -255,6 +255,7 @@
     <Content Include="Views\Review\SuccessStories.cshtml" />
     <Content Include="Views\Review\CatReviews.cshtml" />
     <Content Include="Views\Review\HereYeBeginTheReviewProcess.cshtml" />
+    <Content Include="Views\Review\EditReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CareTips.cshtml" />

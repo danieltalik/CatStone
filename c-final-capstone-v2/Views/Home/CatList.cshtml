@@ -42,7 +42,7 @@
                     }
                     else if ((bool)Session["isAdmin"])
                     {
-                        @Html.ActionLink("Edit", "EditCat", new { id = item.ID })
+                        @Html.ActionLink("Edit", "EditCat", new { id = item.ID }) @*TODO EDITIING CAT?*@
                         @Html.ActionLink("Details", "ViewCat", new { id = item.ID })
 
                         @Html.ActionLink("Review", "HereYeBeginTheReviewProcess", new { controller = "Review", id = item.ID })
