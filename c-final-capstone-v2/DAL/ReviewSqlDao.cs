@@ -14,7 +14,7 @@ namespace c_final_capstone_v2.DAL
         private const string SQL_GetCatReviews = "SELECT * FROM Reviews WHERE cat_id = @catId";
         private const string SQL_InsertCatReview = "INSERT INTO [dbo].[Reviews] ([user_id], [cat_id], [date], [rating], [title], [review]) VALUES (@userId, @catId, @date, @rating, @title, @review)";
         private const string SQL_ReviewToEdit = "SELECT * FROM reviews WHERE id = @reviewID";
-        private const string SQL_EditReview = "UPDATE reviews SET rating = @rating, title = @title, success_story = @successStory, review = @review, is_approved = @isApproved @WHERE id = @reviewID";
+        private const string SQL_EditReview = "UPDATE reviews SET rating = @rating, title = @title, review = @review WHERE id = @reviewID";
         private const string SQL_DeleteReview = "DELETE * FROM reviews WHERE id = @reviewID";
         private const string SQL_InsertSucessStory = "INSERT INTO Reviews(user_id, cat_id, sucess_story) VALUES (@user_id, @cat_id, @sucess_story)";
         private const string SQL_GetSuccessStories = "SELECT cat_id, sucess_story FROM Reviews WHERE sucess_story IS NOT NULL";
@@ -120,7 +120,7 @@ namespace c_final_capstone_v2.DAL
                 {
                     conn.Open();
 
-                    SqlCommand command = new SqlCommand(SQL_ReviewToEdit);
+                    SqlCommand command = new SqlCommand(SQL_ReviewToEdit, conn);
                     command.Parameters.AddWithValue("@reviewID", reviewID);
 
                     SqlDataReader reader = command.ExecuteReader();
@@ -134,7 +134,7 @@ namespace c_final_capstone_v2.DAL
                             CatID = Convert.ToInt32(reader["cat_id"]),
                             Rating = Convert.ToInt32(reader["rating"]),
                             ReviewComment = Convert.ToString(reader["review"]),
-                            SuccessStory = Convert.ToString(reader["success_story"]),
+                            SuccessStory = Convert.ToString(reader["sucess_story"]),
                             Title = Convert.ToString(reader["title"])
                         };
                     }
@@ -158,12 +158,13 @@ namespace c_final_capstone_v2.DAL
                 {
                     conn.Open();
 
-                    SqlCommand command = new SqlCommand(SQL_EditReview);
-                    command.Parameters.AddWithValue("rating", review.Rating);
-                    command.Parameters.AddWithValue("title", review.Title);
-                    command.Parameters.AddWithValue("successStory", review.SuccessStory);
-                    command.Parameters.AddWithValue("review", review.ReviewComment);
-                    command.Parameters.AddWithValue("isApproved", review.IsApproved);
+                    SqlCommand command = new SqlCommand(SQL_EditReview, conn);
+                    command.Parameters.AddWithValue("@reviewID", review.ID);
+                    command.Parameters.AddWithValue("@rating", review.Rating);
+                    command.Parameters.AddWithValue("@title", review.Title);
+                    
+                    command.Parameters.AddWithValue("@review", review.ReviewComment);
+                    command.Parameters.AddWithValue("@isApproved", review.IsApproved);
 
                     if (command.ExecuteNonQuery() > 0)
                     {
