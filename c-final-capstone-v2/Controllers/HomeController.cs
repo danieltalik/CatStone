@@ -43,7 +43,11 @@ namespace c_final_capstone_v2.Controllers
 
         public ActionResult AddCat()//TODO does this do anthing?
         {
-            return View();
+            if (Session["Name"] != null)
+            {
+                return View();
+            }
+            else return View("Index");
         }
 
         public ActionResult SubmitCat(Cat newCat)//TODO tmove to admin controller
@@ -107,17 +111,17 @@ namespace c_final_capstone_v2.Controllers
             }
             if (option == "Color")
             {
-                
+
                 return View(catDao.GetAllCats().Where(x => x.Colors.ToUpper().StartsWith(search.ToUpper()) || search.ToUpper() == null).ToList());
             }
             if (option == "Age")
             {
-                
+
                 return View(catDao.GetAllCats().Where(x => x.Age.ToString() == search || search == null).ToList());
             }
             return View("Search", cats);
         }
-        
+
 
     }
 }
