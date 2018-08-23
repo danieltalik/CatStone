@@ -144,6 +144,7 @@ body, html {
     float: right;
     height: auto;
     width: 500px;
+    padding: 5%;
 }
 
 .noBullets {
@@ -203,3 +204,4 @@ body, html {
     height: 150px;
     text-indent: -9999px; /* hides the link text */
 }
+
