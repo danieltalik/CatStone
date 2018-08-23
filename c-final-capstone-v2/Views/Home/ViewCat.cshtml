@@ -37,13 +37,18 @@
         @Html.DisplayFor(model => Model.Colors)
 
         @Html.DisplayFor(model => Model.HairLength)-haired cat.
-        @Model.Name is proficient at
+    <p>@Model.Name is proficient at:</p>
+    <ul>
+        @foreach (string skill in Model.Skills)
+        {
+            <li>@skill</li>
 
-        @Html.DisplayFor(model => Model.Skills)
+        }
+    </ul>
 
-        and has prior experience in "
-        @Html.DisplayFor(model => Model.PriorExperience)". Whatever that means...
-        <br />
+    <p>This cat has prior experience in "@Html.DisplayFor(model => Model.PriorExperience)" Whatever that means...</p>
+   
+    <br />
     </p>
     <p>
 
