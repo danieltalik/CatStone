@@ -31,20 +31,6 @@ namespace c_final_capstone_v2.Controllers
             return View("AllReviews", reviewList);
         }
 
-        //public ActionResult CatReviews(int id)
-        //{
-        //    Cat theCat = catSqlDao.ViewCat(id);
-
-        //    ViewBag.Cat = theCat;
-        //    Review myReview = new Review();
-        //    myReview.CatID = theCat.ID;
-        //    myReview.Date = DateTime.Now;
-
-        //    // TODO uncomment when session is created myReview.UserID = (int)Session["Id"];
-        //    myReview.UserID = 1;
-        //    return View(myReview);
-        //}
-
         public ActionResult HereYeBeginTheReviewProcess(int id)
         {
             Cat theCat = catSqlDao.ViewCat(id);
@@ -80,27 +66,31 @@ namespace c_final_capstone_v2.Controllers
 
 
         [HttpGet]
-        public ActionResult EditReview(Review review)
+        public ActionResult EditReview(int id)
         {
                 bool reviewEdited = false;
+            Review myReview = reviewSqlDao.ReviewToEdit(id); 
+
             if (Session["isAdmin"] != null)
             {
 
                 if ((bool)Session["isAdmin"])
                 {
-                    reviewEdited = reviewSqlDao.EditReview(review);
+                    reviewEdited = reviewSqlDao.EditReview(myReview);
                 }
             }
-                if (reviewEdited)
-                {
-                    return RedirectToAction("EditReview", "Review");
-                }
-                else
-                {
-                    return RedirectToAction("EditReview", "Review");
-                }
+            return View(myReview);
 
         }
+
+        [HttpPost]
+        public ActionResult SubmitEditedReview(Review review)
+        {
+            reviewSqlDao.EditReview(review);
+
+            return RedirectToAction("CatList", "Home");
+        }
+
 
         [HttpPost]
         public ActionResult DeleteReview(int reviewID)
