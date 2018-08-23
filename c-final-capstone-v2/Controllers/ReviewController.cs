@@ -15,7 +15,8 @@ namespace c_final_capstone_v2.Controllers
         private IReviewSqlDao reviewSqlDao;
         private ICatSqlDao catSqlDao;
 
-        public ReviewController() {
+        public ReviewController()
+        {
             catSqlDao = new CatSqlDao(connectionString);
             reviewSqlDao = new ReviewSqlDao(connectionString);
         }
@@ -54,7 +55,7 @@ namespace c_final_capstone_v2.Controllers
             myReview.Date = DateTime.Now;
 
             // TODO uncomment when session is created myReview.UserID = (int)Session["Id"];
-            
+
             return View("HereYeBeginTheReviewProcess", myReview);
         }
 
@@ -78,22 +79,26 @@ namespace c_final_capstone_v2.Controllers
         }
 
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult EditReview(Review review)
         {
-            bool reviewEdited = false;
-            if ((bool)Session["isAdmin"])
+                bool reviewEdited = false;
+            if (Session["isAdmin"] != null)
             {
-                reviewEdited = reviewSqlDao.EditReview(review);
+
+                if ((bool)Session["isAdmin"])
+                {
+                    reviewEdited = reviewSqlDao.EditReview(review);
+                }
             }
-            if (reviewEdited)
-            {
-                return RedirectToAction("EditReview", "Review");
-            }
-            else
-            {
-                return RedirectToAction("EditReview", "Review");
-            }
+                if (reviewEdited)
+                {
+                    return RedirectToAction("EditReview", "Review");
+                }
+                else
+                {
+                    return RedirectToAction("EditReview", "Review");
+                }
 
         }
 
@@ -123,7 +128,7 @@ namespace c_final_capstone_v2.Controllers
         }
         public ActionResult CreateSuccess()
         {
-            
+
             List<Cat> catList = catSqlDao.GetAllCats();
             ViewBag.catList = catList;
             if (Session["Name"] != null)
